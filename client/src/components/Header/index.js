@@ -20,7 +20,7 @@ function Header() {
                 <nav uk-navbar="true" className="small-nav">
                     <ul className="uk-navbar-nav">
                         <li>
-                            <a href="#"><span uk-navbar-toggle-icon="true"></span></a>
+                            <span uk-navbar-toggle-icon="true"></span>
                             <div className="uk-navbar-dropdown">
                                 <ul className="uk-nav uk-navbar-dropdown-nav">
                                     <li><Link to="/">about</Link></li>
@@ -34,10 +34,10 @@ function Header() {
                     </ul>
                 </nav>
                 <div className="social-media-links">
-                    <a href="" target="_blank" className="uk-icon-button uk-margin-small-right" uk-icon="youtube"></a>
-                    <a href="" target="_blank" className="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
-                    <a href="" target="_blank" className="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>
-                    <a href="" target="_blank" className="uk-icon-button" uk-icon="instagram"></a>
+                    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="uk-icon-button uk-margin-small-right" uk-icon="youtube"></a>
+                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="uk-icon-button" uk-icon="instagram"></a>
                 </div>
             </div>
 
