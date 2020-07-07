@@ -4,9 +4,9 @@ const db = require("../models");
 
 // Tell passport we want to use a Local Strategy
 passport.use(new LocalStrategy(
-    function (name, password, done) {
+    function (username, password, done) {
         db.User.findOne({
-            name: name
+            username: username
         }).then(user => {
             // If there's no user with the given name
             if (!user) {
