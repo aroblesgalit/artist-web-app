@@ -15,5 +15,8 @@ export default {
     },
     findUser: function () {
         return axios.get("/api/user");
+    },
+    getAllItems: function() {
+        return axios.get("/api/items");
     }
 }

@@ -10,7 +10,7 @@ function Shop() {
                     value => {
                         return value.items.map(item => {
                             return <ItemCard
-                                key={item.id}
+                                key={item._id}
                                 item={item}
                             />
                         })

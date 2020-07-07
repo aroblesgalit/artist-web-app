@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fakeData } from "../fakeData";
+import API from "./API";
 
 const ItemContext = React.createContext();
 
@@ -11,18 +11,19 @@ class ItemProvider extends Component {
     };
 
     componentDidMount() {
-        this.setItems();
+        this.getAllItems();
     };
 
-    setItems = () => {
-        let tempItems = [];
-        fakeData.forEach(item => {
-            const singleItem = { ...item };
-            tempItems = [...tempItems, singleItem];
-        });
-        this.setState(() => {
-            return { items: tempItems }
-        });
+    getAllItems = () => {
+        API.getAllItems()
+            .then(res => {
+                this.setState(() => {
+                    return { items: res.data }
+                })
+            })
+            .catch(err => {
+                console.log("Something went wrong while fetching items...", err);
+            }) 
     };
 
     render() {
