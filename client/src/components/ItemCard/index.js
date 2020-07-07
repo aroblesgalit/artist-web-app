@@ -3,7 +3,7 @@ import "./itemCard.css";
 
 function ItemCard(props) {
 
-    const { id, name, size, img, price, countInStock } = props;
+    const { id, name, size, img, price, countInStock } = props.item;
 
     return (
         <div>

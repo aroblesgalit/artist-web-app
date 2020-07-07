@@ -1,23 +1,22 @@
 import React from "react";
 import ItemCard from "../components/ItemCard";
-import { fakeData } from "../fakeData";
+import { ItemConsumer } from "../utils/ItemContext";
 
 function Shop() {
     return (
         <div className="main-container shop-container" uk-grid="true">
-            {
-                fakeData.map(item => {
-                    return <ItemCard 
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        size={item.size}
-                        img={item.img}
-                        price={item.price}
-                        countInStock={item.countInStock}
-                    />
-                })
-            }
+            <ItemConsumer>
+                {
+                    value => {
+                        return value.items.map(item => {
+                            return <ItemCard
+                                key={item.id}
+                                item={item}
+                            />
+                        })
+                    }
+                }
+            </ItemConsumer>
         </div>
     )
 }
