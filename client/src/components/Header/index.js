@@ -11,7 +11,7 @@ function Header() {
                     <li><Link to="/">about</Link></li>
                     <li><Link to="/">portfolio</Link></li>
                     <li><Link to="/">videos</Link></li>
-                    <li><Link to="/">shop</Link></li>
+                    <li><Link to="/shop">shop</Link></li>
                     <li><Link to="/">contact</Link></li>
                 </ul>
                 {
@@ -26,7 +26,7 @@ function Header() {
                                     <li><Link to="/">about</Link></li>
                                     <li><Link to="/">portfolio</Link></li>
                                     <li><Link to="/">videos</Link></li>
-                                    <li><Link to="/">shop</Link></li>
+                                    <li><Link to="/shop">shop</Link></li>
                                     <li><Link to="/">contact</Link></li>
                                 </ul>
                             </div>
