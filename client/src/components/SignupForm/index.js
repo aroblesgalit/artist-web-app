@@ -21,7 +21,7 @@ function SignupForm() {
                         password: password
                     }).then(function (res) {
                             console.log("Your account is now ready...", res);
-                            window.location.replace("/shop");
+                            window.location.replace("/admin");
                         }).catch(function (err) {
                             console.log("Failed signup...", err);
                         })

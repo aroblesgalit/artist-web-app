@@ -16,7 +16,7 @@ function LoginForm() {
             password: password
         }).then(res => {
                 console.log("Logged in succesfully...", res);
-                window.location.replace("/shop");
+                window.location.replace("/admin");
             }).catch(err => {
                 console.log("Something went wrong while logging in...", err);
             })
