@@ -6,5 +6,35 @@
 
 .header-container {
     width: 340px;
-    background-color: goldenrod
+    padding: 80px 40px 80px 20px;
+    position: relative;
+}
+
+.header-container ul {
+    font-weight: 300;
+    margin-top: 80px;
+}
+
+.uk-active {
+    font-weight: 500;
+}
+
+.header-logo {
+    justify-content: flex-end;
+    padding: 0;
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.social-media-links {
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+}
+
+
+/* Medium devices (landscape tablets, 768px and below) */
+@media only screen and (max-width: 768px) {
+
 }
