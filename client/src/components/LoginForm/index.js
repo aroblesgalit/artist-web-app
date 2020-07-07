@@ -8,7 +8,7 @@ function LoginForm() {
             <p className="uk-text-center">Hi John Doe! Welcome back!</p>
             <form className="uk-form-stacked uk-flex uk-flex-column uk-flex-bottom">
                 <div className="uk-margin uk-width-expand">
-                    <label className="uk-form-label" for="password">password</label>
+                    <label className="uk-form-label" htmlFor="password">password</label>
                     <div className="uk-form-controls">
                         <input className="uk-input" id="password" type="password" placeholder="***********" />
                     </div>

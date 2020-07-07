@@ -41,4 +41,12 @@ router.get("/user_data", function (req, res) {
     }
 });
 
+// Get user
+router.get("/", function (req, res) {
+    db.User
+        .findOne({ name: "johndoe" })
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));
+})
+
 module.exports = router;

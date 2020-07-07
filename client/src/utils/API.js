@@ -12,5 +12,8 @@ export default {
     },
     getUserData: function () {
         return axios.get("/api/user/user_data");
+    },
+    findUser: function () {
+        return axios.get("/api/user");
     }
 }
