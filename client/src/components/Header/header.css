@@ -7,12 +7,19 @@
 .header-container {
     width: 340px;
     padding: 80px 40px 80px 20px;
-    position: relative;
+    position: fixed;
+    height: 100%;
+    text-align: right;
 }
 
-.header-container ul {
+.large-nav {
     font-weight: 300;
     margin-top: 80px;
+}
+
+.small-nav {
+    font-weight: 300;
+    display: none;
 }
 
 .uk-active {
@@ -36,5 +43,50 @@
 
 /* Medium devices (landscape tablets, 768px and below) */
 @media only screen and (max-width: 768px) {
-
+    .header-container {
+        width: 100%;
+        padding: 0;
+        position: relative;
+        height: 60px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    .header-logo {
+        justify-content: flex-start;
+        font-size: 1.6rem;
+        line-height: 1;
+        font-weight: 500;
+        min-height: 0;
+        display: inline-block;
+        padding: 16px;
+    }
+    .large-nav {
+        display: none;
+    }
+    .small-nav {
+        display: inline-block;
+    }
+    .small-nav span {
+        padding: 20px;
+    }
+    .small-nav span:hover {
+        cursor: pointer;
+    }
+    #small-nav-toggle {
+        right: 16px;
+        background-color: #fff;
+        padding: 20px;
+        width: 200px;
+        line-height: 3;
+        -webkit-box-shadow: 0px 0px 9px 0px rgba(186,186,186,1);
+        -moz-box-shadow: 0px 0px 9px 0px rgba(186,186,186,1);
+        box-shadow: 0px 0px 9px 0px rgba(186,186,186,1);
+    }
+    #small-nav-toggle ul {
+        font-weight: 300;
+    }
+    .social-media-links {
+        display: none;
+    }
 }
