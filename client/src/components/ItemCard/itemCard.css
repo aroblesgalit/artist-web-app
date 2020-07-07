@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.item-card {
+    width: 300px;
+    background-color: #fff;
+    font-weight: 300;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.item-card:hover {
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(186,186,186,1);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(186,186,186,1);
+    box-shadow: 0px 0px 9px 0px rgba(186,186,186,1);
+}
+
+.uk-card-media-top {
+    height: 240px;
+    overflow: hidden;
+}
+
+.item-name {
+    margin: 0;
+    text-transform: lowercase;
+}
+
+.item-size {
+    margin: 0;
+}
+
+.item-price {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.cart-btn {
+    position: absolute;
+    right: 0;
+    bottom: 16px;
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    cursor: pointer;
+    transform: translate(100%, 0);
+    transition: all 0.2s linear;
+}
+
+.item-card:hover .cart-btn {
+    transform: translate(0, 0);
+}
