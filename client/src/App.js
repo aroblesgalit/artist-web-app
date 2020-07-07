@@ -5,22 +5,10 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
-import { ItemProvider } from "./utils/ItemContext";
+import { ItemProvider, ItemConsumer } from "./utils/ItemContext";
 import API from "./utils/API";
 
 function App() {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    API.getUserData()
-      .then(() => {
-        setIsLoggedIn(true);
-      })
-      .catch(err => {
-        setIsLoggedIn(false);
-      })
-  }, [])
 
   return (
     <ItemProvider>
@@ -34,14 +22,22 @@ function App() {
             <Shop />
           </Route>
           <Route path="/admin-login">
-            {
-              isLoggedIn ? <Redirect to="/admin" /> : <Login />
-            }
+            <ItemConsumer>
+              {
+                value => {
+                  return value.isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                }
+              }
+            </ItemConsumer>
           </Route>
           <Route path="/admin">
-            {
-              isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
-            }
+            <ItemConsumer>
+              {
+                value => {
+                  return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+                }
+              }
+            </ItemConsumer>
           </Route>
         </Switch>
       </Router>

@@ -7,11 +7,13 @@ const ItemContext = React.createContext();
 class ItemProvider extends Component {
 
     state = {
-        items: []
+        items: [],
+        isLoggedIn: false
     };
 
     componentDidMount() {
         this.getAllItems();
+        this.getUserData();
     };
 
     getAllItems = () => {
@@ -23,8 +25,22 @@ class ItemProvider extends Component {
             })
             .catch(err => {
                 console.log("Something went wrong while fetching items...", err);
-            }) 
+            })
     };
+
+    getUserData = () => {
+        API.getUserData()
+            .then(() => {
+                this.setState(() => {
+                    return { isLoggedIn: true }
+                })
+            })
+            .catch(() => {
+                this.setState(() => {
+                    return { isLoggedIn: false }
+                })
+            })
+    }
 
     render() {
         return (
