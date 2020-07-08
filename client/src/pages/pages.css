@@ -87,19 +87,6 @@
     font-weight: 300;
 }
 
-.cart-container img {
-    max-width: 100px;
-    margin-right: 10px;
-}
-
-.cart-container select {
-    max-width: 60px;
-}
-
-.cart-delete-btn {
-    cursor: pointer;
-}
-
 
 /* Medium devices (landscape tablets, 768px and below) */
 @media only screen and (max-width: 768px) {
