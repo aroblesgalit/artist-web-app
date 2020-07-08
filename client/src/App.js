@@ -6,6 +6,7 @@ import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import ItemDetail from "./pages/ItemDetail";
+import Cart from "./pages/Cart";
 import { ItemProvider, ItemConsumer } from "./utils/ItemContext";
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/shop/:id">
               <ItemDetail />
+          </Route>
+          <Route path="/cart">
+              <Cart />
           </Route>
         </Switch>
       </Router>

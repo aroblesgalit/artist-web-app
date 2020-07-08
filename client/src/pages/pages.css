@@ -20,11 +20,13 @@
 
 
 /* Item Detail */
-.item-detail-container {
+.item-detail-container
+.cart-container {
     padding-top: 40px
 }
 
-.item-detail-container a:link {
+.item-detail-container a:link,
+.cart-container a:link {
     text-decoration: none;
     color: #444;
 }
@@ -70,6 +72,33 @@
 
 
 
+/* Cart */
+.cart-container h1 {
+    margin: 20px 0;
+}
+
+.cart-container table {
+    font-weight: 300;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.cart-container table th {
+    text-transform: lowercase;
+    font-weight: 300;
+}
+
+.cart-container img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.cart-container select {
+    max-width: 60px;
+}
+
+.cart-delete-btn {
+    cursor: pointer;
+}
 
 
 /* Medium devices (landscape tablets, 768px and below) */
