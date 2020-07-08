@@ -95,12 +95,16 @@ class ItemProvider extends Component {
     };
 
     removeItem = (id) => {
-        // let tempItems = [...this.state.items];
+        let tempItems = [...this.state.items];
         let tempCart = [...this.state.cart];
         tempCart = tempCart.filter(item => item._id !== id);
-
+        const item = this.getItem(tempItems, id);
+        item.inCart = false;
+        item.cartCount = 0;
+        item.cartTotal = 0;
         this.setState(() => {
             return {
+                items: [...tempItems],
                 cart: [...tempCart]
             }
         }, () => {
