@@ -23,6 +23,12 @@
     color: #fff;
 }
 
+.cart-count {
+    top: -4px;
+    right: -2px;
+    z-index: 3;
+}
+
 
 
 /* Medium devices (landscape tablets, 768px and below) */

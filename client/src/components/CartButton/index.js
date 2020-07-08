@@ -12,7 +12,8 @@ function CartButton() {
                         return (
                             <Link to="/cart">
                                 <div className="cart-link uk-flex uk-flex-center uk-flex-middle">
-                                    <span uk-icon="icon: cart"></span>
+                                    <span uk-icon="icon: cart" className="uk-position-relative"></span>
+                                    <span className="cart-count uk-badge uk-position-absolute">{value.cart.length}</span>
                                 </div>
                             </Link>
                         )
