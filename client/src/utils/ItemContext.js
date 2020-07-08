@@ -8,6 +8,7 @@ class ItemProvider extends Component {
 
     state = {
         items: [],
+        detailItem: {},
         isLoggedIn: false,
         cart: [],
         cartSubtotal: 0,
@@ -57,6 +58,13 @@ class ItemProvider extends Component {
         return item;
     }
 
+    handleDetail = (id) => {
+        const item = this.getItem(this.state.items, id);
+        this.setState(() => {
+            return { detailItem: item }
+        })
+    }
+
     addToCart = (id) => {
         let tempItems = [...this.state.items];
         const item = this.getItem(tempItems, id);
@@ -91,7 +99,8 @@ class ItemProvider extends Component {
             <ItemContext.Provider
                 value={{
                     ...this.state,
-                    addToCart: this.addToCart
+                    addToCart: this.addToCart,
+                    handleDetail: this.handleDetail
                 }}
             >
                 {this.props.children}

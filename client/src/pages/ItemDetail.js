@@ -1,51 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./pages.css";
-import API from "../utils/API";
 import { ItemConsumer } from "../utils/ItemContext";
 
 function ItemDetail() {
-
-    const { id } = useParams();
-    const [item, setItem] = useState({});
-
-    useEffect(() => {
-        API.getItemById(id)
-            .then(res => {
-                // console.log("Getting item by id...", res)
-                setItem(res.data);
-            })
-            .catch(err => {
-                console.log("Something went wrong while fetching item...", err);
-            })
-    }, [id])
-
     return (
-        <div className="main-container item-detail-container">
-            <Link to="/shop" className="uk-flex uk-flex-middle">
-                <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to shop</span>
-            </Link>
-            <div className="item-detail" uk-grid="true">
-                <img src={item.img} alt={item.name} />
-                <div className="item-detail-text uk-flex uk-flex-column">
-                    <h2 className="item-name">{item.name}</h2>
-                    <span className="item-print">{item.print}</span>
-                    <span className="item-size">{item.size}</span>
-                    <span className="item-price">${item.price}</span>
-                    <p className="item-info"><b>Info:</b> {item.info}</p>
-                    <ItemConsumer>
-                        {
-                            value => {
-                                return <button className="primary-btn" onClick={() => value.addToCart(id)}>add to cart</button>
-                            }
-                        }
-                    </ItemConsumer>
-                    <Link to="/cart" className="uk-flex uk-flex-middle uk-margin-top">
-                        <span className="text-link uk-margin-small-right" >go to cart</span><span uk-icon="icon: arrow-right" />
-                    </Link>
-                </div>
-            </div>
-        </div>
+        <ItemConsumer>
+            {
+                value => {
+                    const { _id, img, name, print, size, price, info, inCart } = value.detailItem;
+                    return (
+                        <div className="main-container item-detail-container">
+                            <Link to="/shop" className="uk-flex uk-flex-middle">
+                                <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to shop</span>
+                            </Link>
+                            <div className="item-detail" uk-grid="true">
+                                <img src={img} alt={name} />
+                                <div className="item-detail-text uk-flex uk-flex-column">
+                                    <h2 className="item-name">{name}</h2>
+                                    <span className="item-print">{print}</span>
+                                    <span className="item-size">{size}</span>
+                                    <span className="item-price">${price}</span>
+                                    <p className="item-info"><b>Info:</b> {info}</p>
+                                    <button
+                                        className="primary-btn"
+                                        onClick={() => value.addToCart(_id)}
+                                        disabled={inCart}
+                                    >
+                                        {
+                                            inCart ? "in cart" : "add to cart"
+                                        }
+                                    </button>
+                                    <Link to="/cart" className="uk-flex uk-flex-middle uk-margin-top">
+                                        <span className="text-link uk-margin-small-right" >go to cart</span><span uk-icon="icon: arrow-right" />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+
+        </ItemConsumer>
+
     )
 }
 
