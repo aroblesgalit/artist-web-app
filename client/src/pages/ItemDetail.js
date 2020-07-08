@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./pages.css";
 import API from "../utils/API";
+import { ItemConsumer } from "../utils/ItemContext";
 
 function ItemDetail() {
 
@@ -17,7 +18,7 @@ function ItemDetail() {
             .catch(err => {
                 console.log("Something went wrong while fetching item...", err);
             })
-    }, [])
+    }, [id])
 
     return (
         <div className="main-container item-detail-container">
@@ -32,7 +33,13 @@ function ItemDetail() {
                     <span className="item-size">{item.size}</span>
                     <span className="item-price">${item.price}</span>
                     <p className="item-info"><b>Info:</b> {item.info}</p>
-                    <button className="primary-btn">add to cart</button>
+                    <ItemConsumer>
+                        {
+                            value => {
+                                return <button className="primary-btn" onClick={() => value.addToCart(id)}>add to cart</button>
+                            }
+                        }
+                    </ItemConsumer>
                     <Link to="/cart" className="uk-flex uk-flex-middle uk-margin-top">
                         <span className="text-link uk-margin-small-right" >go to cart</span><span uk-icon="icon: arrow-right" />
                     </Link>
