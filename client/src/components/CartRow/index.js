@@ -1,27 +1,31 @@
 import React from "react";
 import "./cartRow.css";
 
-function CartRow() {
+function CartRow(props) {
+
+    const { name, size, img, countInStock, cartTotal } = props;
+
     return (
         <tr className="cart-row">
             <td className="uk-flex uk-flex-middle">
                 <span uk-icon="icon: close" className="cart-delete-btn uk-margin-right" />
-                <img src="https://cdna.artstation.com/p/assets/images/images/007/824/798/large/aldrich-hezekiah-ghost-woods.jpg?1508767785" alt="lost and found" />
+                <img src={img} alt={name} />
                 <span className="uk-flex uk-flex-column">
-                    <span className="uk-text-truncate">lost and found</span>
-                    <span className="uk-text-small">11 x 17</span>
+                    <span className="uk-text-truncate">{name}</span>
+                    <span className="uk-text-small">{size}</span>
                 </span>
             </td>
             <td>
                 <select className="uk-select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    {
+                        [...Array(countInStock).keys()].map(x =>
+                                <option key={x + 1} value={x + 1}>{x + 1}</option>
+                            )
+                    }
                 </select>
             </td>
             <td className="uk-text-right">
-                <span>$30</span>
+                <span>{cartTotal}</span>
             </td>
         </tr>
     )

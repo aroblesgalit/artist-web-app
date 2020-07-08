@@ -6,6 +6,7 @@ import { ItemConsumer } from "../utils/ItemContext";
 
 function Cart() {
     return (
+
         <div className="main-container cart-container">
             <Link to="/shop" className="uk-flex uk-flex-middle">
                 <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to shop</span>
@@ -21,44 +22,45 @@ function Cart() {
                 </thead>
                 <tbody>
                     <ItemConsumer>
-                    {
-                        value => {
-                            return value.cart.map(item => {
-                                return (
-                                    <CartRow 
+                        {
+                            value => {
+                                return value.cart.map(item => {
+                                    return <CartRow
+                                        key={item._id}
                                         name={item.name}
                                         size={item.size}
-                                        
+                                        img={item.img}
+                                        countInStock={item.countInStock}
+                                        cartCount={item.cartCount}
+                                        cartTotal={item.cartTotal}
                                     />
-                                )
-                            })
+                                })
+                            }
                         }
-                    }
-                        <CartRow />
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td className="subtotal-info">
-                                <div className="uk-flex uk-flex-right">
-                                    <div className="subtotal-labels uk-margin-right">
-                                        <div className="uk-flex uk-flex-bottom uk-flex-right">subtotal</div>
-                                        <div className="uk-flex uk-flex-bottom uk-flex-right">shipping</div>
-                                        <div className="uk-flex uk-flex-bottom uk-flex-right"><b>total</b></div>
-                                    </div>
-                                    <div className="subtotal-values">
-                                        <div className="uk-flex uk-flex-bottom uk-flex-right">$30</div>
-                                        <div className="uk-flex uk-flex-bottom uk-flex-right">$4</div>
-                                        <div className="uk-flex uk-flex-bottom uk-flex-right"><b>$34</b></div>
-                                    </div>
-                                </div>
-                                <button className="primary-btn">paypal checkout</button>
-                            </td>
-                        </tr>
                     </ItemConsumer>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td className="subtotal-info">
+                            <div className="uk-flex uk-flex-right">
+                                <div className="subtotal-labels uk-margin-right">
+                                    <div className="uk-flex uk-flex-bottom uk-flex-right">subtotal</div>
+                                    <div className="uk-flex uk-flex-bottom uk-flex-right">shipping</div>
+                                    <div className="uk-flex uk-flex-bottom uk-flex-right"><b>total</b></div>
+                                </div>
+                                <div className="subtotal-values">
+                                    <div className="uk-flex uk-flex-bottom uk-flex-right">$30</div>
+                                    <div className="uk-flex uk-flex-bottom uk-flex-right">$4</div>
+                                    <div className="uk-flex uk-flex-bottom uk-flex-right"><b>$34</b></div>
+                                </div>
+                            </div>
+                            <button className="primary-btn">paypal checkout</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
-        </div>
+        </div >
     )
 }
 
