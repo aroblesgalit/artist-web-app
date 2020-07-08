@@ -1,14 +1,28 @@
 import React from "react";
 import "./cartRow.css";
+import { ItemConsumer } from "../../utils/ItemContext";
 
 function CartRow(props) {
 
-    const { name, size, img, countInStock, cartTotal } = props;
+    const { id, name, size, img, countInStock, cartTotal } = props;
 
     return (
         <tr className="cart-row">
             <td className="uk-flex uk-flex-middle">
-                <span uk-icon="icon: close" className="cart-delete-btn uk-margin-right" />
+                <ItemConsumer>
+                    {
+                        value => {
+                            return (
+                                <span
+                                    uk-icon="icon: close"
+                                    className="cart-delete-btn uk-margin-right"
+                                    onClick={() => value.removeItem(id)}
+                                />
+                            )
+                        }
+                    }
+
+                </ItemConsumer>
                 <img src={img} alt={name} />
                 <span className="uk-flex uk-flex-column">
                     <span className="uk-text-truncate">{name}</span>
@@ -19,8 +33,8 @@ function CartRow(props) {
                 <select className="uk-select">
                     {
                         [...Array(countInStock).keys()].map(x =>
-                                <option key={x + 1} value={x + 1}>{x + 1}</option>
-                            )
+                            <option key={x + 1} value={x + 1}>{x + 1}</option>
+                        )
                     }
                 </select>
             </td>

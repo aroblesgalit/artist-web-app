@@ -51,19 +51,19 @@ class ItemProvider extends Component {
                     return { isLoggedIn: false }
                 })
             })
-    }
+    };
 
     getItem = (arr, id) => {
         const item = arr.find(item => item._id === id);
         return item;
-    }
+    };
 
     handleDetail = (id) => {
         const item = this.getItem(this.state.items, id);
         this.setState(() => {
             return { detailItem: item }
         })
-    }
+    };
 
     addToCart = (id) => {
         let tempItems = [...this.state.items];
@@ -94,13 +94,28 @@ class ItemProvider extends Component {
         })
     };
 
+    removeItem = (id) => {
+        // let tempItems = [...this.state.items];
+        let tempCart = [...this.state.cart];
+        tempCart = tempCart.filter(item => item._id !== id);
+
+        this.setState(() => {
+            return {
+                cart: [...tempCart]
+            }
+        }, () => {
+            this.addTotals();
+        })
+    };
+
     render() {
         return (
             <ItemContext.Provider
                 value={{
                     ...this.state,
                     addToCart: this.addToCart,
-                    handleDetail: this.handleDetail
+                    handleDetail: this.handleDetail,
+                    removeItem: this.removeItem
                 }}
             >
                 {this.props.children}

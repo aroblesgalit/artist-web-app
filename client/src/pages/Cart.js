@@ -28,6 +28,7 @@ function Cart() {
                                 return value.cart.map(item => {
                                     return <CartRow
                                         key={item._id}
+                                        id={item._id}
                                         name={item.name}
                                         size={item.size}
                                         img={item.img}
