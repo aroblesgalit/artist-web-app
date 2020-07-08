@@ -30,16 +30,25 @@ function CartRow(props) {
                 </span>
             </td>
             <td>
-                <select className="uk-select">
+                <ItemConsumer>
                     {
-                        [...Array(countInStock).keys()].map(x =>
-                            <option key={x + 1} value={x + 1}>{x + 1}</option>
-                        )
+                        value => {
+                            return (
+                                <select className="uk-select" onChange={(e) => value.updateItemCount(id, e.target.value)}>
+                                    {
+                                        [...Array(countInStock).keys()].map(x =>
+                                            <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                        )
+                                    }
+                                </select>
+                            )
+                        }
                     }
-                </select>
+
+                </ItemConsumer>
             </td>
             <td className="uk-text-right">
-                <span>{cartTotal}</span>
+                <span>${cartTotal}</span>
             </td>
         </tr>
     )

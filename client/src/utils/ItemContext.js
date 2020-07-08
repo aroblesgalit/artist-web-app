@@ -112,6 +112,20 @@ class ItemProvider extends Component {
         })
     };
 
+    updateItemCount = (id, val) => {
+        let tempCart = [...this.state.cart];
+        const item = this.getItem(tempCart, id);
+        item.cartCount = val;
+        item.cartTotal = item.cartCount * item.price;
+        this.setState(() => {
+            return {
+                cart: [...tempCart]
+            }
+        }, () => {
+            this.addTotals();
+        })
+    };
+
     render() {
         return (
             <ItemContext.Provider
@@ -119,7 +133,8 @@ class ItemProvider extends Component {
                     ...this.state,
                     addToCart: this.addToCart,
                     handleDetail: this.handleDetail,
-                    removeItem: this.removeItem
+                    removeItem: this.removeItem,
+                    updateItemCount: this.updateItemCount
                 }}
             >
                 {this.props.children}
