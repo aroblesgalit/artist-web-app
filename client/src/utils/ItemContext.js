@@ -30,7 +30,6 @@ class ItemProvider extends Component {
                         item.inCart = false;
                         item.cartTotal = 0;
                     });
-                    console.log(res.data);
                     return { items: res.data }
                 })
             })
