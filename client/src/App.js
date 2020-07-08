@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import ItemDetail from "./pages/ItemDetail";
 import { ItemProvider, ItemConsumer } from "./utils/ItemContext";
-import API from "./utils/API";
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/shop">
+          <Route exact path="/shop">
             <Shop />
           </Route>
           <Route path="/admin-login">
@@ -38,6 +38,9 @@ function App() {
                 }
               }
             </ItemConsumer>
+          </Route>
+          <Route path="/shop/:id">
+              <ItemDetail />
           </Route>
         </Switch>
       </Router>

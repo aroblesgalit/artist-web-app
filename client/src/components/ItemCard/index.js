@@ -3,12 +3,16 @@ import "./itemCard.css";
 
 function ItemCard(props) {
 
-    const { name, size, img, price } = props.item;
+    const { _id, name, size, img, price } = props.item;
+
+    function handleDetail(id) {
+        window.location.replace(`/shop/${id}`);
+    }
 
     return (
         <div>
             <div className="item-card uk-card">
-                <div className="item-img-container uk-card-media-top">
+                <div className="item-img-container uk-card-media-top" onClick={() => handleDetail(_id)}>
                     <img src={img} alt={name} />
                 </div>
                 <div className="uk-card-body uk-padding-small uk-position-relative">

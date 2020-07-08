@@ -19,6 +19,54 @@
 
 
 
+/* Item Detail */
+.item-detail-container {
+    padding-top: 40px
+}
+
+.item-detail-container a:link {
+    text-decoration: none;
+    color: #444;
+}
+
+.text-link {
+    color: #444;
+    font-weight: 300;
+}
+
+.item-detail {
+    margin-top: 20px;
+}
+
+.item-detail img {
+    width: 400px;
+}
+
+.item-detail-text {
+    font-weight: 300;
+}
+
+.item-detail h2 {
+    line-height: .9;
+    margin-bottom: 10px;
+}
+
+.item-detail span {
+    margin-bottom: 4px;
+}
+
+.primary-btn {
+    width: 160px;
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
 
 
@@ -30,7 +78,7 @@
         margin-left: 0;
         padding: 40px 16px;
     }
-    .uk-first-column {
+    /* .uk-first-column {
         padding: 0;
-    }
+    } */
 }

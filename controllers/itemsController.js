@@ -22,5 +22,11 @@ module.exports = {
             }, { new: true })
             .then(res => res.json(res))
             .catch(err => res.status(422).json(err));
+    },
+    getItemById: function (req, res) {
+        db.Item
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 }

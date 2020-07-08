@@ -9,5 +9,6 @@ router.route("/")
 // Matches with "/api/items/:id"
 router.route("/:id")
     .put(itemsController.updateItem)
+    .get(itemsController.getItemById)
 
 module.exports = router;

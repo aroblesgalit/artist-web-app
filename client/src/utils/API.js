@@ -18,5 +18,8 @@ export default {
     },
     getAllItems: function() {
         return axios.get("/api/items");
+    },
+    getItemById: function(id) {
+        return axios.get("/api/items/" + id)
     }
 }
