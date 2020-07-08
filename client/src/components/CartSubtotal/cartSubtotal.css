@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.subtotal-info {
+    margin-top: 30px;
+    position: relative;
+}
+
+.subtotal-labels {
+    font-size: .9rem;
+}
+
+.subtotal-labels div,
+.subtotal-values div {
+    min-height: 30px;
+}
+
+.subtotal-info button {
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+}

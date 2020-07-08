@@ -87,26 +87,6 @@
     font-weight: 300;
 }
 
-.subtotal-info {
-    margin-top: 30px;
-    position: relative;
-}
-
-.subtotal-labels {
-    font-size: .9rem;
-}
-
-.subtotal-labels div,
-.subtotal-values div {
-    min-height: 30px;
-}
-
-.subtotal-info button {
-    position: absolute;
-    right: 0;
-    margin-top: 20px;
-}
-
 /* Medium devices (landscape tablets, 768px and below) */
 @media only screen and (max-width: 768px) {
     .main-container {
