@@ -8,7 +8,7 @@ function CartRow() {
                 <span uk-icon="icon: close" className="cart-delete-btn uk-margin-right" />
                 <img src="https://cdna.artstation.com/p/assets/images/images/007/824/798/large/aldrich-hezekiah-ghost-woods.jpg?1508767785" alt="lost and found" />
                 <span className="uk-flex uk-flex-column">
-                    <span>lost and found</span>
+                    <span className="uk-text-truncate">lost and found</span>
                     <span className="uk-text-small">11 x 17</span>
                 </span>
             </td>
@@ -20,7 +20,7 @@ function CartRow() {
                     <option>4</option>
                 </select>
             </td>
-            <td>
+            <td className="uk-text-right">
                 <span>$30</span>
             </td>
         </tr>

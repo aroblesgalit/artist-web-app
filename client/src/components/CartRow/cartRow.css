@@ -10,9 +10,11 @@
 }
 
 .cart-row select {
-    max-width: 60px;
+    min-width: 60px;
+    max-width: 80px;
 }
 
 .cart-delete-btn {
     cursor: pointer;
+    min-width: 20px;
 }
