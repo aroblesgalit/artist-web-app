@@ -60,6 +60,19 @@ function UserProvider(props) {
     }
 
     // Log user in
+    function handleLogin(e, password) {
+        e.preventDefault();
+
+        API.loginUser({
+            username: "johndoe",
+            password: password
+        }).then(res => {
+            console.log("Logged in successfully...", res);
+            window.location.replace("/admin");
+        }).catch(err => {
+            console.log("Something went wrong while loggin in...", err);
+        })
+    }
 
     // Log user out
     function handleLogout() {
@@ -96,8 +109,9 @@ function UserProvider(props) {
         <UserContext.Provider
             value={{
                 ...user,
-                handleLogout: handleLogout,
-                handleSignup: handleSignup
+                handleLogout,
+                handleSignup,
+                handleLogin
             }}
         >
             {props.children}

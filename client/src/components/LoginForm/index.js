@@ -1,26 +1,10 @@
 import React, { useRef } from "react";
 import "./loginForm.css";
-import API from "../../utils/API";
+import { UserConsumer } from "../../utils/UserContext";
 
 function LoginForm() {
 
     const passwordRef = useRef();
-
-    function handleLogin(e) {
-        e.preventDefault();
-
-        const password = passwordRef.current.value;
-
-        API.loginUser({
-            username: "johndoe",
-            password: password
-        }).then(res => {
-                console.log("Logged in succesfully...", res);
-                window.location.replace("/admin");
-            }).catch(err => {
-                console.log("Something went wrong while logging in...", err);
-            })
-    }
 
     return (
         <div className="login-form-container">
@@ -33,7 +17,13 @@ function LoginForm() {
                         <input className="uk-input" id="password" type="password" placeholder="***********" ref={passwordRef} />
                     </div>
                 </div>
-                <button className="uk-button uk-button-default" onClick={handleLogin}>log in</button>
+                <UserConsumer>
+                    {
+                        value => {
+                            return <button className="uk-button uk-button-default" onClick={(e) => value.handleLogin(e, passwordRef.current.value)}>log in</button>
+                        }
+                    }
+                </UserConsumer>
             </form>
         </div>
     )
