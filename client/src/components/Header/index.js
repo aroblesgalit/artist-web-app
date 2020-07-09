@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import CartButton from "../CartButton";
 
 function Header() {
     return (
         <div>
-            <CartButton />
             <div className="header-container">
                 <Link className="header-logo uk-navbar-item uk-logo" to="/">john doe</Link>
                 <ul className="large-nav uk-nav uk-nav-default">
