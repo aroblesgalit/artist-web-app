@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
+import { UserConsumer } from "../../utils/UserContext";
 
 function Header() {
     return (
@@ -13,6 +14,13 @@ function Header() {
                     <li><Link to="/">videos</Link></li>
                     <li><Link to="/shop">shop</Link></li>
                     <li><Link to="/">contact</Link></li>
+                    <UserConsumer>
+                        {
+                            value => {
+                                return value.isLoggedIn ? <li><Link to="admin">admin</Link></li> : ""
+                            }
+                        }
+                    </UserConsumer>
                 </ul>
                 {
                     // <div className="small-nav"><span uk-navbar-toggle-icon="true" uk-toggle="target: #small-nav-toggle"></span></div>
