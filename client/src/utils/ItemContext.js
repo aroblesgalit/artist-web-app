@@ -87,7 +87,7 @@ class ItemProvider extends Component {
         this.state.cart.map(item => (subtotal += item.cartTotal));
         const total = subtotal + this.state.cartShipping;
         let subCartCount = 0;
-        this.state.items.map(item => (subCartCount += item.cartCount)); 
+        this.state.cart.map(item => (subCartCount += item.cartCount)); 
         this.setState(() => {
             return {
                 cartSubtotal: subtotal,

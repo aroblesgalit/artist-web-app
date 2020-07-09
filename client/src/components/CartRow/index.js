@@ -4,7 +4,7 @@ import { ItemConsumer } from "../../utils/ItemContext";
 
 function CartRow(props) {
 
-    const { id, name, size, img, countInStock, cartTotal } = props;
+    const { id, name, size, img, countInStock, cartTotal, cartCount } = props;
 
     return (
         <tr className="cart-row">
@@ -34,7 +34,7 @@ function CartRow(props) {
                     {
                         value => {
                             return (
-                                <select className="uk-select" onChange={(e) => value.updateItemCount(id, e.target.value)}>
+                                <select value={cartCount} className="uk-select" onChange={(e) => value.updateItemCount(id, parseInt(e.target.value))}>
                                     {
                                         [...Array(countInStock).keys()].map(x =>
                                             <option key={x + 1} value={x + 1}>{x + 1}</option>
