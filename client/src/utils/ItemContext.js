@@ -13,7 +13,8 @@ class ItemProvider extends Component {
         cart: [],
         cartSubtotal: 0,
         cartShipping: 4,
-        cartTotal: 0
+        cartTotal: 0,
+        cartCount: 0
     };
 
     componentDidMount() {
@@ -85,10 +86,13 @@ class ItemProvider extends Component {
         let subtotal = 0;
         this.state.cart.map(item => (subtotal += item.cartTotal));
         const total = subtotal + this.state.cartShipping;
+        let subCartCount = 0;
+        this.state.items.map(item => (subCartCount += item.cartCount)); 
         this.setState(() => {
             return {
                 cartSubtotal: subtotal,
-                cartTotal: total
+                cartTotal: total,
+                cartCount: subCartCount
             }
         })
     };
