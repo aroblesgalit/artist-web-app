@@ -34,6 +34,10 @@
     font-weight: 500;
 }
 
+.logout-link {
+    cursor: pointer;
+}
+
 .social-media-links {
     position: absolute;
     bottom: 80px;

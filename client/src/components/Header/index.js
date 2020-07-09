@@ -17,7 +17,12 @@ function Header() {
                     <UserConsumer>
                         {
                             value => {
-                                return value.isLoggedIn ? <li><Link to="admin">admin</Link></li> : ""
+                                return value.isLoggedIn ? (
+                                    <>
+                                        <li><Link to="admin">admin</Link></li>
+                                        <li className="logout-link" onClick={value.handleLogout}>log out</li>
+                                    </>
+                                ) : ""
                             }
                         }
                     </UserConsumer>
