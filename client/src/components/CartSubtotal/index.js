@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./cartSubtotal.css";
 import { ItemConsumer } from "../../utils/ItemContext";
+import PayPalButton from "../PayPalButton";
 
 function CartSubtotal() {
     return (
@@ -26,7 +27,10 @@ function CartSubtotal() {
                                             <div className="uk-flex uk-flex-bottom uk-flex-right"><b>${value.cartTotal}</b></div>
                                         </div>
                                     </div>
-                                    <button className="primary-btn">paypal checkout</button>
+                                    {
+                                        // <button className="primary-btn">paypal checkout</button>
+                                    }
+                                    <PayPalButton total={value.cartTotal} history={history} />                                    
                                 </td>
                             </tr>
                         )
