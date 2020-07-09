@@ -9,7 +9,6 @@ class ItemProvider extends Component {
     state = {
         items: [],
         detailItem: {},
-        isLoggedIn: false,
         cart: [],
         cartSubtotal: 0,
         cartShipping: 4,
@@ -19,7 +18,6 @@ class ItemProvider extends Component {
 
     componentDidMount() {
         this.getAllItems();
-        this.getUserData();
     };
 
     getAllItems = () => {
@@ -36,20 +34,6 @@ class ItemProvider extends Component {
             })
             .catch(err => {
                 console.log("Something went wrong while fetching items...", err);
-            })
-    };
-
-    getUserData = () => {
-        API.getUserData()
-            .then(() => {
-                this.setState(() => {
-                    return { isLoggedIn: true }
-                })
-            })
-            .catch(() => {
-                this.setState(() => {
-                    return { isLoggedIn: false }
-                })
             })
     };
 

@@ -8,50 +8,53 @@ import Admin from "./pages/Admin";
 import ItemDetail from "./pages/ItemDetail";
 import Cart from "./pages/Cart";
 import CartButton from "./components/CartButton";
-import { ItemProvider, ItemConsumer } from "./utils/ItemContext";
+import { ItemProvider } from "./utils/ItemContext";
+import { UserProvider, UserConsumer } from "./utils/UserContext";
 
 function App() {
 
   return (
     <ItemProvider>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-            <CartButton />
-          </Route>
-          <Route exact path="/shop">
-            <Shop />
-            <CartButton />
-          </Route>
-          <Route path="/admin-login">
-            <ItemConsumer>
-              {
-                value => {
-                  return value.isLoggedIn ? <Redirect to="/admin" /> : <Login />
+      <UserProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+              <CartButton />
+            </Route>
+            <Route exact path="/shop">
+              <Shop />
+              <CartButton />
+            </Route>
+            <Route path="/admin-login">
+              <UserConsumer>
+                {
+                  value => {
+                    return value.isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                  }
                 }
-              }
-            </ItemConsumer>
-          </Route>
-          <Route path="/admin">
-            <ItemConsumer>
-              {
-                value => {
-                  return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+              </UserConsumer>
+            </Route>
+            <Route path="/admin">
+              <UserConsumer>
+                {
+                  value => {
+                    return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+                  }
                 }
-              }
-            </ItemConsumer>
-          </Route>
-          <Route path="/shop/:id">
+              </UserConsumer>
+            </Route>
+            <Route path="/shop/:id">
               <ItemDetail />
               <CartButton />
-          </Route>
-          <Route path="/cart">
+            </Route>
+            <Route path="/cart">
               <Cart />
-          </Route>
-        </Switch>
-      </Router>
+            </Route>
+          </Switch>
+        </Router>
+      </UserProvider>
     </ItemProvider>
   );
 }

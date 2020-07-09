@@ -15,8 +15,8 @@
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm run build",
-    "build": "cd client && npm install && npm run build",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && NODE_ENV=development npm install --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
