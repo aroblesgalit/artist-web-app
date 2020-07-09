@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.shop-add-container form {
+    font-weight: 300;
+    margin-top: 40px;
+}
+
+.shop-add-container input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+}
+
+.shop-add-container textarea {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+    min-width: 100%;
+    min-height: 124px;
+}

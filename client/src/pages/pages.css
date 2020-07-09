@@ -59,7 +59,7 @@
 }
 
 .primary-btn {
-    width: 160px;
+    max-width: 160px;
     padding: 0.6rem 1.2rem;
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
@@ -67,6 +67,19 @@
     background-color: #000;
     color: #fff;
     border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    max-width: 160px;
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #000;
+    background-color: transparent;
+    border: 1px solid #000;
     border-radius: 6px;
     cursor: pointer;
 }
