@@ -15,7 +15,7 @@ function CartSubtotal({ history }) {
                                 <td></td>
                                 <td></td>
                                 <td className="subtotal-info">
-                                    <div className="uk-flex uk-flex-right">
+                                    <div className="uk-flex uk-flex-right uk-margin-bottom">
                                         <div className="subtotal-labels uk-margin-right">
                                             <div className="uk-flex uk-flex-bottom uk-flex-right">subtotal</div>
                                             <div className="uk-flex uk-flex-bottom uk-flex-right">shipping</div>
@@ -30,7 +30,7 @@ function CartSubtotal({ history }) {
                                     {
                                         // <button className="primary-btn">paypal checkout</button>
                                     }
-                                    <PayPalButton 
+                                    <PayPalButton
                                         total={value.cartTotal} 
                                         clearCart={value.clearCart} 
                                         history={history}

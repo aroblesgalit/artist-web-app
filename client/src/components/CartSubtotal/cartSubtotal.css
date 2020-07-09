@@ -27,3 +27,8 @@
 .no-items-message {
     font-weight: 300;
 }
+
+.paypal-button {
+    display: flex;
+    justify-content: flex-end;
+}
