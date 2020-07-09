@@ -87,6 +87,34 @@
     font-weight: 300;
 }
 
+
+
+/* Admin */
+.admin-tabs {
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.admin-tabs ul li {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+
+.admin-tabs ul li:hover {
+    border-bottom: 2px solid #000;
+}
+
+.admin-tabs ul li:first-child {
+    margin-left: 20px;
+}
+
+.admin-tabs ul li.active {
+    border-bottom: 2px solid #000;
+    font-weight: 500;
+}
+
+
+
 /* Medium devices (landscape tablets, 768px and below) */
 @media only screen and (max-width: 768px) {
     .main-container {
