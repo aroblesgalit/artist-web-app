@@ -30,7 +30,7 @@ function CartSubtotal() {
                                     {
                                         // <button className="primary-btn">paypal checkout</button>
                                     }
-                                    <PayPalButton total={value.cartTotal} history={history} />                                    
+                                    <PayPalButton total={value.cartTotal} clearCart={value.clearCart} history={history} />                                    
                                 </td>
                             </tr>
                         )

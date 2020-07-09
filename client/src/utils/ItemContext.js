@@ -129,6 +129,17 @@ class ItemProvider extends Component {
         })
     };
 
+    clearCart = () => {
+        this.setState(() => {
+            return {
+                cart: []
+            }
+        }, () => {
+            this.getAllItems();
+            this.addTotals();
+        })
+    };
+
     render() {
         return (
             <ItemContext.Provider
@@ -137,7 +148,8 @@ class ItemProvider extends Component {
                     addToCart: this.addToCart,
                     handleDetail: this.handleDetail,
                     removeItem: this.removeItem,
-                    updateItemCount: this.updateItemCount
+                    updateItemCount: this.updateItemCount,
+                    clearCart: this.clearCart
                 }}
             >
                 {this.props.children}
