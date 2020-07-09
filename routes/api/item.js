@@ -5,7 +5,7 @@ const itemsController = require("../../controllers/itemsController");
 router.route("/")
     .get(itemsController.getAllItems)
     .post(itemsController.addItem)
-    .put(itemsController.updateItem)
+    .put(itemsController.updateSoldItem)
 
 // Matches with "/api/items/:id"
 router.route("/:id")

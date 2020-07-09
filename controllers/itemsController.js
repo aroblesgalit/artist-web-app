@@ -15,7 +15,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    updateItem: function (req, res) {
+    updateSoldItem: function (req, res) {
         db.Item
             .findByIdAndUpdate(req.body.id, {
                 countInStock: req.body.countInStock,
