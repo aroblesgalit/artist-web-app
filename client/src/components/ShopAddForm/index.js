@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./shopAddForm.css";
 
 function ShopAddForm() {
@@ -8,7 +9,7 @@ function ShopAddForm() {
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-name">name</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-name" type="text" placeholder="lost in the woods" required="true" />
+                        <input className="uk-input" id="shop-item-name" type="text" placeholder="lost in the woods" required={true} />
                     </div>
                 </div>
                 <div className="uk-margin">
@@ -20,7 +21,7 @@ function ShopAddForm() {
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-image">image</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-image" type="url" placeholder="www.site.com/image.png" required="true" />
+                        <input className="uk-input" id="shop-item-image" type="url" placeholder="www.site.com/image.png" required={true} />
                     </div>
                 </div>
             </div>
@@ -28,23 +29,25 @@ function ShopAddForm() {
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-price">price</label>
                     <div className="uk-form-controls uk-margin-bottom">
-                        <input className="uk-input" id="shop-item-price" type="number" placeholder="$30" required="true" />
+                        <input className="uk-input" id="shop-item-price" type="number" placeholder="$30" required={true} min="0" />
                     </div>
                 </div>
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-count">count in stock</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-count" type="number" placeholder="20" required="true" />
+                        <input className="uk-input" id="shop-item-count" type="number" placeholder="20" required={true} min="0" />
                     </div>
                 </div>
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-print">print</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-print" type="text" placeholder="11 x 17 on cardstock" required="true" />
+                        <input className="uk-input" id="shop-item-print" type="text" placeholder="11 x 17 on cardstock" required={true} />
                     </div>
                 </div>
                 <div className="uk-margin">
-                    <button className="secondary-btn uk-margin-small-right"><span uk-icon="close" className="uk-margin-small-right" />cancel</button>
+                    <Link to="/admin">
+                        <button className="secondary-btn uk-margin-small-right"><span uk-icon="close" className="uk-margin-small-right" />cancel</button>
+                    </Link>
                     <button className="primary-btn"><span uk-icon="plus" className="uk-margin-small-right" />add</button>
                 </div>
             </div>
