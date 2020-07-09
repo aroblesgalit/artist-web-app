@@ -1,40 +1,11 @@
 import React, { useRef } from "react";
 import "../LoginForm/loginForm.css";
-import API from "../../utils/API";
+import { UserConsumer } from "../../utils/UserContext";
 
 function SignupForm() {
 
     const passRef = useRef();
     const confirmPassRef = useRef();
-
-    function handleSignup(e) {
-        e.preventDefault();
-
-        const password = passRef.current.value;
-        const confirmPassword = confirmPassRef.current.value;
-
-        if (password && confirmPassword) {
-            if (password.length >= 6) {
-                if (password === confirmPassword) {
-                    API.createUser({
-                        username: "johndoe",
-                        password: password
-                    }).then(function (res) {
-                            console.log("Your account is now ready...", res);
-                            window.location.replace("/admin");
-                        }).catch(function (err) {
-                            console.log("Failed signup...", err);
-                        })
-                } else {
-                    console.log("Password doesn't match.")
-                }
-            } else {
-                console.log("Password is too short. Must be at least 6 characters long.")
-            }
-        } else {
-            console.log("Fill in all fields.")
-        }
-    }
 
     return (
         <div className="login-form-container">
@@ -53,7 +24,13 @@ function SignupForm() {
                         <input className="uk-input" id="confirmPassword" type="password" placeholder="***********" ref={confirmPassRef} />
                     </div>
                 </div>
-                <button className="uk-button uk-button-default" onClick={handleSignup}>create</button>
+                <UserConsumer>
+                    {
+                        value => {
+                            return <button className="uk-button uk-button-default" onClick={(e) => value.handleSignup(e, passRef.current.value, confirmPassRef.current.value)}>create</button>
+                        }
+                    }
+                </UserConsumer>
             </form>
         </div>
     )

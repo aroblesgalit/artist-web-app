@@ -7,12 +7,57 @@ const UserContext = React.createContext();
 function UserProvider(props) {
 
     const [user, setUser] = useState({
+        userExists: false,
         isLoggedIn: false
     });
 
     useEffect(() => {
+        fetchUser();
         getUserData();
     }, [])
+
+    // Check if user exists
+    async function fetchUser() {
+        const user = await API.findUser();
+        if (user.data) {
+            setUser({
+                ...user,
+                userExists: true
+            })
+        } else {
+            setUser({
+                ...user,
+                userExists: false
+            })
+        }
+    }
+
+    // Register user
+    function handleSignup(e, password, confirmPassword) {
+        e.preventDefault();
+
+        if (password && confirmPassword) {
+            if (password.length >= 6) {
+                if (password === confirmPassword) {
+                    API.createUser({
+                        username: "johndoe",
+                        password: password
+                    }).then(res => {
+                        console.log("Your account is now ready...", res);
+                        window.location.replace("/admin");
+                    }).catch(err => {
+                        console.log("Failed signup...", err);
+                    })
+                } else {
+                    console.log("Password doesn't match.");
+                }
+            } else {
+                console.log("Password must be at least 6 characters long.");
+            }
+        } else {
+            console.log("Please fill in both fields.");
+        }
+    }
 
     // Log user in
 
@@ -51,7 +96,8 @@ function UserProvider(props) {
         <UserContext.Provider
             value={{
                 ...user,
-                handleLogout: handleLogout
+                handleLogout: handleLogout,
+                handleSignup: handleSignup
             }}
         >
             {props.children}
