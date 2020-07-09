@@ -5,6 +5,7 @@ import PortfolioAdmin from "../components/PortfolioAdmin";
 import VideosAdmin from "../components/VideosAdmin";
 import ShopAdmin from "../components/ShopAdmin";
 import AboutAdmin from "../components/AboutAdmin";
+import AddButton from "../components/AddButton";
 
 function Admin() {
 
@@ -13,6 +14,7 @@ function Admin() {
     return (
         <div className="main-container">
             <AdminTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            <AddButton />
             <PortfolioAdmin activeTab={activeTab} />
             <VideosAdmin activeTab={activeTab} />
             <ShopAdmin activeTab={activeTab} />

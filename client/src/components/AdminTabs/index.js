@@ -5,7 +5,7 @@ function AdminTabs(props) {
     const { activeTab, setActiveTab } = props;
 
     return (
-        <div className="admin-tabs">
+        <div className="admin-tabs uk-positon-relative">
             <ul uk-tab="true">
                 <li className={`${activeTab === "portfolio" ? "active" : ""}`} onClick={() => setActiveTab("portfolio")}>portfolio</li>
                 <li className={`${activeTab === "videos" ? "active" : ""}`} onClick={() => setActiveTab("videos")}>videos</li>
