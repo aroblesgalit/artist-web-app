@@ -1,5 +1,6 @@
 import React from "react";
 import AdminTable from "../AdminTable";
+import AdminTableRow from "../AdminTableRow";
 
 function ShopAdmin(props) {
 
@@ -17,6 +18,7 @@ function ShopAdmin(props) {
                     <td>$30</td>
                     <td>view / delete</td>
                 </tr>
+                <AdminTableRow />
             </AdminTable>
         </div>
     )
