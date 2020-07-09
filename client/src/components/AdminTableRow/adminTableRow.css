@@ -8,3 +8,31 @@
     max-width: 100px;
     max-height: 60px;
 }
+
+.admin-table p {
+    margin: 0;
+}
+
+.item-name {
+    font-weight: 500;
+}
+
+.item-size,
+.item-print {
+    font-size: 0.8rem;
+}
+
+.action-icons span {
+    color: rgb(107, 107, 107);
+    transition: all 0.2s linear;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.action-icons a {
+    color: rgb(107, 107, 107);
+}
+
+.admin-table-row:hover .action-icons span {
+    opacity: 1;
+}
