@@ -4,7 +4,7 @@ import "./cartSubtotal.css";
 import { ItemConsumer } from "../../utils/ItemContext";
 import PayPalButton from "../PayPalButton";
 
-function CartSubtotal() {
+function CartSubtotal({ history }) {
     return (
         <ItemConsumer>
             {
@@ -30,7 +30,12 @@ function CartSubtotal() {
                                     {
                                         // <button className="primary-btn">paypal checkout</button>
                                     }
-                                    <PayPalButton total={value.cartTotal} clearCart={value.clearCart} history={history} />                                    
+                                    <PayPalButton 
+                                        total={value.cartTotal} 
+                                        clearCart={value.clearCart} 
+                                        history={history}
+                                        updateDataItems={value.updateDataItems} 
+                                    />                                    
                                 </td>
                             </tr>
                         )

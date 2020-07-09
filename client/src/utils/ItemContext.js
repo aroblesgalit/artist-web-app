@@ -140,6 +140,19 @@ class ItemProvider extends Component {
         })
     };
 
+    updateDataItems = () => {
+        this.state.cart.forEach(item => {
+            API.updateItem({
+                id: item._id,
+                countInStock: item.countInStock - item.cartCount
+            }).then(() => {
+                console.log("Data items updated.");
+            }).catch(err => {
+                console.log("Something went wrong while trying to update data items...", err);
+            })
+        })
+    }
+
     render() {
         return (
             <ItemContext.Provider
@@ -149,7 +162,8 @@ class ItemProvider extends Component {
                     handleDetail: this.handleDetail,
                     removeItem: this.removeItem,
                     updateItemCount: this.updateItemCount,
-                    clearCart: this.clearCart
+                    clearCart: this.clearCart,
+                    updateDataItems: this.updateDataItems
                 }}
             >
                 {this.props.children}

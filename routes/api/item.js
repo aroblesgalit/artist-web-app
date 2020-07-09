@@ -5,10 +5,10 @@ const itemsController = require("../../controllers/itemsController");
 router.route("/")
     .get(itemsController.getAllItems)
     .post(itemsController.addItem)
+    .put(itemsController.updateItem)
 
 // Matches with "/api/items/:id"
 router.route("/:id")
-    .put(itemsController.updateItem)
     .get(itemsController.getItemById)
 
 module.exports = router;

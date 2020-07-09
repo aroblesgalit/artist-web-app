@@ -44,7 +44,7 @@ function Cart() {
                 </tbody>
             </table>
 
-        </div >
+        </div>
     )
 }
 

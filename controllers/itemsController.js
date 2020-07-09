@@ -17,10 +17,10 @@ module.exports = {
     },
     updateItem: function (req, res) {
         db.Item
-            .findByIdAndUpdate(req.params.id, {
+            .findByIdAndUpdate(req.body.id, {
                 countInStock: req.body.countInStock
             }, { new: true })
-            .then(res => res.json(res))
+            .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     getItemById: function (req, res) {

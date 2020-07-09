@@ -21,5 +21,8 @@ export default {
     },
     getItemById: function(id) {
         return axios.get("/api/items/" + id)
+    },
+    updateItem: function(data) {
+        return axios.put("/api/items", data)
     }
 }
