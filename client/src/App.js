@@ -39,13 +39,15 @@ function App() {
               </UserConsumer>
             </Route>
             <Route path="/admin/shop-add">
-              <UserConsumer>
-                {
-                  value => {
-                    return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+              <ShopProvider>
+                <UserConsumer>
+                  {
+                    value => {
+                      return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+                    }
                   }
-                }
-              </UserConsumer>
+                </UserConsumer>
+              </ShopProvider>
             </Route>
             <Route exact path="/admin">
               <ShopProvider>

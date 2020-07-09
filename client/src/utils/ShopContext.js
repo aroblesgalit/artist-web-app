@@ -30,10 +30,33 @@ function ShopProvider(props) {
             })
     };
 
+    // Add an item to shop
+    function addItem(e, item) {
+        e.preventDefault();
+
+        API.addItem({
+            name: item.name,
+            img: item.img,
+            price: item.price,
+            size: item.size,
+            print: item.print,
+            info: item.info,
+            countInStock: item.countInStock
+        })
+            .then(res => {
+                console.log("Item added to shop...", res.data);
+                // getAllItems();
+            })
+            .catch(err => {
+                console.log("Something went wrong while adding item to shop...", err);
+            })
+    }
+
     return (
         <ShopContext.Provider
             value={{
-                ...shop
+                ...shop,
+                addItem
             }}
         >
             {children}

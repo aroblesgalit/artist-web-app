@@ -20,9 +20,12 @@ export default {
         return axios.get("/api/items");
     },
     getItemById: function(id) {
-        return axios.get("/api/items/" + id)
+        return axios.get("/api/items/" + id);
     },
     updateSoldItem: function(data) {
-        return axios.put("/api/items", data)
+        return axios.put("/api/items", data);
+    },
+    addItem: function(data) {
+        return axios.post("/api/items", data);
     }
 }
