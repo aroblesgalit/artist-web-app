@@ -8,7 +8,7 @@ function ShopAddForm() {
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-name">name</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-name" type="text" placeholder="lost in the woods" />
+                        <input className="uk-input" id="shop-item-name" type="text" placeholder="lost in the woods" required="true" />
                     </div>
                 </div>
                 <div className="uk-margin">
@@ -20,7 +20,7 @@ function ShopAddForm() {
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-image">image</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-image" type="url" placeholder="www.site.com/image.png" />
+                        <input className="uk-input" id="shop-item-image" type="url" placeholder="www.site.com/image.png" required="true" />
                     </div>
                 </div>
             </div>
@@ -28,19 +28,19 @@ function ShopAddForm() {
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-price">price</label>
                     <div className="uk-form-controls uk-margin-bottom">
-                        <input className="uk-input" id="shop-item-price" type="number" placeholder="$30" />
+                        <input className="uk-input" id="shop-item-price" type="number" placeholder="$30" required="true" />
                     </div>
                 </div>
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-count">count in stock</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-count" type="number" placeholder="20" />
+                        <input className="uk-input" id="shop-item-count" type="number" placeholder="20" required="true" />
                     </div>
                 </div>
                 <div className="uk-margin">
                     <label className="uk-form-label" htmlFor="shop-item-print">print</label>
                     <div className="uk-form-controls">
-                        <input className="uk-input" id="shop-item-print" type="text" placeholder="11 x 17 on cardstock" />
+                        <input className="uk-input" id="shop-item-print" type="text" placeholder="11 x 17 on cardstock" required="true" />
                     </div>
                 </div>
                 <div className="uk-margin">
