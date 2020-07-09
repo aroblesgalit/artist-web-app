@@ -20,7 +20,7 @@ function Header() {
                                 return value.isLoggedIn ? (
                                     <React.Fragment>
                                         <li className="uk-nav-divider"></li>
-                                        <li><Link to="admin">admin</Link></li>
+                                        <li><Link to="/admin">admin</Link></li>
                                         <li className="logout-link" onClick={value.handleLogout}>log out</li>
                                     </React.Fragment>
                                 ) : ""

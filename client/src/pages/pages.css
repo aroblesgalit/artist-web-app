@@ -26,7 +26,8 @@
 }
 
 .item-detail-container a:link,
-.cart-container a:link {
+.cart-container a:link,
+.shop-add-container a:link {
     text-decoration: none;
     color: #444;
 }
@@ -121,6 +122,12 @@
     display: none;
 }
 
+
+
+/* Shop - Add New Item */
+.shop-add-container h1 {
+    margin: 20px 0;
+}
 
 
 /* Medium devices (landscape tablets, 768px and below) */

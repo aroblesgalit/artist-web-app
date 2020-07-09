@@ -8,6 +8,7 @@ import Admin from "./pages/Admin";
 import ItemDetail from "./pages/ItemDetail";
 import Cart from "./pages/Cart";
 import CartButton from "./components/CartButton";
+import AddShop from "./pages/AddShop";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider, UserConsumer } from "./utils/UserContext";
 import { ShopProvider } from "./utils/ShopContext";
@@ -37,7 +38,16 @@ function App() {
                 }
               </UserConsumer>
             </Route>
-            <Route path="/admin">
+            <Route path="/admin/shop-add">
+              <UserConsumer>
+                {
+                  value => {
+                    return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+                  }
+                }
+              </UserConsumer>
+            </Route>
+            <Route exact path="/admin">
               <ShopProvider>
                 <UserConsumer>
                   {
