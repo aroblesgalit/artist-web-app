@@ -11,7 +11,7 @@ function AdminTable(props) {
                 <tr>
                     {
                         tableHeads.map(header => {
-                            return <th>{header}</th>
+                            return <th key={header}>{header}</th>
                         })
                     }
                 </tr>

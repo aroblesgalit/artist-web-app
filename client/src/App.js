@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import CartButton from "./components/CartButton";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider, UserConsumer } from "./utils/UserContext";
+import { ShopProvider } from "./utils/ShopContext";
 
 function App() {
 
@@ -37,13 +38,15 @@ function App() {
               </UserConsumer>
             </Route>
             <Route path="/admin">
-              <UserConsumer>
-                {
-                  value => {
-                    return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+              <ShopProvider>
+                <UserConsumer>
+                  {
+                    value => {
+                      return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+                    }
                   }
-                }
-              </UserConsumer>
+                </UserConsumer>
+              </ShopProvider>
             </Route>
             <Route path="/shop/:id">
               <ItemDetail />
