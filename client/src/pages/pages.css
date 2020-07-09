@@ -113,6 +113,14 @@
     font-weight: 500;
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 
 
 /* Medium devices (landscape tablets, 768px and below) */
