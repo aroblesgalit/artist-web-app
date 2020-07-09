@@ -21,7 +21,7 @@ function AdminTableRow(props) {
                         <td>{item.sold}</td>
                         <td>${item.price}</td>
                         <td className="action-icons">
-                            <Link to="/admin/shop-view"><span uk-icon="file-edit" className="uk-margin-right" /></Link>
+                            <Link to={`/admin/shop-view/${item._id}`}><span uk-icon="file-edit" className="uk-margin-right" /></Link>
                             <span uk-icon="close" />
                         </td>
                     </React.Fragment>
