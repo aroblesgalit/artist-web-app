@@ -128,7 +128,8 @@ class ItemProvider extends Component {
         this.state.cart.forEach(item => {
             API.updateItem({
                 id: item._id,
-                countInStock: item.countInStock - item.cartCount
+                countInStock: item.countInStock - item.cartCount,
+                sold: item.cartCount
             }).then(() => {
                 console.log("Data items updated.");
             }).catch(err => {

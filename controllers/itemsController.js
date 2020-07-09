@@ -18,7 +18,8 @@ module.exports = {
     updateItem: function (req, res) {
         db.Item
             .findByIdAndUpdate(req.body.id, {
-                countInStock: req.body.countInStock
+                countInStock: req.body.countInStock,
+                sold: req.body.sold
             }, { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

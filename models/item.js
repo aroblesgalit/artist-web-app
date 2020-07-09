@@ -36,6 +36,10 @@ const itemSchema = new Schema({
     countInStock: {
         type: Number,
         default: 0
+    },
+    sold: {
+        type: Number,
+        default: 0
     }
 })
 

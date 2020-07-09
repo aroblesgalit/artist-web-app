@@ -17,7 +17,7 @@ function AdminTableRow(props) {
                             <span>{item.print}</span>
                         </td>
                         <td>{item.countInStock}</td>
-                        <td>item.sold</td>
+                        <td>{item.sold}</td>
                         <td>${item.price}</td>
                         <td>view / delete</td>
                     </React.Fragment>
