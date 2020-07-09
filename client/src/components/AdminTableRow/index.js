@@ -21,7 +21,29 @@ function AdminTableRow(props) {
                         <td>${item.price}</td>
                         <td>view / delete</td>
                     </React.Fragment>
-                ) : ""
+                ) : (
+                        type === "portfolio" ? (
+                            <React.Fragment>
+                                <td>portfolio data</td>
+                                <td>portfolio data</td>
+                                <td>portfolio data</td>
+                            </React.Fragment>
+                        ) : (
+                                type === "videos" ? (
+                                    <React.Fragment>
+                                        <td>videos data</td>
+                                        <td>videos data</td>
+                                        <td>videos data</td>
+                                    </React.Fragment>
+                                ) : (
+                                    <React.Fragment>
+                                        <td>videos data</td>
+                                        <td>videos data</td>
+                                        <td>videos data</td>
+                                    </React.Fragment>
+                                )
+                        )
+                    )
             }
         </tr>
     )
