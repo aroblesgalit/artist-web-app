@@ -18,10 +18,11 @@ function Header() {
                         {
                             value => {
                                 return value.isLoggedIn ? (
-                                    <>
+                                    <React.Fragment>
+                                        <li class="uk-nav-divider"></li>
                                         <li><Link to="admin">admin</Link></li>
                                         <li className="logout-link" onClick={value.handleLogout}>log out</li>
-                                    </>
+                                    </React.Fragment>
                                 ) : ""
                             }
                         }
@@ -41,6 +42,19 @@ function Header() {
                                     <li><Link to="/">videos</Link></li>
                                     <li><Link to="/shop">shop</Link></li>
                                     <li><Link to="/">contact</Link></li>
+                                    <UserConsumer>
+                                        {
+                                            value => {
+                                                return value.isLoggedIn ? (
+                                                    <React.Fragment>
+                                                        <li class="uk-nav-divider"></li>
+                                                        <li><Link to="admin">admin</Link></li>
+                                                        <li className="logout-link" onClick={value.handleLogout}>log out</li>
+                                                    </React.Fragment>
+                                                ) : ""
+                                            }
+                                        }
+                                    </UserConsumer>
                                 </ul>
                             </div>
                         </li>
