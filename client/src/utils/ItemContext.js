@@ -138,6 +138,28 @@ class ItemProvider extends Component {
         })
     }
 
+    // Add an item to shop
+    addItem = (e, item) => {
+        e.preventDefault();
+
+        API.addItem({
+            name: item.name,
+            img: item.img,
+            price: item.price,
+            size: item.size,
+            print: item.print,
+            info: item.info,
+            countInStock: item.countInStock
+        })
+            .then(res => {
+                console.log("Item added to shop...", res.data);
+                this.getAllItems();
+            })
+            .catch(err => {
+                console.log("Something went wrong while adding item to shop...", err);
+            })
+    }
+
     render() {
         return (
             <ItemContext.Provider
@@ -148,7 +170,8 @@ class ItemProvider extends Component {
                     removeItem: this.removeItem,
                     updateItemCount: this.updateItemCount,
                     clearCart: this.clearCart,
-                    updateDataItems: this.updateDataItems
+                    updateDataItems: this.updateDataItems,
+                    addItem: this.addItem
                 }}
             >
                 {this.props.children}

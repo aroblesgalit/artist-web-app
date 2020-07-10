@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./shopAddForm.css";
-import { ShopConsumer } from "../../utils/ShopContext";
+import { ItemConsumer } from "../../utils/ItemContext";
 
 function ShopAddForm() {
 
@@ -38,7 +38,7 @@ function ShopAddForm() {
     }
 
     return (
-        <ShopConsumer>
+        <ItemConsumer>
             {
                 value => {
                     return (
@@ -200,7 +200,7 @@ function ShopAddForm() {
                     )
                 }
             }
-        </ShopConsumer>
+        </ItemConsumer>
     )
 }
 

@@ -11,7 +11,6 @@ import CartButton from "./components/CartButton";
 import AddShop from "./pages/AddShop";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider, UserConsumer } from "./utils/UserContext";
-import { ShopProvider } from "./utils/ShopContext";
 
 function App() {
 
@@ -46,26 +45,22 @@ function App() {
               </UserConsumer>
             </Route>
             <Route exact path="/admin">
-              <ShopProvider>
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
-                    }
+              <UserConsumer>
+                {
+                  value => {
+                    return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
                   }
-                </UserConsumer>
-              </ShopProvider>
+                }
+              </UserConsumer>
             </Route>
             <Route path="/admin/shop-add">
-              <ShopProvider>
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
-                    }
+              <UserConsumer>
+                {
+                  value => {
+                    return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
                   }
-                </UserConsumer>
-              </ShopProvider>
+                }
+              </UserConsumer>
             </Route>
           </Switch>
         </Router>

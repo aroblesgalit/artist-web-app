@@ -1,7 +1,7 @@
 import React from "react";
 import AdminTable from "../AdminTable";
 import AdminTableRow from "../AdminTableRow";
-import { ShopConsumer } from "../../utils/ShopContext";
+import { ItemConsumer } from "../../utils/ItemContext";
 
 function ShopAdmin(props) {
 
@@ -11,7 +11,7 @@ function ShopAdmin(props) {
     return (
         <div className={`shop-content ${activeTab === "shop" ? "show" : "hide"}`}>
             <AdminTable tableHeads={tableHeads}>
-                <ShopConsumer>
+                <ItemConsumer>
                     {
                         value => {
                             return value.items.map(item => {
@@ -25,7 +25,7 @@ function ShopAdmin(props) {
                             })
                         }
                     }
-                </ShopConsumer>
+                </ItemConsumer>
             </AdminTable>
         </div>
     )
