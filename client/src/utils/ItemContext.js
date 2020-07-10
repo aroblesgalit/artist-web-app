@@ -161,10 +161,10 @@ class ItemProvider extends Component {
     }
 
     // Update an item from shop
-    updateItem = (e, item) => {
+    updateItem = (e, id, item) => {
         e.preventDefault();
 
-        API.updateItem(item._id, {
+        API.updateItem(id, {
             name: item.name,
             img: item.img,
             price: item.price,
@@ -193,7 +193,8 @@ class ItemProvider extends Component {
                     updateItemCount: this.updateItemCount,
                     clearCart: this.clearCart,
                     updateDataItems: this.updateDataItems,
-                    addItem: this.addItem
+                    addItem: this.addItem,
+                    updateItem: this.updateItem
                 }}
             >
                 {this.props.children}
@@ -205,4 +206,5 @@ class ItemProvider extends Component {
 // Consumer
 const ItemConsumer = ItemContext.Consumer;
 
+export default ItemContext;
 export { ItemProvider, ItemConsumer };

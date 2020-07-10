@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./shopViewForm.css";
-import { ItemConsumer } from "../../utils/ItemContext";
+import ItemContext, { ItemConsumer } from "../../utils/ItemContext";
 
 function ShopViewForm() {
+
+    const { detailItem } = useContext(ItemContext);
 
     const nameRef = useRef();
     const infoRef = useRef();
@@ -14,20 +16,20 @@ function ShopViewForm() {
     const printRef = useRef();
 
     const [item, setItem] = useState({
-        name: "",
-        img: "",
-        price: 0,
-        size: "",
-        print: "",
-        info: "",
-        countInStock: 0
+        name: detailItem.name,
+        img: detailItem.img,
+        price: detailItem.price,
+        size: detailItem.size,
+        print: detailItem.print,
+        info: detailItem.info,
+        countInStock: detailItem.countInStock
     })
 
     return (
         <ItemConsumer>
             {
                 value => {
-                    const {name, info, } = value.detailItem;
+                    const { _id } = value.detailItem;
                     return (
                         <form className="uk-grid uk-width-4-5@l" uk-grid="true">
                             <div className="uk-width-1-2@m">
@@ -167,7 +169,7 @@ function ShopViewForm() {
                                     <button
                                         className="primary-btn"
                                         onClick={(e) => {
-                                            value.addItem(e, {
+                                            value.updateItem(e, _id, {
                                                 name: item.name,
                                                 img: item.img,
                                                 price: item.price,

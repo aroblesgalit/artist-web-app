@@ -63,7 +63,7 @@ h1 {
 }
 
 .primary-btn {
-    max-width: 160px;
+    /* max-width: 160px; */
     padding: 0.6rem 1.2rem;
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
@@ -76,7 +76,7 @@ h1 {
 }
 
 .secondary-btn {
-    max-width: 160px;
+    /* max-width: 160px; */
     padding: 0.6rem 1.2rem;
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;

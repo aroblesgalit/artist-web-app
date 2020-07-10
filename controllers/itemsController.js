@@ -33,13 +33,13 @@ module.exports = {
     updateItem: function (req, res) {
         db.Item
             .findByIdAndUpdate(req.params.id, {
-                name: item.name,
-                img: item.img,
-                price: item.price,
-                size: item.size,
-                print: item.print,
-                info: item.info,
-                countInStock: item.countInStock
+                name: req.body.name,
+                img: req.body.img,
+                price: req.body.price,
+                size: req.body.size,
+                print: req.body.print,
+                info: req.body.info,
+                countInStock: req.body.countInStock
             }, { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
