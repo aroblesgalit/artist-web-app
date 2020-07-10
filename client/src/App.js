@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import CartButton from "./components/CartButton";
 import AddShop from "./pages/AddShop";
 import ViewShop from "./pages/ViewShop";
+import Portfolio from "./pages/Portfolio";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider, UserConsumer } from "./utils/UserContext";
 
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/cart">
               <Cart />
+            </Route>
+            <Route path="/portfolio">
+              <Portfolio />
             </Route>
             <Route path="/admin-login">
               <UserConsumer>

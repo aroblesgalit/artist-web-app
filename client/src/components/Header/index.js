@@ -10,7 +10,7 @@ function Header() {
                 <Link className="header-logo uk-navbar-item uk-logo" to="/">john doe</Link>
                 <ul className="large-nav uk-nav uk-nav-default">
                     <li><Link to="/">about</Link></li>
-                    <li><Link to="/">portfolio</Link></li>
+                    <li><Link to="/portfolio">portfolio</Link></li>
                     <li><Link to="/">videos</Link></li>
                     <li><Link to="/shop">shop</Link></li>
                     <li><Link to="/">contact</Link></li>
@@ -38,7 +38,7 @@ function Header() {
                             <div className="uk-navbar-dropdown">
                                 <ul className="uk-nav uk-navbar-dropdown-nav">
                                     <li><Link to="/">about</Link></li>
-                                    <li><Link to="/">portfolio</Link></li>
+                                    <li><Link to="/portfolio">portfolio</Link></li>
                                     <li><Link to="/">videos</Link></li>
                                     <li><Link to="/shop">shop</Link></li>
                                     <li><Link to="/">contact</Link></li>

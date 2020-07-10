@@ -1,4 +1,5 @@
 import React from "react";
+import PortfolioPieceCard from "../components/PortfolioPieceCard";
 
 function Portfolio() {
 
@@ -32,12 +33,7 @@ function Portfolio() {
 
     return (
         <div className="main-container portfolio-container" uk-grid="true">
-            <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-                <img src="images/dark.jpg" alt="" />
-                <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle">
-                    <p class="uk-h4 uk-margin-remove">Fade</p>
-                </div>
-            </div>
+            
         </div>
     )
 }
