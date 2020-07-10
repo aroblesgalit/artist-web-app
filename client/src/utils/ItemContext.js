@@ -183,14 +183,16 @@ class ItemProvider extends Component {
     };
 
     // Delete an item from shop
-    deleteItem = (e, id) => {
+    deleteItem = (e, id, page) => {
         e.preventDefault();
 
         API.deleteItem(id)
             .then(res => {
                 console.log("Item deleted...", res);
                 this.getAllItems();
-                window.location.replace("/admin");
+                if (page === "shop-view") {
+                    window.location.replace("/admin");
+                }
             })
             .catch(err => {
                 console.log("Something went wrong while deleting an item...", err);

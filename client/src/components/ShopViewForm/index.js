@@ -165,7 +165,7 @@ function ShopViewForm() {
                                 <div className="uk-margin">
                                     <button
                                         className="secondary-btn uk-margin-small-right"
-                                        onClick={(e) => value.deleteItem(e, _id)}
+                                        onClick={(e) => value.deleteItem(e, _id, "shop-view")}
                                     >
                                         <span uk-icon="close" className="uk-margin-small-right" />delete
                                     </button>

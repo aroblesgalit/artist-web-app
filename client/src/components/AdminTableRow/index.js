@@ -33,7 +33,10 @@ function AdminTableRow(props) {
                                                 >
                                                     <span uk-icon="file-edit" className="uk-margin-right" />
                                                 </Link>
-                                                <span uk-icon="close" />
+                                                <span 
+                                                    uk-icon="close"
+                                                    onClick={(e) => value.deleteItem(e, item._id, "admin/shop")} 
+                                                />
                                             </React.Fragment>
                                         )
                                     }
