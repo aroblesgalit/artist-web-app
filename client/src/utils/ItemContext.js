@@ -158,7 +158,7 @@ class ItemProvider extends Component {
             .catch(err => {
                 console.log("Something went wrong while adding item to shop...", err);
             })
-    }
+    };
 
     // Update an item from shop
     updateItem = (e, id, item) => {
@@ -180,7 +180,23 @@ class ItemProvider extends Component {
             .catch(err => {
                 console.log("Something went wrong while updating an item...", err);
             })
-    }
+    };
+
+    // Delete an item from shop
+    deleteItem = (e, id) => {
+        e.preventDefault();
+
+        API.deleteItem(id)
+            .then(res => {
+                console.log("Item deleted...", res);
+                this.getAllItems();
+                window.location.replace("/admin");
+            })
+            .catch(err => {
+                console.log("Something went wrong while deleting an item...", err);
+            })
+    };
+
 
     render() {
         return (
@@ -194,7 +210,8 @@ class ItemProvider extends Component {
                     clearCart: this.clearCart,
                     updateDataItems: this.updateDataItems,
                     addItem: this.addItem,
-                    updateItem: this.updateItem
+                    updateItem: this.updateItem,
+                    deleteItem: this.deleteItem
                 }}
             >
                 {this.props.children}

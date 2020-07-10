@@ -30,5 +30,8 @@ export default {
     },
     updateItem: function(id, data) {
         return axios.put("/api/items/" + id, data);
+    },
+    deleteItem: function(id) {
+        return axios.delete("/api/items/" + id)
     }
 }

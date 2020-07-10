@@ -11,5 +11,6 @@ router.route("/")
 router.route("/:id")
     .get(itemsController.getItemById)
     .put(itemsController.updateItem)
+    .delete(itemsController.deleteItem)
 
 module.exports = router;

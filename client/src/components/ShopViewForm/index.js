@@ -163,9 +163,12 @@ function ShopViewForm() {
                                     </div>
                                 </div>
                                 <div className="uk-margin">
-                                    <Link to="/admin">
-                                        <button className="secondary-btn uk-margin-small-right"><span uk-icon="close" className="uk-margin-small-right" />cancel</button>
-                                    </Link>
+                                    <button
+                                        className="secondary-btn uk-margin-small-right"
+                                        onClick={(e) => value.deleteItem(e, _id)}
+                                    >
+                                        <span uk-icon="close" className="uk-margin-small-right" />delete
+                                    </button>
                                     <button
                                         className="primary-btn"
                                         onClick={(e) => {
