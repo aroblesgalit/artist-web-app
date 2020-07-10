@@ -160,6 +160,28 @@ class ItemProvider extends Component {
             })
     }
 
+    // Update an item from shop
+    updateItem = (e, item) => {
+        e.preventDefault();
+
+        API.updateItem(item._id, {
+            name: item.name,
+            img: item.img,
+            price: item.price,
+            size: item.size,
+            print: item.print,
+            info: item.info,
+            countInStock: item.countInStock
+        })
+            .then(res => {
+                console.log("Item has been updated...", res.data);
+                this.getAllItems();
+            })
+            .catch(err => {
+                console.log("Something went wrong while updating an item...", err);
+            })
+    }
+
     render() {
         return (
             <ItemContext.Provider

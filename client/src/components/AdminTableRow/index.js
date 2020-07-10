@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./adminTableRow.css";
+import { ItemConsumer } from "../../utils/ItemContext";
 
 function AdminTableRow(props) {
 
@@ -21,8 +22,23 @@ function AdminTableRow(props) {
                         <td>{item.sold}</td>
                         <td>${item.price}</td>
                         <td className="action-icons">
-                            <Link to={`/admin/shop-view/${item._id}`}><span uk-icon="file-edit" className="uk-margin-right" /></Link>
-                            <span uk-icon="close" />
+                            <ItemConsumer>
+                                {
+                                    value => {
+                                        return (
+                                            <React.Fragment>
+                                                <Link
+                                                    to={`/admin/shop-view/${item._id}`}
+                                                    onClick={() => value.handleDetail(item._id)}
+                                                >
+                                                    <span uk-icon="file-edit" className="uk-margin-right" />
+                                                </Link>
+                                                <span uk-icon="close" />
+                                            </React.Fragment>
+                                        )
+                                    }
+                                }
+                            </ItemConsumer>
                         </td>
                     </React.Fragment>
                 ) : (

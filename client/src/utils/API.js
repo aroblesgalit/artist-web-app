@@ -27,5 +27,8 @@ export default {
     },
     addItem: function(data) {
         return axios.post("/api/items", data);
+    },
+    updateItem: function(id, data) {
+        return axios.put("/api/items/" + id, data);
     }
 }
