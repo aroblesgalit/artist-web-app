@@ -29,6 +29,13 @@ function App() {
               <Shop />
               <CartButton />
             </Route>
+            <Route path="/shop/:id">
+              <ItemDetail />
+              <CartButton />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
             <Route path="/admin-login">
               <UserConsumer>
                 {
@@ -37,17 +44,6 @@ function App() {
                   }
                 }
               </UserConsumer>
-            </Route>
-            <Route path="/admin/shop-add">
-              <ShopProvider>
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
-                    }
-                  }
-                </UserConsumer>
-              </ShopProvider>
             </Route>
             <Route exact path="/admin">
               <ShopProvider>
@@ -60,12 +56,16 @@ function App() {
                 </UserConsumer>
               </ShopProvider>
             </Route>
-            <Route path="/shop/:id">
-              <ItemDetail />
-              <CartButton />
-            </Route>
-            <Route path="/cart">
-              <Cart />
+            <Route path="/admin/shop-add">
+              <ShopProvider>
+                <UserConsumer>
+                  {
+                    value => {
+                      return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+                    }
+                  }
+                </UserConsumer>
+              </ShopProvider>
             </Route>
           </Switch>
         </Router>

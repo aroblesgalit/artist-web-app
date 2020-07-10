@@ -45,7 +45,7 @@ function ShopProvider(props) {
         })
             .then(res => {
                 console.log("Item added to shop...", res.data);
-                // getAllItems();
+                // window.location.reload(false);
             })
             .catch(err => {
                 console.log("Something went wrong while adding item to shop...", err);
