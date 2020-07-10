@@ -32,8 +32,19 @@ function Portfolio() {
     ]
 
     return (
-        <div className="main-container portfolio-container" uk-grid="true">
-            
+        <div className="main-container portfolio-container">
+            {
+                portfolioPieces.map(piece => {
+                    return (
+                        <PortfolioPieceCard 
+                            key={piece.id}
+                            name={piece.name}
+                            medium={piece.medium}
+                            img={piece.img}
+                        />
+                    )
+                })
+            }
         </div>
     )
 }

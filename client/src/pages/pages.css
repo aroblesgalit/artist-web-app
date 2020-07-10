@@ -22,6 +22,12 @@ h1 {
 }
 
 
+/* Portfolio */
+.portfolio-container {
+    columns: 3;
+    column-gap: 1.5rem;
+}
+
 
 /* Item Detail */
 .item-detail-container
@@ -144,6 +150,21 @@ h1 {
 /* Shop - Add New Item */
 .shop-add-container h1 {
     margin: 20px 0;
+}
+
+
+/* Large devices */
+@media only screen and (max-width: 1200px) {
+    .portfolio-container {
+        columns: 2;
+    }
+}
+
+/* Medium devices */
+@media only screen and (max-width: 992px) {
+    .portfolio-container {
+        columns: 1;
+    }
 }
 
 
