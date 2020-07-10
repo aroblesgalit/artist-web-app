@@ -5,22 +5,26 @@
 }
 
 .port-piece-card {
-    /* width: 300px;
-    height: auto; */
-    /* background-color: #fff; */
     display: inline-block;
-    vertical-align: top;
+    /* vertical-align: top; */
     margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.port-piece-card img {
+    width: 100%;
 }
 
 .port-piece-card-overlay {
-    right: 0;
     top: 0;
-    left: 0;
-    bottom: 0;
     opacity: 0;
     transition: all 0.2s linear;
     background-color: rgba(0, 0, 0, 0.685);
+}
+
+.overlay-border {
+    border: 1px solid #fff;
+    margin: 1rem;
 }
 
 .port-piece-card-overlay p {
@@ -31,3 +35,10 @@
     opacity: 1;
 }
 
+.piece-name {
+    font-weight: 500;
+}
+
+.piece-medium {
+    font-weight: 300;
+}

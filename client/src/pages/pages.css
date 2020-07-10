@@ -10,6 +10,7 @@ h1 {
 
 .main-container {
     margin-left: 340px;
+    width: calc(100% - 340px);
     padding: 80px 20px 80px 0;
 }
 
@@ -19,13 +20,6 @@ h1 {
     min-height: 100vh;
     padding-left: 40px;
     padding-right: 40px;
-}
-
-
-/* Portfolio */
-.portfolio-container {
-    columns: 3;
-    column-gap: 1.5rem;
 }
 
 
@@ -153,6 +147,16 @@ h1 {
 }
 
 
+
+/* Portfolio */
+.portfolio-container {
+    columns: 3;
+    column-gap: 1.5rem;
+}
+
+
+
+
 /* Large devices */
 @media only screen and (max-width: 1200px) {
     .portfolio-container {
@@ -172,6 +176,7 @@ h1 {
 @media only screen and (max-width: 768px) {
     .main-container {
         margin-left: 0;
+        width: 100%;
         padding: 40px 16px;
     }
     /* .uk-first-column {
