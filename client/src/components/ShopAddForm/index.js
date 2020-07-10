@@ -24,15 +24,17 @@ function ShopAddForm() {
     })
 
     function clearInput() {
-        setItem({
-            name: "",
-            img: "",
-            price: 0,
-            size: "",
-            print: "",
-            info: "",
-            countInStock: 0
-        })
+        setTimeout(() => {
+            setItem({
+                name: "",
+                img: "",
+                price: 0,
+                size: "",
+                print: "",
+                info: "",
+                countInStock: 0
+            })
+        }, 1500);
     }
 
     return (
@@ -52,6 +54,7 @@ function ShopAddForm() {
                                             placeholder="lost in the woods"
                                             required={true}
                                             ref={nameRef}
+                                            value={item.name}
                                             onChange={() => setItem({
                                                 ...item,
                                                 name: nameRef.current.value
@@ -68,6 +71,7 @@ function ShopAddForm() {
                                             type="message"
                                             placeholder="A boy who couldn't find his way home."
                                             ref={infoRef}
+                                            value={item.info}
                                             onChange={() => setItem({
                                                 ...item,
                                                 info: infoRef.current.value
@@ -85,6 +89,7 @@ function ShopAddForm() {
                                             placeholder="www.site.com/image.png"
                                             required={true}
                                             ref={imgRef}
+                                            value={item.img}
                                             onChange={() => setItem({
                                                 ...item,
                                                 img: imgRef.current.value
@@ -105,6 +110,7 @@ function ShopAddForm() {
                                             required={true}
                                             min="0"
                                             ref={priceRef}
+                                            value={item.price}
                                             onChange={() => setItem({
                                                 ...item,
                                                 price: parseInt(priceRef.current.value)
@@ -123,6 +129,7 @@ function ShopAddForm() {
                                             required={true}
                                             min="0"
                                             ref={countInStockRef}
+                                            value={item.countInStock}
                                             onChange={() => setItem({
                                                 ...item,
                                                 countInStock: parseInt(countInStockRef.current.value)
@@ -140,6 +147,7 @@ function ShopAddForm() {
                                             placeholder="11 x 17"
                                             required={true}
                                             ref={sizeRef}
+                                            value={item.size}
                                             onChange={() => setItem({
                                                 ...item,
                                                 size: sizeRef.current.value
@@ -157,6 +165,7 @@ function ShopAddForm() {
                                             placeholder="12pt cardstock"
                                             required={true}
                                             ref={printRef}
+                                            value={item.print}
                                             onChange={() => setItem({
                                                 ...item,
                                                 print: printRef.current.value
@@ -170,15 +179,18 @@ function ShopAddForm() {
                                     </Link>
                                     <button
                                         className="primary-btn"
-                                        onClick={(e) => value.addItem(e, {
-                                            name: item.name,
-                                            img: item.img,
-                                            price: item.price,
-                                            size: item.size,
-                                            print: item.print,
-                                            info: item.info,
-                                            countInStock: item.countInStock
-                                        })}
+                                        onClick={(e) => {
+                                            value.addItem(e, {
+                                                name: item.name,
+                                                img: item.img,
+                                                price: item.price,
+                                                size: item.size,
+                                                print: item.print,
+                                                info: item.info,
+                                                countInStock: item.countInStock
+                                            });
+                                            clearInput();
+                                        }}
                                     >
                                         <span uk-icon="plus" className="uk-margin-small-right" />add
                                     </button>
