@@ -40,7 +40,7 @@ function ArtProvider(props) {
             ...portfolio,
             viewArt: art
         })
-    }
+    };
 
     function deleteArt(e, id, page) {
         e.preventDefault();
@@ -56,6 +56,23 @@ function ArtProvider(props) {
             .catch(err => {
                 console.log("Something went wrong while deleting an art piece...", err);
             })
+    };
+
+    function updateArt(e, id, item) {
+        e.preventDefault();
+
+        API.updateArt(id, {
+            name: item.name,
+            img: item.img,
+            medium: item.medium
+        })
+            .then(res => {
+                console.log("Art piece has been updated...", res.data);
+                getAllArts();
+            })
+            .catch(err => {
+                console.log("Something went wrong while updating an art piece...", err);
+            })
     }
 
     return (
@@ -63,7 +80,8 @@ function ArtProvider(props) {
             value={{
                 ...portfolio,
                 handleView,
-                deleteArt
+                deleteArt,
+                updateArt
             }}
         >
             {props.children}
