@@ -86,14 +86,11 @@ function PortfolioViewForm() {
                                     <button
                                         className="primary-btn"
                                         onClick={(e) => {
-                                            value.updateItem(e, _id, {
+                                            console.log(item);
+                                            value.updateArt(e, _id, {
                                                 name: item.name,
                                                 img: item.img,
-                                                price: item.price,
-                                                size: item.size,
-                                                print: item.print,
-                                                info: item.info,
-                                                countInStock: item.countInStock
+                                                price: item.medium
                                             });
                                         }}
                                     >

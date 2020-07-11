@@ -41,7 +41,7 @@ export default {
     deleteArt: function (id) {
         return axios.get("/api/arts/" + id);
     },
-    updateArt: function (id) {
-        return axios.put("/api/arts/" + id);
+    updateArt: function (id, data) {
+        return axios.put("/api/arts/" + id, data);
     }
 }
