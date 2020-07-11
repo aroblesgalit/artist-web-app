@@ -79,7 +79,7 @@ function PortfolioViewForm() {
                                 <div className="uk-margin">
                                     <button
                                         className="secondary-btn uk-margin-small-right"
-                                        onClick={(e) => value.deleteItem(e, _id, "shop-view")}
+                                        onClick={(e) => value.deleteArt(e, _id, "portfolio-view")}
                                     >
                                         <span uk-icon="close" className="uk-margin-small-right" />delete
                                     </button>
