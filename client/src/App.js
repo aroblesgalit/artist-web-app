@@ -14,18 +14,12 @@ import Portfolio from "./pages/Portfolio";
 import ViewPortfolio from "./pages/ViewPortfolio";
 import AddPortfolio from "./pages/AddPortfolio";
 import About from "./pages/About";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { ItemProvider } from "./utils/ItemContext";
-import UserContext, { UserProvider } from "./utils/UserContext";
+import { UserProvider } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
 
 function App() {
-
-  const { isLoggedIn } = useContext(UserContext);
-
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [])
-
   return (
     <ArtProvider>
       <ItemProvider>
@@ -54,34 +48,40 @@ function App() {
               <Route path="/portfolio">
                 <Portfolio />
               </Route>
-              <Route path="/admin-login">
+              <Route exact path="/admin">
+                <ProtectedRoute component={Admin} />
                 {
-                  isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                  // isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
                 }
               </Route>
-              <Route exact path="/admin">
+              <Route path="/admin-login">
                 {
-                  isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+                  // isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                  <Login />
                 }
               </Route>
               <Route path="/admin/shop-add">
+                <ProtectedRoute component={AddShop} />
                 {
-                  isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+                  // isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
                 }
               </Route>
               <Route path="/admin/shop-view">
+                <ProtectedRoute component={ViewShop} />
                 {
-                  isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
+                  // isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
                 }
               </Route>
               <Route path="/admin/portfolio-view">
+                <ProtectedRoute component={ViewPortfolio} />
                 {
-                  isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
+                  // isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
                 }
               </Route>
               <Route path="/admin/portfolio-add">
+                <ProtectedRoute component={AddPortfolio} />
                 {
-                  isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
+                  // isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
                 }
               </Route>
             </Switch>

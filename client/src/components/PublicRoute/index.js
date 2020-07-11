@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { UserConsumer } from "../../utils/UserContext";
 
-function ProtectedRoute(props) {
+function PublicRoute(props) {
 
     const Component = props.component;
 
@@ -11,9 +11,9 @@ function ProtectedRoute(props) {
             {
                 value => {
                     return value.isLoggedIn ? (
-                        <Component />
+                        <Redirect to="/admin" />
                     ) : (
-                            <Redirect to="/admin-login" />
+                            <Component />
                         )
                 }
             }
@@ -21,4 +21,4 @@ function ProtectedRoute(props) {
     )
 }
 
-export default ProtectedRoute;
+export default PublicRoute;
