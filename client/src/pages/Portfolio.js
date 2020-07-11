@@ -1,5 +1,6 @@
 import React from "react";
 import PortfolioPieceCard from "../components/PortfolioPieceCard";
+import { ArtConsumer } from "../utils/ArtContext";
 
 function Portfolio() {
 
@@ -32,18 +33,22 @@ function Portfolio() {
 
     return (
         <div className="main-container portfolio-container">
-            {
-                portfolioPieces.map(piece => {
-                    return (
-                        <PortfolioPieceCard 
-                            key={piece.id}
-                            name={piece.name}
-                            medium={piece.medium}
-                            img={piece.img}
-                        />
-                    )
-                })
-            }
+            <ArtConsumer>
+                {
+                    value => {
+                        return value.arts.map(art => {
+                            return (
+                                <PortfolioPieceCard
+                                    key={art._id}
+                                    name={art.name}
+                                    medium={art.medium}
+                                    img={art.img}
+                                />
+                            )
+                        })
+                    }
+                }
+            </ArtConsumer>
         </div>
     )
 }
