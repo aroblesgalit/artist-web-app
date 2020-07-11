@@ -73,7 +73,9 @@ function ArtProvider(props) {
             .catch(err => {
                 console.log("Something went wrong while updating an art piece...", err);
             })
-    }
+    };
+
+    
 
     return (
         <ArtContext.Provider

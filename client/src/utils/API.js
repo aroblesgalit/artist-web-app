@@ -43,5 +43,8 @@ export default {
     },
     updateArt: function (id, data) {
         return axios.put("/api/arts/" + id, data);
+    },
+    addArt: function (data) {
+        return axios.post("/api/arts", data);
     }
 }

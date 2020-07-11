@@ -13,7 +13,7 @@ function PortfolioAddForm() {
         name: "",
         img: "",
         medium: ""
-    })
+    });
 
     function clearInput() {
         setTimeout(() => {

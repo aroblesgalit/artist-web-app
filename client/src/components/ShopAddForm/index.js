@@ -21,7 +21,7 @@ function ShopAddForm() {
         print: "",
         info: "",
         countInStock: 0
-    })
+    });
 
     function clearInput() {
         setTimeout(() => {
