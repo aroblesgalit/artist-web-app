@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.about-admin form {
+    font-weight: 300;
+    margin-top: 40px;
+}
+
+.about-admin input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+    font-weight: 300;
+}
+
+.about-admin textarea {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+    min-width: 100%;
+    min-height: 124px;
+    font-weight: 300;
+}
