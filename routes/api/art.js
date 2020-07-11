@@ -10,3 +10,5 @@ router.route("/")
 router.route("/:id")
     .put(artsController.updateArt)
     .delete(artsController.deleteArt)
+
+module.exports = router;

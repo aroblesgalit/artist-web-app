@@ -1,5 +1,4 @@
 import React, { useRef, useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import "./shopViewForm.css";
 import ItemContext, { ItemConsumer } from "../../utils/ItemContext";
 

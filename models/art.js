@@ -20,6 +20,6 @@ const artSchema = new Schema({
     }
 });
 
-const Art = mongoose.mongoose.model("Art", artSchema);
+const Art = mongoose.model("Art", artSchema);
 
 module.exports = Art;

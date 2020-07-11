@@ -22,7 +22,6 @@ function Portfolio() {
             medium: "graphite",
             img: "https://static1.squarespace.com/static/56e33409d210b8a4c7e973c9/56e9482174e8d663695d5d5f/57ac449cc534a59cdf2954af/1571837913614/casey-baugh.png"
         },
-        ,
         {
             id: "4",
             name: "birds",
