@@ -32,15 +32,17 @@
     font-size: 0.75rem;
 }
 
-.social-add-icon {
+/* .social-add-icon,
+.social-delete-icon {
     cursor: pointer;
     border: 1px solid rgb(116, 116, 116);
     border-radius: 50%;
     padding: 0.5rem;
 }
 
-.social-add-icon:hover {
+.social-add-icon:hover,
+.social-delete-icon:hover {
     background-color: #000;
     color: #fff;
     border: 1px solid #000;
-}
+} */

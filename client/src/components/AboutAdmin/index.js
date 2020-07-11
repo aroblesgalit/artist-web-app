@@ -13,10 +13,6 @@ function AboutAdmin(props) {
     const imgAboutTopRef = useRef();
     const imgAboutBotRef = useRef();
 
-    const [socialMedias, setSocialMedias] = useState({
-        isEmpty: true
-    });
-
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -27,6 +23,51 @@ function AboutAdmin(props) {
         imgAboutTop: "",
         imgAboutBot: ""
     });
+
+
+    function handleSocialAdd(e) {
+        e.preventDefault();
+
+        let tempSocialMedias = [...user.socialMedias];
+        tempSocialMedias.push({
+            id: user.socialMedias.length + 1,
+            link: ""
+        });
+
+        setUser({
+            ...user,
+            socialMedias: tempSocialMedias
+        })
+    }
+
+    function handleSocialDelete(e, id) {
+        let tempSocialMedias = [...user.socialMedias];
+        let socialIndex = tempSocialMedias.indexOf(social => social.id === id);
+        tempSocialMedias.splice(socialIndex, 1);
+
+        setUser({
+            ...user,
+            socialMedias: tempSocialMedias
+        })
+    }
+
+    function handleSocialChange(e, id) {
+        let tempSocialMedias = [...user.socialMedias];
+        let social = tempSocialMedias.find(social => social.id === id);
+        social.link = e.target.value;
+
+        setUser({
+            ...user,
+            socialMedias: tempSocialMedias
+        })
+    }
+
+    // For testing. Delete after.
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        console.log(user.socialMedias);
+    }
 
     return (
         <div className={`about-content ${activeTab === "about" ? "show" : "hide"}`}>
@@ -105,12 +146,39 @@ function AboutAdmin(props) {
                     </div>
                     <div className="uk-margin">
                         <label className="uk-form-label">social medias</label>
-                        <div className="social-add uk-flex uk-flex-middle">
+                        {
+                            user.socialMedias.map(social => {
+                                return (
+                                    <div className="uk-form-controls uk-flex uk-flex-middle uk-margin" key={social.id}>
+                                        <input
+                                            className="uk-input"
+                                            id={social.id}
+                                            type="url"
+                                            placeholder="social media link"
+                                            required={true}
+                                            value={social.link}
+                                            onChange={(e) => handleSocialChange(e, social.id)}
+                                        />
+                                        <span
+                                            className="social-delete-icon uk-margin-left"
+                                            uk-icon="icon: close; ratio: 0.8"
+                                            onClick={(e) => handleSocialDelete(e, social.id)}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="social-add uk-flex uk-flex-middle uk-margin-top">
                             <span>
                                 {
-                                    socialMedias.isEmpty ? "add your social media links" : "add another"
+                                    user.socialMedias.length === 0 ? "add your social media links" : "add another"
                                 }
-                            </span><span className="social-add-icon uk-margin-left" uk-icon="icon: plus; ratio: 0.8" />
+                            </span>
+                            <span
+                                className="social-add-icon uk-margin-left"
+                                uk-icon="icon: plus; ratio: 0.8"
+                                onClick={(e) => handleSocialAdd(e)}
+                            />
                         </div>
                     </div>
                 </div>
@@ -172,17 +240,18 @@ function AboutAdmin(props) {
                     <div className="uk-margin">
                         <button
                             className="primary-btn"
-                        // onClick={(e) => {
-                        //     value.updateItem(e, _id, {
-                        //         name: item.name,
-                        //         img: item.img,
-                        //         price: item.price,
-                        //         size: item.size,
-                        //         print: item.print,
-                        //         info: item.info,
-                        //         countInStock: item.countInStock
-                        //     });
-                        // }}
+                            // onClick={(e) => {
+                            //     value.updateItem(e, _id, {
+                            //         name: item.name,
+                            //         img: item.img,
+                            //         price: item.price,
+                            //         size: item.size,
+                            //         print: item.print,
+                            //         info: item.info,
+                            //         countInStock: item.countInStock
+                            //     });
+                            // }}
+                            onClick={(e) => handleSubmit(e)}
                         >
                             <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
                         </button>
