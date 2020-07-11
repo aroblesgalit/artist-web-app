@@ -16,22 +16,22 @@ export default {
     findUser: function () {
         return axios.get("/api/user");
     },
-    getAllItems: function() {
+    getAllItems: function () {
         return axios.get("/api/items");
     },
-    getItemById: function(id) {
+    getItemById: function (id) {
         return axios.get("/api/items/" + id);
     },
-    updateSoldItem: function(data) {
+    updateSoldItem: function (data) {
         return axios.put("/api/items", data);
     },
-    addItem: function(data) {
+    addItem: function (data) {
         return axios.post("/api/items", data);
     },
-    updateItem: function(id, data) {
+    updateItem: function (id, data) {
         return axios.put("/api/items/" + id, data);
     },
-    deleteItem: function(id) {
+    deleteItem: function (id) {
         return axios.delete("/api/items/" + id);
     },
     // Art - Portfolio
@@ -39,7 +39,7 @@ export default {
         return axios.get("/api/arts");
     },
     deleteArt: function (id) {
-        return axios.get("/api/arts/" + id);
+        return axios.delete("/api/arts/" + id);
     },
     updateArt: function (id, data) {
         return axios.put("/api/arts/" + id, data);
