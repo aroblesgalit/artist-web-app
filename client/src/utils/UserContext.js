@@ -7,31 +7,28 @@ const UserContext = React.createContext();
 function UserProvider(props) {
 
     const [user, setUser] = useState({
-        userInfo: {},
         userExists: true,
         isLoggedIn: false
     });
 
     useEffect(() => {
-        getUserInfo();
+        findUser();
         checkLoginStatus();
     }, [])
 
     // Check if user exists
-    async function getUserInfo() {
+    async function findUser() {
         const user = await API.findUser();
         if (user.data) {
             // console.log("logging user.data...", user.data);
             setUser({
                 ...user,
-                userInfo: user.data,
                 userExists: true
             })
         } else {
             // console.log("user.data is null...", user.data);
             setUser({
                 ...user,
-                userInfo: user.data,
                 userExists: false
             })
         }
@@ -93,11 +90,11 @@ function UserProvider(props) {
             console.log("Logged in successfully...", res);
             window.location.assign("/admin");
             // checkLoginStatus();
-            // getUserInfo();
+            // findUser();
         }).catch(err => {
             console.log("Something went wrong while loggin in...", err);
             checkLoginStatus();
-            getUserInfo();
+            findUser();
         })
     }
 
