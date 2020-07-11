@@ -13,6 +13,10 @@ function AboutAdmin(props) {
     const imgAboutTopRef = useRef();
     const imgAboutBotRef = useRef();
 
+    const [socialMedias, setSocialMedias] = useState({
+        isEmpty: true
+    });
+
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -97,6 +101,16 @@ function AboutAdmin(props) {
                                     about: aboutRef.current.value
                                 })}
                             />
+                        </div>
+                    </div>
+                    <div className="uk-margin">
+                        <label className="uk-form-label">social medias</label>
+                        <div className="social-add uk-flex uk-flex-middle">
+                            <span>
+                                {
+                                    socialMedias.isEmpty ? "add your social media links" : "add another"
+                                }
+                            </span><span className="social-add-icon uk-margin-left" uk-icon="icon: plus; ratio: 0.8" />
                         </div>
                     </div>
                 </div>
