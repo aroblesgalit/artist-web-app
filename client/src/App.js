@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -15,10 +15,16 @@ import ViewPortfolio from "./pages/ViewPortfolio";
 import AddPortfolio from "./pages/AddPortfolio";
 import About from "./pages/About";
 import { ItemProvider } from "./utils/ItemContext";
-import { UserProvider, UserConsumer } from "./utils/UserContext";
+import UserContext, { UserProvider } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
 
 function App() {
+
+  const { isLoggedIn } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [])
 
   return (
     <ArtProvider>
@@ -49,58 +55,34 @@ function App() {
                 <Portfolio />
               </Route>
               <Route path="/admin-login">
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <Redirect to="/admin" /> : <Login />
-                    }
-                  }
-                </UserConsumer>
+                {
+                  isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                }
               </Route>
               <Route exact path="/admin">
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
-                    }
-                  }
-                </UserConsumer>
+                {
+                  isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+                }
               </Route>
               <Route path="/admin/shop-add">
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
-                    }
-                  }
-                </UserConsumer>
+                {
+                  isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+                }
               </Route>
               <Route path="/admin/shop-view">
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
-                    }
-                  }
-                </UserConsumer>
+                {
+                  isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
+                }
               </Route>
               <Route path="/admin/portfolio-view">
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
-                    }
-                  }
-                </UserConsumer>
+                {
+                  isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
+                }
               </Route>
               <Route path="/admin/portfolio-add">
-                <UserConsumer>
-                  {
-                    value => {
-                      return value.isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
-                    }
-                  }
-                </UserConsumer>
+                {
+                  isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
+                }
               </Route>
             </Switch>
           </Router>

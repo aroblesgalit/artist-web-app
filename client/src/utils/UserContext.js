@@ -7,30 +7,52 @@ const UserContext = React.createContext();
 function UserProvider(props) {
 
     const [user, setUser] = useState({
+        userInfo: {},
         userExists: true,
         isLoggedIn: false
     });
 
     useEffect(() => {
-        fetchUser();
-        getUserData();
+        getUserInfo();
+        checkLoginStatus();
     }, [])
 
     // Check if user exists
-    async function fetchUser() {
+    async function getUserInfo() {
         const user = await API.findUser();
         if (user.data) {
+            // console.log("logging user.data...", user.data);
             setUser({
                 ...user,
+                userInfo: user.data,
                 userExists: true
             })
         } else {
+            // console.log("user.data is null...", user.data);
             setUser({
                 ...user,
+                userInfo: user.data,
                 userExists: false
             })
         }
     }
+
+        // Get user data to check if logged in
+        function checkLoginStatus() {
+            API.getUserData()
+                .then(() => {
+                    setUser({
+                        ...user,
+                        isLoggedIn: true
+                    })
+                })
+                .catch(() => {
+                    setUser({
+                        ...user,
+                        isLoggedIn: false
+                    })
+                })
+        };
 
     // Register user
     function handleSignup(e, password, confirmPassword) {
@@ -44,6 +66,7 @@ function UserProvider(props) {
                         password: password
                     }).then(res => {
                         console.log("Your account is now ready...", res);
+                        // checkLoginStatus();
                         window.location.replace("/admin");
                     }).catch(err => {
                         console.log("Failed signup...", err);
@@ -68,9 +91,13 @@ function UserProvider(props) {
             password: password
         }).then(res => {
             console.log("Logged in successfully...", res);
+            // checkLoginStatus();
+            getUserInfo();
             window.location.replace("/admin");
         }).catch(err => {
             console.log("Something went wrong while loggin in...", err);
+            checkLoginStatus();
+            getUserInfo();
         })
     }
 
@@ -87,23 +114,6 @@ function UserProvider(props) {
                 console.log("Something went wrong while logging out...", err);
             })
     }
-
-    // Get user data to check if logged in
-    function getUserData() {
-        API.getUserData()
-            .then(() => {
-                setUser({
-                    ...user,
-                    isLoggedIn: true
-                })
-            })
-            .catch(() => {
-                setUser({
-                    ...user,
-                    isLoggedIn: false
-                })
-            })
-    };
 
     return (
         <UserContext.Provider
@@ -122,4 +132,5 @@ function UserProvider(props) {
 // Consumer
 const UserConsumer = UserContext.Consumer;
 
+export default UserContext;
 export { UserProvider, UserConsumer };

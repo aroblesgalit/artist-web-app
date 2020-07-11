@@ -4,18 +4,24 @@ const bcrypt = require("bcrypt");
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new Schema({
-    name: {
+    username: {
         type: String,
         trim: true,
         unique: true,
         lowercase: true,
-        default: "john doe"
+        default: "johndoe"
     },
     password: {
         type: String,
         required: true,
         trim: true,
         validate: [({ length }) => length >= 6, "Password should be longer."]
+    },
+    name: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        default: "john doe"
     },
     email: {
         type: String,
