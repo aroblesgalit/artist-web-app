@@ -150,8 +150,9 @@ h1 {
 
 /* Portfolio */
 .portfolio-container {
-    columns: 3;
-    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
 }
 
 
@@ -160,14 +161,14 @@ h1 {
 /* Large devices */
 @media only screen and (max-width: 1200px) {
     .portfolio-container {
-        columns: 2;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Medium devices */
 @media only screen and (max-width: 992px) {
     .portfolio-container {
-        columns: 1;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
