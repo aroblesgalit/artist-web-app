@@ -35,6 +35,7 @@ function ArtProvider(props) {
 
     function handleView(id) {
         const art = getArtById(id);
+        console.log("Art for view: ", art);
         setPortfolio({
             ...portfolio,
             viewArt: art
@@ -56,4 +57,5 @@ function ArtProvider(props) {
 // Consumer
 const ArtConsumer = ArtContext.Consumer;
 
+export default ArtContext;
 export { ArtProvider, ArtConsumer };

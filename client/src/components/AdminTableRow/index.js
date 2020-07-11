@@ -59,7 +59,7 @@ function AdminTableRow(props) {
                                                     <React.Fragment>
                                                         <Link
                                                             to={`/admin/portfolio-view/${item._id}`}
-                                                            // onClick={() => value.handleDetail(item._id)}
+                                                            onClick={() => value.handleView(item._id)}
                                                         >
                                                             <span uk-icon="file-edit" className="uk-margin-right" />
                                                         </Link>
