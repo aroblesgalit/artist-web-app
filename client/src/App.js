@@ -19,74 +19,77 @@ import PublicRoute from "./components/PublicRoute";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
+import { AboutProvider } from "./utils/AboutContext";
 
 function App() {
   return (
     <ArtProvider>
       <ItemProvider>
         <UserProvider>
-          <Router>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-                <CartButton />
-              </Route>
-              <Route exact path="/shop">
-                <Shop />
-                <CartButton />
-              </Route>
-              <Route path="/shop/:id">
-                <ItemDetail />
-                <CartButton />
-              </Route>
-              <Route path="/cart">
-                <Cart />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/portfolio">
-                <Portfolio />
-              </Route>
-              <Route path="/admin-login">
-                <PublicRoute component={Login} />
-                {
-                  // isLoggedIn ? <Redirect to="/admin" /> : <Login />
-                }
-              </Route>
-              <Route exact path="/admin">
-                <ProtectedRoute component={Admin} />
-                {
-                  // isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
-                }
-              </Route>
-              <Route path="/admin/shop-add">
-                <ProtectedRoute component={AddShop} />
-                {
-                  // isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
-                }
-              </Route>
-              <Route path="/admin/shop-view">
-                <ProtectedRoute component={ViewShop} />
-                {
-                  // isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
-                }
-              </Route>
-              <Route path="/admin/portfolio-view">
-                <ProtectedRoute component={ViewPortfolio} />
-                {
-                  // isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
-                }
-              </Route>
-              <Route path="/admin/portfolio-add">
-                <ProtectedRoute component={AddPortfolio} />
-                {
-                  // isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
-                }
-              </Route>
-            </Switch>
-          </Router>
+          <AboutProvider>
+            <Router>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                  <CartButton />
+                </Route>
+                <Route exact path="/shop">
+                  <Shop />
+                  <CartButton />
+                </Route>
+                <Route path="/shop/:id">
+                  <ItemDetail />
+                  <CartButton />
+                </Route>
+                <Route path="/cart">
+                  <Cart />
+                </Route>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/portfolio">
+                  <Portfolio />
+                </Route>
+                <Route path="/admin-login">
+                  <PublicRoute component={Login} />
+                  {
+                    // isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                  }
+                </Route>
+                <Route exact path="/admin">
+                  <ProtectedRoute component={Admin} />
+                  {
+                    // isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
+                  }
+                </Route>
+                <Route path="/admin/shop-add">
+                  <ProtectedRoute component={AddShop} />
+                  {
+                    // isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
+                  }
+                </Route>
+                <Route path="/admin/shop-view">
+                  <ProtectedRoute component={ViewShop} />
+                  {
+                    // isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
+                  }
+                </Route>
+                <Route path="/admin/portfolio-view">
+                  <ProtectedRoute component={ViewPortfolio} />
+                  {
+                    // isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
+                  }
+                </Route>
+                <Route path="/admin/portfolio-add">
+                  <ProtectedRoute component={AddPortfolio} />
+                  {
+                    // isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
+                  }
+                </Route>
+              </Switch>
+            </Router>
+          </AboutProvider>
         </UserProvider>
       </ItemProvider>
     </ArtProvider>
