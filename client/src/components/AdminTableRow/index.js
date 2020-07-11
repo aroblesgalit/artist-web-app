@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./adminTableRow.css";
 import { ItemConsumer } from "../../utils/ItemContext";
+import { ArtConsumer } from "../../utils/ArtContext";
 
 function AdminTableRow(props) {
 
@@ -29,13 +30,13 @@ function AdminTableRow(props) {
                                             <React.Fragment>
                                                 <Link
                                                     to={`/admin/shop-view/${item._id}`}
-                                                    onClick={() => value.handleDetail(item._id)}
+                                                    // onClick={() => value.handleDetail(item._id)}
                                                 >
                                                     <span uk-icon="file-edit" className="uk-margin-right" />
                                                 </Link>
-                                                <span 
+                                                <span
                                                     uk-icon="close"
-                                                    onClick={(e) => value.deleteItem(e, item._id, "admin/shop")} 
+                                                    // onClick={(e) => value.deleteItem(e, item._id, "admin/shop")}
                                                 />
                                             </React.Fragment>
                                         )
@@ -47,9 +48,31 @@ function AdminTableRow(props) {
                 ) : (
                         type === "portfolio" ? (
                             <React.Fragment>
-                                <td>portfolio data</td>
-                                <td>portfolio data</td>
-                                <td>portfolio data</td>
+                                <td><img src={item.img} alt={item.name} /></td>
+                                <td><p className="item-name">{item.name}</p></td>
+                                <td><p className="item-medium">{item.medium}</p></td>
+                                <td className="action-icons">
+                                    <ArtConsumer>
+                                        {
+                                            value => {
+                                                return (
+                                                    <React.Fragment>
+                                                        <Link
+                                                            to={`/admin/shop-view/${item._id}`}
+                                                            onClick={() => value.handleDetail(item._id)}
+                                                        >
+                                                            <span uk-icon="file-edit" className="uk-margin-right" />
+                                                        </Link>
+                                                        <span
+                                                            uk-icon="close"
+                                                            onClick={(e) => value.deleteItem(e, item._id, "admin/shop")}
+                                                        />
+                                                    </React.Fragment>
+                                                )
+                                            }
+                                        }
+                                    </ArtConsumer>
+                                </td>
                             </React.Fragment>
                         ) : (
                                 type === "videos" ? (

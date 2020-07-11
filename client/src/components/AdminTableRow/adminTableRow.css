@@ -18,7 +18,8 @@
 }
 
 .item-size,
-.item-print {
+.item-print,
+.item-medium {
     font-size: 0.8rem;
 }
 
