@@ -16,9 +16,13 @@ function Admin() {
     return (
         <div className="main-container">
             <AdminTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-            <Link to={`/admin/${activeTab}-add`}>
-                <AddButton />
-            </Link>
+            {
+                activeTab !== "about" ? (
+                    <Link to={`/admin/${activeTab}-add`}>
+                        <AddButton />
+                    </Link>
+                ) : ""
+            }
             <PortfolioAdmin activeTab={activeTab} />
             <VideosAdmin activeTab={activeTab} />
             <ShopAdmin activeTab={activeTab} />
