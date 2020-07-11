@@ -33,5 +33,9 @@ export default {
     },
     deleteItem: function(id) {
         return axios.delete("/api/items/" + id)
+    },
+    // Art - Portfolio
+    getAllArts: function () {
+        return axios.get("/api/arts")
     }
 }
