@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./aboutAdmin.css";
+import uuid from "react-uuid";
 
 function AboutAdmin(props) {
 
@@ -27,10 +28,10 @@ function AboutAdmin(props) {
 
     function handleSocialAdd(e) {
         e.preventDefault();
-
+        const newId = uuid();
         let tempSocialMedias = [...user.socialMedias];
         tempSocialMedias.push({
-            id: user.socialMedias.length + 1,
+            id: newId,
             link: ""
         });
 
@@ -41,13 +42,14 @@ function AboutAdmin(props) {
     }
 
     function handleSocialDelete(e, id) {
+        e.preventDefault();
+
         let tempSocialMedias = [...user.socialMedias];
-        let socialIndex = tempSocialMedias.indexOf(social => social.id === id);
-        tempSocialMedias.splice(socialIndex, 1);
+        let newSocialMedias = tempSocialMedias.filter(social => social.id !== id);
 
         setUser({
             ...user,
-            socialMedias: tempSocialMedias
+            socialMedias: newSocialMedias
         })
     }
 
