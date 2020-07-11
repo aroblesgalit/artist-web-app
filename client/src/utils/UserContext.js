@@ -37,22 +37,22 @@ function UserProvider(props) {
         }
     }
 
-        // Get user data to check if logged in
-        function checkLoginStatus() {
-            API.getUserData()
-                .then(() => {
-                    setUser({
-                        ...user,
-                        isLoggedIn: true
-                    })
+    // Get user data to check if logged in
+    function checkLoginStatus() {
+        API.getUserData()
+            .then(() => {
+                setUser({
+                    ...user,
+                    isLoggedIn: true
                 })
-                .catch(() => {
-                    setUser({
-                        ...user,
-                        isLoggedIn: false
-                    })
+            })
+            .catch(() => {
+                setUser({
+                    ...user,
+                    isLoggedIn: false
                 })
-        };
+            })
+    };
 
     // Register user
     function handleSignup(e, password, confirmPassword) {
@@ -67,7 +67,7 @@ function UserProvider(props) {
                     }).then(res => {
                         console.log("Your account is now ready...", res);
                         // checkLoginStatus();
-                        window.location.replace("/admin");
+                        window.location.assign("/admin");
                     }).catch(err => {
                         console.log("Failed signup...", err);
                     })
@@ -91,9 +91,9 @@ function UserProvider(props) {
             password: password
         }).then(res => {
             console.log("Logged in successfully...", res);
+            window.location.assign("/admin");
             // checkLoginStatus();
-            getUserInfo();
-            window.location.replace("/admin");
+            // getUserInfo();
         }).catch(err => {
             console.log("Something went wrong while loggin in...", err);
             checkLoginStatus();

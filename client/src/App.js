@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -15,6 +15,7 @@ import ViewPortfolio from "./pages/ViewPortfolio";
 import AddPortfolio from "./pages/AddPortfolio";
 import About from "./pages/About";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
@@ -48,16 +49,16 @@ function App() {
               <Route path="/portfolio">
                 <Portfolio />
               </Route>
+              <Route path="/admin-login">
+                <PublicRoute component={Login} />
+                {
+                  // isLoggedIn ? <Redirect to="/admin" /> : <Login />
+                }
+              </Route>
               <Route exact path="/admin">
                 <ProtectedRoute component={Admin} />
                 {
                   // isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
-                }
-              </Route>
-              <Route path="/admin-login">
-                {
-                  // isLoggedIn ? <Redirect to="/admin" /> : <Login />
-                  <Login />
                 }
               </Route>
               <Route path="/admin/shop-add">
