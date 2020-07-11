@@ -1,13 +1,13 @@
 import React from "react";
 import "./pages.css";
-import { UserConsumer } from "../utils/UserContext";
+import { AboutConsumer } from "../utils/AboutContext";
 
 function About() {
     return (
-        <UserConsumer>
+        <AboutConsumer>
             {
                 value => {
-                    const { imgAboutTop, name, about, email, phone, socialMedias, imgAboutBot } = value.userInfo;
+                    const { imgAboutTop, name, about, email, phone, socialMedias, imgAboutBot } = value;
                     return (
                         <div className="main-container about-container">
                             <img src={imgAboutTop} alt={name} />
@@ -32,7 +32,7 @@ function About() {
                     )
                 }
             }
-        </UserConsumer>
+        </AboutConsumer>
     )
 }
 
