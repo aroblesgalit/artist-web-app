@@ -144,43 +144,6 @@ function AboutAdmin(props) {
                             />
                         </div>
                     </div>
-                    <div className="uk-margin">
-                        <label className="uk-form-label">social medias</label>
-                        {
-                            user.socialMedias.map(social => {
-                                return (
-                                    <div className="uk-form-controls uk-flex uk-flex-middle uk-margin" key={social.id}>
-                                        <input
-                                            className="uk-input"
-                                            id={social.id}
-                                            type="url"
-                                            placeholder="social media link"
-                                            required={true}
-                                            value={social.link}
-                                            onChange={(e) => handleSocialChange(e, social.id)}
-                                        />
-                                        <span
-                                            className="social-delete-icon uk-margin-left"
-                                            uk-icon="icon: close; ratio: 0.8"
-                                            onClick={(e) => handleSocialDelete(e, social.id)}
-                                        />
-                                    </div>
-                                )
-                            })
-                        }
-                        <div className="social-add uk-flex uk-flex-middle uk-margin-top">
-                            <span>
-                                {
-                                    user.socialMedias.length === 0 ? "add your social media links" : "add another"
-                                }
-                            </span>
-                            <span
-                                className="social-add-icon uk-margin-left"
-                                uk-icon="icon: plus; ratio: 0.8"
-                                onClick={(e) => handleSocialAdd(e)}
-                            />
-                        </div>
-                    </div>
                 </div>
                 <div className="uk-width-1-2@m">
                     <div className="uk-margin">
@@ -234,6 +197,43 @@ function AboutAdmin(props) {
                                     ...user,
                                     imgAboutBot: imgAboutBotRef.current.value
                                 })}
+                            />
+                        </div>
+                    </div>
+                    <div className="uk-margin">
+                        <label className="uk-form-label">social medias</label>
+                        {
+                            user.socialMedias.map(social => {
+                                return (
+                                    <div className="uk-form-controls uk-flex uk-flex-middle uk-margin-small-bottom" key={social.id}>
+                                        <input
+                                            className="uk-input"
+                                            id={social.id}
+                                            type="url"
+                                            placeholder="social media link"
+                                            required={true}
+                                            value={social.link}
+                                            onChange={(e) => handleSocialChange(e, social.id)}
+                                        />
+                                        <span
+                                            className="social-delete-icon uk-margin-left"
+                                            uk-icon="icon: close; ratio: 0.8"
+                                            onClick={(e) => handleSocialDelete(e, social.id)}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="social-add uk-flex uk-flex-middle uk-margin-top">
+                            <span>
+                                {
+                                    user.socialMedias.length === 0 ? "add your social media links" : "add another"
+                                }
+                            </span>
+                            <span
+                                className="social-add-icon uk-margin-left"
+                                uk-icon="icon: plus; ratio: 0.8"
+                                onClick={(e) => handleSocialAdd(e)}
                             />
                         </div>
                     </div>

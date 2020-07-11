@@ -13,7 +13,6 @@ function Header() {
                     <li><Link to="/portfolio">portfolio</Link></li>
                     <li><Link to="/">videos</Link></li>
                     <li><Link to="/shop">shop</Link></li>
-                    <li><Link to="/">contact</Link></li>
                     <UserConsumer>
                         {
                             value => {
@@ -41,7 +40,6 @@ function Header() {
                                     <li><Link to="/portfolio">portfolio</Link></li>
                                     <li><Link to="/">videos</Link></li>
                                     <li><Link to="/shop">shop</Link></li>
-                                    <li><Link to="/">contact</Link></li>
                                     <UserConsumer>
                                         {
                                             value => {
