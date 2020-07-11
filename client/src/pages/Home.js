@@ -1,22 +1,22 @@
 import React from "react";
 import "./pages.css";
-import { UserConsumer } from "../utils/UserContext";
+import { AboutConsumer } from "../utils/AboutContext";
 
 function Home() {
     return (
         <div className="main-container">
-            <UserConsumer>
+            <AboutConsumer>
                 {
                     value => {
                         return (
                             <img
-                                src={value.userInfo.imgHome || "https://via.placeholder.com/900x1230"}
-                                alt={value.userInfo.name || "john doe"}
+                                src={value.imgHome || "https://via.placeholder.com/900x1230"}
+                                alt={value.name || "john doe"}
                             />
                         )
                     }
                 }
-            </UserConsumer>
+            </AboutConsumer>
         </div>
     )
 }
