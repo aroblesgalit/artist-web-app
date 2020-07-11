@@ -7,7 +7,9 @@ const ArtContext = React.createContext();
 function ArtProvider(props) {
 
     const [portfolio, setPortfolio] = useState({
-        arts: []
+        arts: [],
+        viewArt: {}
+
     });
 
     useEffect(() => {
@@ -22,12 +24,28 @@ function ArtProvider(props) {
                     arts: res.data
                 })
             })
+            .catch(err => {
+                console.log("Something went wrong while fetching arts...", err);
+            })
+    }
+
+    function getArtById(id) {
+        return portfolio.arts.find(art => art._id === id);
+    }
+
+    function handleView(id) {
+        const art = getArtById(id);
+        setPortfolio({
+            ...portfolio,
+            viewArt: art
+        })
     }
 
     return (
         <ArtContext.Provider
             value={{
-                ...portfolio
+                ...portfolio,
+                handleView
             }}
         >
             {props.children}

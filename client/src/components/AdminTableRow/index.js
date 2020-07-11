@@ -30,13 +30,13 @@ function AdminTableRow(props) {
                                             <React.Fragment>
                                                 <Link
                                                     to={`/admin/shop-view/${item._id}`}
-                                                    // onClick={() => value.handleDetail(item._id)}
+                                                    onClick={() => value.handleDetail(item._id)}
                                                 >
                                                     <span uk-icon="file-edit" className="uk-margin-right" />
                                                 </Link>
                                                 <span
                                                     uk-icon="close"
-                                                    // onClick={(e) => value.deleteItem(e, item._id, "admin/shop")}
+                                                    onClick={(e) => value.deleteItem(e, item._id, "admin/shop")}
                                                 />
                                             </React.Fragment>
                                         )
@@ -58,14 +58,14 @@ function AdminTableRow(props) {
                                                 return (
                                                     <React.Fragment>
                                                         <Link
-                                                            to={`/admin/shop-view/${item._id}`}
-                                                            onClick={() => value.handleDetail(item._id)}
+                                                            to={`/admin/portfolio-view/${item._id}`}
+                                                            // onClick={() => value.handleDetail(item._id)}
                                                         >
                                                             <span uk-icon="file-edit" className="uk-margin-right" />
                                                         </Link>
                                                         <span
                                                             uk-icon="close"
-                                                            onClick={(e) => value.deleteItem(e, item._id, "admin/shop")}
+                                                            // onClick={(e) => value.deleteItem(e, item._id, "admin/shop")}
                                                         />
                                                     </React.Fragment>
                                                 )
