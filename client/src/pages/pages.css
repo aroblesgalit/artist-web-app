@@ -31,7 +31,8 @@ h1 {
 
 .item-detail-container a:link,
 .cart-container a:link,
-.shop-add-container a:link {
+.shop-add-container a:link,
+.portfolio-add-container a:link {
     text-decoration: none;
     color: #444;
 }
