@@ -42,11 +42,28 @@ function ArtProvider(props) {
         })
     }
 
+    function deleteArt(e, id, page) {
+        e.preventDefault();
+
+        API.deleteArt(id)
+            .then(res => {
+                console.log("Art deleted...", res);
+                getAllArts();
+                if (page === "portfolio-view") {
+                    window.location.replace("/admin");
+                }
+            })
+            .catch(err => {
+                console.log("Something went wrong while deleting an art piece...", err);
+            })
+    }
+
     return (
         <ArtContext.Provider
             value={{
                 ...portfolio,
-                handleView
+                handleView,
+                deleteArt
             }}
         >
             {props.children}
