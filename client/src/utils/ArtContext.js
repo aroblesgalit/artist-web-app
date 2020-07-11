@@ -75,7 +75,22 @@ function ArtProvider(props) {
             })
     };
 
-    
+    function addArt(e, item) {
+        e.preventDefault();
+
+        API.addArt({
+            name: item.name,
+            img: item.img,
+            medium: item.medium
+        })
+            .then(res => {
+                console.log("Art added to portfolio...", res.data);
+                getAllArts();
+            })
+            .catch(err => {
+                console.log("Something went wrong while adding art to portfolio...", err);
+            })
+    }
 
     return (
         <ArtContext.Provider
@@ -83,7 +98,8 @@ function ArtProvider(props) {
                 ...portfolio,
                 handleView,
                 deleteArt,
-                updateArt
+                updateArt,
+                addArt
             }}
         >
             {props.children}
