@@ -150,9 +150,12 @@ h1 {
 
 /* Portfolio */
 .portfolio-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
     grid-gap: 1.5rem;
+    grid-auto-rows: 0; */
+    columns: 3;
+    column-gap: 1.5rem;
 }
 
 .portfolio-add-container h1 {
@@ -165,14 +168,16 @@ h1 {
 /* Large devices */
 @media only screen and (max-width: 1200px) {
     .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-columns: repeat(2, minmax(100px, 1fr)); */
+        columns: 2;
     }
 }
 
 /* Medium devices */
 @media only screen and (max-width: 992px) {
     .portfolio-container {
-        grid-template-columns: repeat(1, 1fr);
+        /* grid-template-columns: repeat(1, minmax(100px, 1fr)); */
+        columns: 1;
     }
 }
 

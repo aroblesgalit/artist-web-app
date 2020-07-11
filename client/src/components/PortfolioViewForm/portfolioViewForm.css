@@ -3,3 +3,15 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.portfolio-add-container form {
+    font-weight: 300;
+    margin-top: 40px;
+}
+
+.portfolio-add-container input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0;
+}

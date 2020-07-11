@@ -94,7 +94,7 @@ function PortfolioAddForm() {
                                     <button
                                         className="primary-btn"
                                         onClick={(e) => {
-                                            value.addItem(e, {
+                                            value.addArt(e, {
                                                 name: item.name,
                                                 img: item.img,
                                                 medium: item.medium
