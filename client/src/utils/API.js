@@ -32,10 +32,13 @@ export default {
         return axios.put("/api/items/" + id, data);
     },
     deleteItem: function(id) {
-        return axios.delete("/api/items/" + id)
+        return axios.delete("/api/items/" + id);
     },
     // Art - Portfolio
     getAllArts: function () {
-        return axios.get("/api/arts")
+        return axios.get("/api/arts");
+    },
+    deleteArt: function (id) {
+        return axios.get("/api/arts/" + id);
     }
 }

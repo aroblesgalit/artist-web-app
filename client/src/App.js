@@ -11,6 +11,7 @@ import CartButton from "./components/CartButton";
 import AddShop from "./pages/AddShop";
 import ViewShop from "./pages/ViewShop";
 import Portfolio from "./pages/Portfolio";
+import ViewPortfolio from "./pages/ViewPortfolio";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider, UserConsumer } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
@@ -74,6 +75,15 @@ function App() {
                   {
                     value => {
                       return value.isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
+                    }
+                  }
+                </UserConsumer>
+              </Route>
+              <Route path="/admin/portfolio-view">
+                <UserConsumer>
+                  {
+                    value => {
+                      return value.isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
                     }
                   }
                 </UserConsumer>
