@@ -13,6 +13,7 @@ import ViewShop from "./pages/ViewShop";
 import Portfolio from "./pages/Portfolio";
 import ViewPortfolio from "./pages/ViewPortfolio";
 import AddPortfolio from "./pages/AddPortfolio";
+import About from "./pages/About";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider, UserConsumer } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
@@ -40,6 +41,9 @@ function App() {
               </Route>
               <Route path="/cart">
                 <Cart />
+              </Route>
+              <Route path="/about">
+                <About />
               </Route>
               <Route path="/portfolio">
                 <Portfolio />

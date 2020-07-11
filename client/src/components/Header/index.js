@@ -9,7 +9,7 @@ function Header() {
             <div className="header-container">
                 <Link className="header-logo uk-navbar-item uk-logo" to="/">john doe</Link>
                 <ul className="large-nav uk-nav uk-nav-default">
-                    <li><Link to="/">about</Link></li>
+                    <li><Link to="/about">about</Link></li>
                     <li><Link to="/portfolio">portfolio</Link></li>
                     <li><Link to="/">videos</Link></li>
                     <li><Link to="/shop">shop</Link></li>
@@ -37,7 +37,7 @@ function Header() {
                             <span uk-navbar-toggle-icon="true"></span>
                             <div className="uk-navbar-dropdown">
                                 <ul className="uk-nav uk-navbar-dropdown-nav">
-                                    <li><Link to="/">about</Link></li>
+                                    <li><Link to="/about">about</Link></li>
                                     <li><Link to="/portfolio">portfolio</Link></li>
                                     <li><Link to="/">videos</Link></li>
                                     <li><Link to="/shop">shop</Link></li>
