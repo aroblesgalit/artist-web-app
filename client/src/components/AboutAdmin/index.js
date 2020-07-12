@@ -201,26 +201,28 @@ function AboutAdmin(props) {
                     <div className="uk-margin">
                         <label className="uk-form-label">social medias</label>
                         {
-                            user.socialMedias.map(social => {
-                                return (
-                                    <div className="uk-form-controls uk-flex uk-flex-middle uk-margin-small-bottom" key={social.id}>
-                                        <input
-                                            className="uk-input"
-                                            id={social.id}
-                                            type="url"
-                                            placeholder="social media link"
-                                            required={true}
-                                            value={social.link}
-                                            onChange={(e) => handleSocialChange(e, social.id)}
-                                        />
-                                        <span
-                                            className="social-delete-icon uk-margin-left"
-                                            uk-icon="icon: close; ratio: 0.8"
-                                            onClick={(e) => handleSocialDelete(e, social.id)}
-                                        />
-                                    </div>
-                                )
-                            })
+                            user.socialMedias ? (
+                                user.socialMedias.map(social => {
+                                    return (
+                                        <div className="uk-form-controls uk-flex uk-flex-middle uk-margin-small-bottom" key={social.id}>
+                                            <input
+                                                className="uk-input"
+                                                id={social.id}
+                                                type="url"
+                                                placeholder="social media link"
+                                                required={true}
+                                                value={social.link}
+                                                onChange={(e) => handleSocialChange(e, social.id)}
+                                            />
+                                            <span
+                                                className="social-delete-icon uk-margin-left"
+                                                uk-icon="icon: close; ratio: 0.8"
+                                                onClick={(e) => handleSocialDelete(e, social.id)}
+                                            />
+                                        </div>
+                                    )
+                                })
+                            ) : ""
                         }
                         <div className={`social-add uk-flex uk-flex-middle uk-margin-top ${user.socialMedias.length > 0 ? "uk-flex-right" : "uk-flex-left"}`}>
                             <span>
