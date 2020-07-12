@@ -25,7 +25,7 @@ app.use(routes);
 
 // Serving static files
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 // Connect to MongoDB
