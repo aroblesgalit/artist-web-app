@@ -24,7 +24,7 @@ app.use(passport.session());
 app.use(routes);
 
 // Serving static files
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
     res.sendFile("client/build/index.html");
 });
 
