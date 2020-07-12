@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+    app.use(express.static(path.join(__dirname, "build")));
 }
 
 // Use sessions to keep track of user's login status
@@ -24,12 +24,9 @@ app.use(passport.session());
 app.use(routes);
 
 // Serving static files
-app.get("*", (req, res) => {
-    let url = path.join(__dirname, '../client/build', 'index.html');
-    if (!url.startsWith('/app/')) // since we're on local windows
-      url = url.substring(1);
-    res.sendFile(url);
-  });
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/johndoe", {
