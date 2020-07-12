@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./videoAddForm.css";
-import { ArtConsumer } from "../../utils/ArtContext";
+import { VideoConsumer } from "../../utils/VideoContext";
 
 function VideoAddForm() {
     const titleRef = useRef();
@@ -22,7 +22,7 @@ function VideoAddForm() {
     }
 
     return (
-        <ArtConsumer>
+        <VideoConsumer>
             {
                 value => {
                     return (
@@ -71,7 +71,7 @@ function VideoAddForm() {
                                     <button
                                         className="primary-btn"
                                         onClick={(e) => {
-                                            // value.addVideo(e, item);
+                                            value.addVideo(e, item);
                                             clearInput();
                                         }}
                                     >
@@ -83,7 +83,7 @@ function VideoAddForm() {
                     )
                 }
             }
-        </ArtConsumer>
+        </VideoConsumer>
     )
 }
 

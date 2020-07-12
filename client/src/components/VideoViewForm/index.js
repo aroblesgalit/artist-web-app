@@ -60,7 +60,7 @@ function VideoViewForm() {
                                 <div className="uk-margin">
                                     <button
                                         className="secondary-btn uk-margin-small-right"
-                                        // onClick={(e) => value.deleteVideo(e, _id, "videos-view")}
+                                        onClick={(e) => value.deleteVideo(e, _id, "videos-view")}
                                     >
                                         <span uk-icon="close" className="uk-margin-small-right" />delete
                                     </button>
@@ -68,7 +68,7 @@ function VideoViewForm() {
                                         className="primary-btn"
                                         onClick={(e) => {
                                             console.log(item);
-                                            // value.updateVideo(e, _id, item);
+                                            value.updateVideo(e, _id, item);
                                         }}
                                     >
                                         <span uk-icon="file-edit" className="uk-margin-small-right" />save changes

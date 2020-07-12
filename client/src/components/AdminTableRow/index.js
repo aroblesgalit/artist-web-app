@@ -105,7 +105,7 @@ function AdminTableRow(props) {
                                                                 </Link>
                                                                 <span
                                                                     uk-icon="close"
-                                                                // onClick={(e) => value.deleteArt(e, item._id, "admin/videos")}
+                                                                    onClick={(e) => value.deleteVideo(e, item._id, "admin/videos")}
                                                                 />
                                                             </React.Fragment>
                                                         )
