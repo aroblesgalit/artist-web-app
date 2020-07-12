@@ -70,13 +70,27 @@ function VideoProvider(props) {
             })
     };
 
+    function addVideo(e, item) {
+        e.preventDefault();
+
+        API.addVideo(item)
+            .then(res => {
+                console.log("Video added...", res.data);
+                getAllVideos();
+            })
+            .catch(err => {
+                console.log("Something went wrong while adding video...", err);
+            })
+    };
+
     return (
         <VideoContext.Provider
             value={{
                 ...videos,
                 handleView,
                 deleteVideo,
-                updateVideo
+                updateVideo,
+                addVideo
             }}
         >
             {props.children}
