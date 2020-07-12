@@ -1,10 +1,10 @@
 import React, { useRef, useState, useContext } from "react";
 import "./videoViewForm.css";
-import ArtContext, { ArtConsumer } from "../../utils/ArtContext";
+import VideoContext, { VideoConsumer } from "../../utils/VideoContext";
 
 function VideoViewForm() {
 
-    const { viewVideo } = useContext(ArtContext);
+    const { viewVideo } = useContext(VideoContext);
 
     const titleRef = useRef();
     const urlRef = useRef();
@@ -15,10 +15,10 @@ function VideoViewForm() {
     })
 
     return (
-        <ArtConsumer>
+        <VideoConsumer>
             {
                 value => {
-                    // const { _id } = value.viewArt;
+                    const { _id } = value.viewVideo;
                     // console.log("logging viewArt id", _id, viewArt)
                     return (
                         <form className="uk-grid uk-width-4-5@l" uk-grid="true">
@@ -79,7 +79,7 @@ function VideoViewForm() {
                     )
                 }
             }
-        </ArtConsumer>
+        </VideoConsumer>
     )
 }
 
