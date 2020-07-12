@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import API from "./API";
 // import API from "./API";
 
 const VideoContext = React.createContext();
@@ -16,26 +17,21 @@ function VideoProvider(props) {
     }, []);
 
     function getAllVideos() {
-        setVideos({
-            ...videos,
-            items: [
-                {
-                    _id: "1fakeId",
-                    title: "art",
-                    url: "https://www.youtube.com/embed/g0qaTzjNZ2Y"
-                },
-                {
-                    _id: "2fakeId",
-                    title: "art two",
-                    url: "https://www.youtube.com/embed/ILXhHv-0V9Q"
-                }
-            ]
-        })
+        API.getAllVideos()
+            .then(res => {
+                setVideos({
+                    ...videos,
+                    items: res.data
+                })
+            })
+            .catch(err => {
+                console.log("Something went wrong while fetching videos...", err);
+            })
     };
 
     function getVideoById(id) {
         return videos.items.find(item => item._id === id);
-    }
+    };
 
     function handleView(id) {
         const video = getVideoById(id);
@@ -45,11 +41,28 @@ function VideoProvider(props) {
         })
     };
 
+    function deleteVideo(e, id, page) {
+        e.preventDefault();
+
+        API.deleteVideo(id)
+            .then(res => {
+                console.log("Video deleted...", res);
+                getAllVideos();
+                if (page === "videos-view") {
+                    window.location.replace("/admin");
+                }
+            })
+            .catch(err => {
+                console.log("Something went wrong while deleting the video...", err);
+            })
+    };
+
     return (
         <VideoContext.Provider
             value={{
                 ...videos,
-                handleView
+                handleView,
+                deleteVideo
             }}
         >
             {props.children}
