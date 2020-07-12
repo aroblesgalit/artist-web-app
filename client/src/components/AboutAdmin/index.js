@@ -226,7 +226,7 @@ function AboutAdmin(props) {
                                 )
                             })
                         }
-                        <div className="social-add uk-flex uk-flex-middle uk-margin-top">
+                        <div className={`social-add uk-flex uk-flex-middle uk-margin-top ${user.socialMedias.length > 0 ? "uk-flex-right" : "uk-flex-left"}`}>
                             <span>
                                 {
                                     user.socialMedias.length === 0 ? "add your social media links" : "add another"
