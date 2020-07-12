@@ -16,6 +16,7 @@ import AddPortfolio from "./pages/AddPortfolio";
 import About from "./pages/About";
 import Videos from "./pages/Videos";
 import AddVideos from "./pages/AddVideos";
+import ViewVideos from "./pages/ViewVideos";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import { ItemProvider } from "./utils/ItemContext";
@@ -94,6 +95,9 @@ function App() {
                 </Route>
                 <Route path="/admin/videos-add">
                   <ProtectedRoute component={AddVideos} />
+                </Route>
+                <Route path="/admin/videos-view">
+                  <ProtectedRoute component={ViewVideos} />
                 </Route>
               </Switch>
             </Router>

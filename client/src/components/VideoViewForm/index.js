@@ -18,8 +18,8 @@ function VideoViewForm() {
         <ArtConsumer>
             {
                 value => {
-                    const { _id } = value.viewArt;
-                    console.log("logging viewArt id", _id, viewArt)
+                    // const { _id } = value.viewArt;
+                    // console.log("logging viewArt id", _id, viewArt)
                     return (
                         <form className="uk-grid uk-width-4-5@l" uk-grid="true">
                             <div className="uk-width-1-2@m">
