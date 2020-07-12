@@ -15,6 +15,7 @@ import ViewPortfolio from "./pages/ViewPortfolio";
 import AddPortfolio from "./pages/AddPortfolio";
 import About from "./pages/About";
 import Videos from "./pages/Videos";
+import AddVideos from "./pages/AddVideos";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import { ItemProvider } from "./utils/ItemContext";
@@ -90,6 +91,9 @@ function App() {
                   {
                     // isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
                   }
+                </Route>
+                <Route path="/admin/videos-add">
+                  <ProtectedRoute component={AddVideos} />
                 </Route>
               </Switch>
             </Router>

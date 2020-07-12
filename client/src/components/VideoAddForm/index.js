@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./videoAddForm.css";
 import { ArtConsumer } from "../../utils/ArtContext";
@@ -84,6 +84,8 @@ function VideoAddForm() {
                 }
             }
         </ArtConsumer>
+    )
 }
+
 
 export default VideoAddForm;
