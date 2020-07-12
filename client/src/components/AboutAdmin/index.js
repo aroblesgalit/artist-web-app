@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./aboutAdmin.css";
 import uuid from "react-uuid";
+import AboutContext from "../../utils/AboutContext";
 
 function AboutAdmin(props) {
 
@@ -14,15 +15,17 @@ function AboutAdmin(props) {
     const imgAboutTopRef = useRef();
     const imgAboutBotRef = useRef();
 
+    const { content } = useContext(AboutContext);
+
     const [user, setUser] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        about: "",
-        socialMedias: [],
-        imgHome: "",
-        imgAboutTop: "",
-        imgAboutBot: ""
+        name: content.name,
+        email: content.email,
+        phone: content.phone,
+        about: content.about,
+        socialMedias: content.socialMedias,
+        imgHome: content.imgHome,
+        imgAboutTop: content.imgAboutTop,
+        imgAboutBot: content.imgAboutBot
     });
 
 
@@ -118,7 +121,7 @@ function AboutAdmin(props) {
                                 className="uk-input"
                                 id="user-phone"
                                 type="tel"
-                                placeholder="555.555.5555"
+                                placeholder="5555555555"
                                 required={true}
                                 ref={phoneRef}
                                 value={user.phone}
@@ -155,10 +158,10 @@ function AboutAdmin(props) {
                                 className="uk-input"
                                 id="user-imgHome"
                                 type="url"
-                                placeholder="www.site.com/image.png"
+                                placeholder="https://www.site.com/image.png"
                                 required={true}
                                 ref={imgHomeRef}
-                                value={user.img}
+                                value={user.imgHome}
                                 onChange={() => setUser({
                                     ...user,
                                     imgHome: imgHomeRef.current.value
@@ -173,7 +176,7 @@ function AboutAdmin(props) {
                                 className="uk-input"
                                 id="user-imgAboutTop"
                                 type="url"
-                                placeholder="www.site.com/image.png"
+                                placeholder="https://www.site.com/image.png"
                                 required={true}
                                 ref={imgAboutTopRef}
                                 value={user.imgAboutTop}
@@ -191,7 +194,7 @@ function AboutAdmin(props) {
                                 className="uk-input"
                                 id="user-imgAboutBot"
                                 type="url"
-                                placeholder="www.site.com/image.png"
+                                placeholder="https://www.site.com/image.png"
                                 required={true}
                                 ref={imgAboutBotRef}
                                 value={user.imgAboutBot}

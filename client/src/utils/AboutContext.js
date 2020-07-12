@@ -17,7 +17,6 @@ function AboutProvider(props) {
     function getAbout() {
         API.getAbout()
             .then(res => {
-                console.log("logging getAbout res", res);
                 if (res.data.length > 0) {
                     setAbout({
                         ...about,
@@ -75,4 +74,5 @@ function AboutProvider(props) {
 // Consumer
 const AboutConsumer = AboutContext.Consumer;
 
+export default AboutContext;
 export { AboutProvider, AboutConsumer };
