@@ -2,6 +2,7 @@ import React from "react";
 import "./pages.css";
 import PhoneNum from "../components/PhoneNum";
 import EmailAddress from "../components/EmailAddress";
+import SocialMediaLink from "../components/SocialMediaLink";
 import { AboutConsumer } from "../utils/AboutContext";
 
 function About() {
@@ -25,7 +26,7 @@ function About() {
                                 {
                                     socialMedias ? (
                                         socialMedias.map(social => {
-                                            return <a href={social.link} target="_blank" key={social.id} className="uk-margin-small">{social.link}</a>
+                                            return <SocialMediaLink key={social.id} link={social.link} />
                                         })
                                     ) : ""
 
