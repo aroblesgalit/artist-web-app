@@ -8,13 +8,21 @@ function UserProvider(props) {
 
     const [user, setUser] = useState({
         userExists: true,
-        isLoggedIn: false
+        isLoggedIn: false,
+        activeTab: "portfolio"
     });
 
     useEffect(() => {
         findUser();
         checkLoginStatus();
     }, [])
+
+    function handleTabChange(tab) {
+        setUser({
+            ...user,
+            activeTab: tab
+        })
+    };
 
     // Check if user exists
     async function findUser() {
@@ -32,7 +40,7 @@ function UserProvider(props) {
                 userExists: false
             })
         }
-    }
+    };
 
     // Get user data to check if logged in
     function checkLoginStatus() {
@@ -77,7 +85,7 @@ function UserProvider(props) {
         } else {
             console.log("Please fill in both fields.");
         }
-    }
+    };
 
     // Log user in
     function handleLogin(e, password) {
@@ -96,7 +104,7 @@ function UserProvider(props) {
             checkLoginStatus();
             findUser();
         })
-    }
+    };
 
     // Log user out
     function handleLogout() {
@@ -110,7 +118,7 @@ function UserProvider(props) {
             .catch(err => {
                 console.log("Something went wrong while logging out...", err);
             })
-    }
+    };
 
     return (
         <UserContext.Provider
@@ -118,7 +126,8 @@ function UserProvider(props) {
                 ...user,
                 handleLogout,
                 handleSignup,
-                handleLogin
+                handleLogin,
+                handleTabChange
             }}
         >
             {props.children}

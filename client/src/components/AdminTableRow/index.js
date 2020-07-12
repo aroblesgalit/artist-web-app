@@ -91,7 +91,7 @@ function AdminTableRow(props) {
                                             </iframe>
                                         </td>
                                         <td>{item.title}</td>
-                                        <td>
+                                        <td className="action-icons">
                                             <VideoConsumer>
                                                 {
                                                     value => {
