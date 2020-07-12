@@ -1,12 +1,22 @@
 import React from "react";
+import AdminTable from "../AdminTable";
+import AdminTableRow from "../AdminTableRow";
 
 function VideosAdmin(props) {
 
     const { activeTab } = props;
+    const tableHeads = ["video", "title", "actions"]
+
+    const video = {url: "https://www.youtube.com/embed/g0qaTzjNZ2Y", title: "video"}
 
     return (
         <div className={`videos-content ${activeTab === "videos" ? "show" : "hide"}`}>
-            <h1>videos</h1>
+            <AdminTable tableHeads={tableHeads}>
+                <AdminTableRow
+                    type="videos"
+                    item={video}
+                />
+            </AdminTable>
         </div>
     )
 }
