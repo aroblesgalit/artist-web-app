@@ -57,12 +57,26 @@ function VideoProvider(props) {
             })
     };
 
+    function updateVideo(e, id, item) {
+        e.preventDefault();
+
+        API.updateVideo(id, item)
+            .then(res => {
+                console.log("Video has been updated...", res.data);
+                getAllVideos();
+            })
+            .catch(err => {
+                console.log("Something went wrong while updating the video...", err);
+            })
+    };
+
     return (
         <VideoContext.Provider
             value={{
                 ...videos,
                 handleView,
-                deleteVideo
+                deleteVideo,
+                updateVideo
             }}
         >
             {props.children}
