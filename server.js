@@ -4,6 +4,7 @@ const routes = require("./routes");
 const app = express();
 const session = require("express-session");
 const passport = require("./config/passport");
+const path = require("path");
 const PORT = process.env.PORT || 3001;
 
 // Define middleware
@@ -21,6 +22,14 @@ app.use(passport.session());
 
 // Add routes
 app.use(routes);
+
+// Serving static files
+app.get("*", (req, res) => {
+    let url = path.join(__dirname, '../client/build', 'index.html');
+    if (!url.startsWith('/app/')) // since we're on local windows
+      url = url.substring(1);
+    res.sendFile(url);
+  });
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/johndoe", {
