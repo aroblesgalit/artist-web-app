@@ -5,7 +5,7 @@ function EmailAddress(props) {
     const { email } = props;
 
     return (
-        <a href={`mailto:${email}`} className="uk-margin-small">{email}</a>
+        <a href={`mailto:${email}`} className="uk-text-small">{email}</a>
     )
 }
 

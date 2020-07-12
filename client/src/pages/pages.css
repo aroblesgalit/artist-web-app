@@ -27,8 +27,20 @@ h1 {
     font-weight: 300;
 }
 
-.about-container p {
-    font-size: 1rem;
+.about-container a {
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: rgb(107, 107, 107);
+}
+
+/* Videos */
+.videos-container {
+    width: 100%;
+    max-width: 768px;
+}
+
+.videos-container iframe {
+    height: auto;
 }
 
 

@@ -14,6 +14,7 @@ import Portfolio from "./pages/Portfolio";
 import ViewPortfolio from "./pages/ViewPortfolio";
 import AddPortfolio from "./pages/AddPortfolio";
 import About from "./pages/About";
+import Videos from "./pages/Videos";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import { ItemProvider } from "./utils/ItemContext";
@@ -50,6 +51,9 @@ function App() {
                 </Route>
                 <Route path="/portfolio">
                   <Portfolio />
+                </Route>
+                <Route path="/videos">
+                  <Videos />
                 </Route>
                 <Route path="/admin-login">
                   <PublicRoute component={Login} />

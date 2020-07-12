@@ -9,7 +9,7 @@ function PhoneNum(props) {
     phoneToArr.splice(7, 0, "-");
 
     return (
-        <a href={`tel:+${phone}`} className="uk-margin-small">{phoneToArr}</a>
+        <a href={`tel:+${phone}`} className="uk-text-small">{phoneToArr}</a>
     )
 }
 

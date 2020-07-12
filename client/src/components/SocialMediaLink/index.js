@@ -5,7 +5,7 @@ function SocialMediaLink(props) {
     const { link } = props;
 
     return (
-        <a href={link} target="_blank" rel="noopener noreferrer" className="uk-margin-small">
+        <a href={link} target="_blank" rel="noopener noreferrer" className="uk-text-small">
             {
                 link.includes("youtube") ? "youtube" :
                     (

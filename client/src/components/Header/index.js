@@ -20,7 +20,7 @@ function Header() {
                 <ul className="large-nav uk-nav uk-nav-default">
                     <li><Link to="/about">about</Link></li>
                     <li><Link to="/portfolio">portfolio</Link></li>
-                    <li><Link to="/">videos</Link></li>
+                    <li><Link to="/videos">videos</Link></li>
                     <li><Link to="/shop">shop</Link></li>
                     <UserConsumer>
                         {
@@ -44,7 +44,7 @@ function Header() {
                                 <ul className="uk-nav uk-navbar-dropdown-nav">
                                     <li><Link to="/about">about</Link></li>
                                     <li><Link to="/portfolio">portfolio</Link></li>
-                                    <li><Link to="/">videos</Link></li>
+                                    <li><Link to="/videos">videos</Link></li>
                                     <li><Link to="/shop">shop</Link></li>
                                     <UserConsumer>
                                         {
