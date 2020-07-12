@@ -39,9 +39,16 @@
 }
 
 .social-media-links {
-    position: absolute;
-    bottom: 80px;
-    right: 40px;
+    margin-top: 140px;
+}
+
+.footer {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.footer a {
+    margin-left: 0.4rem;
 }
 
 

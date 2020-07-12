@@ -9,7 +9,7 @@ function SocialMediaIcon(props) {
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="uk-icon-button uk-margin-small-right"
+            className="uk-icon-button uk-margin-small-left"
         >
             <span
                 uk-icon={
