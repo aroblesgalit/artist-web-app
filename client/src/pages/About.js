@@ -11,7 +11,7 @@ function About() {
             {
                 value => {
 
-                    const { imgAboutTop, name, about, email, phone, socialMedias, imgAboutBot } = value;
+                    const { imgAboutTop, name, about, email, phone, socialMedias, imgAboutBot } = value.content;
 
                     return (
                         <div className="main-container about-container">
