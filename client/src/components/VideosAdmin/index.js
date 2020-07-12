@@ -7,7 +7,7 @@ function VideosAdmin(props) {
     const { activeTab } = props;
     const tableHeads = ["video", "title", "actions"]
 
-    const video = {url: "https://www.youtube.com/embed/g0qaTzjNZ2Y", title: "video"}
+    const video = { _id: "1fakeId", url: "https://www.youtube.com/embed/g0qaTzjNZ2Y", title: "video"}
 
     return (
         <div className={`videos-content ${activeTab === "videos" ? "show" : "hide"}`}>
