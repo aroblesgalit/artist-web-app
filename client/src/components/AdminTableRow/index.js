@@ -77,9 +77,33 @@ function AdminTableRow(props) {
                         ) : (
                                 type === "videos" ? (
                                     <React.Fragment>
-                                        <td>videos data</td>
-                                        <td>videos data</td>
-                                        <td>videos data</td>
+                                        <td>
+                                            <iframe
+                                                title={item.title}
+                                                src={item.url}
+                                                width="140"
+                                                height="100"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen={true}
+                                            >
+                                            </iframe>
+                                        </td>
+                                        <td>{item.title}</td>
+                                        <td>
+                                            <React.Fragment>
+                                                <Link
+                                                    to={`/admin/portfolio-view/${item._id}`}
+                                                    // onClick={() => value.handleView(item._id)}
+                                                >
+                                                    <span uk-icon="file-edit" className="uk-margin-right" />
+                                                </Link>
+                                                <span
+                                                    uk-icon="close"
+                                                    // onClick={(e) => value.deleteArt(e, item._id, "admin/videos")}
+                                                />
+                                            </React.Fragment>
+                                        </td>
                                     </React.Fragment>
                                 ) : (
                                         <React.Fragment>
