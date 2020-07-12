@@ -8,14 +8,12 @@ function LoginForm() {
     const passwordRef = useRef();
 
     return (
-
-
         <div className="login-form-container">
             <h1 className="page-heading uk-text-center">Login</h1>
             <AboutConsumer>
                 {
                     value => {
-                        return <p className="uk-text-center">Hi {value.name}! Welcome back!</p>
+                        return <p className="uk-text-center">Hi {value.content.name}! Welcome back!</p>
                     }
                 }
             </AboutConsumer>
