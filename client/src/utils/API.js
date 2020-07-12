@@ -56,5 +56,18 @@ export default {
     },
     updateAbout: function (id, data) {
         return axios.put("/api/about/" + id, data);
+    },
+    // Videos
+    getAllVideos: function () {
+        return axios.get("/api/videos");
+    },
+    addVideo: function (data) {
+        return axios.post("/api/videos", data);
+    },
+    updateVideo: function (id, data) {
+        return axios.put("/api/videos/" + id, data);
+    },
+    deleteVideo: function (id) {
+        return axios.delete("/api/videos/" + id);
     }
 }
