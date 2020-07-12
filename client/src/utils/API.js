@@ -46,5 +46,8 @@ export default {
     },
     addArt: function (data) {
         return axios.post("/api/arts", data);
+    },
+    getAbout: function() {
+        return axios.get("/api/about");
     }
 }
