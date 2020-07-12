@@ -48,10 +48,13 @@ export default {
         return axios.post("/api/arts", data);
     },
     // About Content
-    getAbout: function() {
+    getAbout: function () {
         return axios.get("/api/about");
     },
-    addAbout: function(data) {
+    addAbout: function (data) {
         return axios.post("/api/about", data);
+    },
+    updateAbout: function (id, data) {
+        return axios.put("/api/about/" + id, data);
     }
 }

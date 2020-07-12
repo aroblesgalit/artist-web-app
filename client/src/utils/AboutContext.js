@@ -73,13 +73,27 @@ function AboutProvider(props) {
             .catch(err => {
                 console.log("Something went wrong while adding about content...", err);
             })
-    }
+    };
+
+    function updateAbout(e, id, data) {
+        e.preventDefault();
+
+        API.updateAbout(id, data)
+            .then(res => {
+                console.log("The about content has been updated...", res.data);
+                getAbout();
+            })
+            .catch(err => {
+                console.log("Something went wrong while updating the about content...", err);
+            })
+    };
 
     return (
         <AboutContext.Provider
             value={{
                 ...about,
-                addAbout
+                addAbout,
+                updateAbout
             }}
         >
             {props.children}
