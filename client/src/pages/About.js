@@ -16,9 +16,7 @@ function About() {
                     return (
                         <div className="main-container about-container">
                             <img src={imgAboutTop} alt={name} />
-                            <div className="uk-margin-large uk-width-1-2@l">
-                                <p>{about}</p>
-                            </div>
+                            <div className="uk-margin-large uk-width-1-2@l"><p>{about}</p></div>
                             <div className="uk-margin-large uk-flex uk-flex-column uk-width-1-2@l">
                                 <h4>connect with me</h4>
                                 <EmailAddress email={email} />
