@@ -242,7 +242,7 @@ function AboutAdmin(props) {
                                     return value.contentExists ? (
                                         <button
                                             className="primary-btn"
-                                            onClick={(e) => value.updateAbout(e, user)}
+                                            onClick={(e) => value.updateAbout(e, value.content._id, user)}
                                         >
                                             <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
                                         </button>
