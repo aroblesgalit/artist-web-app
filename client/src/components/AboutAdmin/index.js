@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import "./aboutAdmin.css";
 import uuid from "react-uuid";
-import AboutContext from "../../utils/AboutContext";
+import AboutContext, { AboutConsumer } from "../../utils/AboutContext";
 
 function AboutAdmin(props) {
 
@@ -65,13 +65,6 @@ function AboutAdmin(props) {
             ...user,
             socialMedias: tempSocialMedias
         })
-    }
-
-    // For testing. Delete after.
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        console.log(user.socialMedias);
     }
 
     return (
@@ -243,23 +236,27 @@ function AboutAdmin(props) {
                         </div>
                     </div>
                     <div className="uk-margin">
-                        <button
-                            className="primary-btn"
-                            // onClick={(e) => {
-                            //     value.updateItem(e, _id, {
-                            //         name: item.name,
-                            //         img: item.img,
-                            //         price: item.price,
-                            //         size: item.size,
-                            //         print: item.print,
-                            //         info: item.info,
-                            //         countInStock: item.countInStock
-                            //     });
-                            // }}
-                            onClick={(e) => handleSubmit(e)}
-                        >
-                            <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
-                        </button>
+                        <AboutConsumer>
+                            {
+                                value => {
+                                    return value.contentExists ? (
+                                        <button
+                                            className="primary-btn"
+                                            onClick={(e) => value.updateAbout(e, user)}
+                                        >
+                                            <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
+                                        </button>
+                                    ) : (
+                                            <button
+                                                className="primary-btn"
+                                                onClick={(e) => value.addAbout(e, user)}
+                                            >
+                                                <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
+                                            </button>
+                                        )
+                                }
+                            }
+                        </AboutConsumer>
                     </div>
                 </div>
             </form>

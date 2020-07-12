@@ -8,11 +8,9 @@ function Home() {
             <AboutConsumer>
                 {
                     value => {
+                        const { imgHome, name } = value.content;
                         return (
-                            <img
-                                src={value.imgHome || "https://via.placeholder.com/900x1230"}
-                                alt={value.name || "john doe"}
-                            />
+                            <img src={imgHome} alt={name} />
                         )
                     }
                 }

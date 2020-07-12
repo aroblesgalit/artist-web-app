@@ -9,7 +9,14 @@ function Header() {
     return (
         <div>
             <div className="header-container">
-                <Link className="header-logo uk-navbar-item uk-logo" to="/">john doe</Link>
+                <AboutConsumer>
+                    {
+                        value => {
+                            const { name } = value.content;
+                            return <Link className="header-logo uk-navbar-item uk-logo" to="/">{name}</Link>
+                        }
+                    }
+                </AboutConsumer>
                 <ul className="large-nav uk-nav uk-nav-default">
                     <li><Link to="/about">about</Link></li>
                     <li><Link to="/portfolio">portfolio</Link></li>
@@ -61,8 +68,9 @@ function Header() {
                     <AboutConsumer>
                         {
                             value => {
-                                return value.socialMedias ? (
-                                    value.socialMedias.map(social => {
+                                const { socialMedias } = value.content;
+                                return socialMedias ? (
+                                    socialMedias.map(social => {
                                         return <SocialMediaIcon key={social.id} link={social.link} />
                                     })
                                 ) : ""

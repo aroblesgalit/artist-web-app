@@ -7,7 +7,8 @@ const AboutContext = React.createContext();
 function AboutProvider(props) {
 
     const [about, setAbout] = useState({
-        content: {}
+        content: {},
+        contentExists: false
     });
 
     useEffect(() => {
@@ -20,7 +21,8 @@ function AboutProvider(props) {
                 if (res.data.length > 0) {
                     setAbout({
                         ...about,
-                        content: res.data[0]
+                        content: res.data[0],
+                        contentExists: true
                     })
                 } else {
                     setAbout({
