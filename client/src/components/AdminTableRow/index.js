@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./adminTableRow.css";
 import { ItemConsumer } from "../../utils/ItemContext";
 import { ArtConsumer } from "../../utils/ArtContext";
+import { VideoConsumer } from "../../utils/VideoContext";
 
 function AdminTableRow(props) {
 
@@ -91,18 +92,26 @@ function AdminTableRow(props) {
                                         </td>
                                         <td>{item.title}</td>
                                         <td>
-                                            <React.Fragment>
-                                                <Link
-                                                    to={`/admin/videos-view/${item._id}`}
-                                                    // onClick={() => value.handleView(item._id)}
-                                                >
-                                                    <span uk-icon="file-edit" className="uk-margin-right" />
-                                                </Link>
-                                                <span
-                                                    uk-icon="close"
-                                                    // onClick={(e) => value.deleteArt(e, item._id, "admin/videos")}
-                                                />
-                                            </React.Fragment>
+                                            <VideoConsumer>
+                                                {
+                                                    value => {
+                                                        return (
+                                                            <React.Fragment>
+                                                                <Link
+                                                                    to={`/admin/videos-view/${item._id}`}
+                                                                    onClick={() => value.handleView(item._id)}
+                                                                >
+                                                                    <span uk-icon="file-edit" className="uk-margin-right" />
+                                                                </Link>
+                                                                <span
+                                                                    uk-icon="close"
+                                                                // onClick={(e) => value.deleteArt(e, item._id, "admin/videos")}
+                                                                />
+                                                            </React.Fragment>
+                                                        )
+                                                    }
+                                                }
+                                            </VideoConsumer>
                                         </td>
                                     </React.Fragment>
                                 ) : (
