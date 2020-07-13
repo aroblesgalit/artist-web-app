@@ -6,6 +6,7 @@ import AboutContext, { AboutConsumer } from "../../utils/AboutContext";
 function AboutAdmin(props) {
 
     const { activeTab } = props;
+    const { content, alertOn, alertType, alertState, alertItem } = useContext(AboutContext);
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -14,8 +15,6 @@ function AboutAdmin(props) {
     const imgHomeRef = useRef();
     const imgAboutTopRef = useRef();
     const imgAboutBotRef = useRef();
-
-    const { content } = useContext(AboutContext);
 
     const [user, setUser] = useState({
         name: content.name,
@@ -259,6 +258,11 @@ function AboutAdmin(props) {
                                 }
                             }
                         </AboutConsumer>
+                        {
+                            alertOn ? (
+                                <p className={`uk-text-success`}>{`${alertItem} ${alertType} ${alertState}`}</p>
+                            ) : ""
+                        }
                     </div>
                 </div>
             </form>

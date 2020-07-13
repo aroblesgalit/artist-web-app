@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./pages.css";
 import AdminTabs from "../components/AdminTabs";
@@ -10,15 +10,12 @@ import AddButton from "../components/AddButton";
 import { UserConsumer } from "../utils/UserContext";
 
 function Admin() {
-
-    // const [activeTab, setActiveTab] = useState("portfolio");
-
     return (
         <div className="main-container">
             <UserConsumer>
                 {
                     value => {
-                        const {activeTab, handleTabChange} = value;
+                        const {activeTab} = value;
                         return (
                             <React.Fragment>
                                 <AdminTabs />

@@ -11,6 +11,13 @@ function AboutProvider(props) {
         contentExists: false
     });
 
+    const [alert, setAlert] = useState({
+        alertItem: "About content",
+        alertType: "none", // add, update
+        alertOn: false,
+        alertState: "none" // successful, fail, none
+    });
+
     useEffect(() => {
         getAbout();
     }, [])
@@ -77,21 +84,41 @@ function AboutProvider(props) {
 
     function updateAbout(e, id, data) {
         e.preventDefault();
+        resetAlert();
 
         API.updateAbout(id, data)
             .then(res => {
                 console.log("The about content has been updated...", res.data);
                 getAbout();
+                setAlert({
+                    ...alert,
+                    alertType: "update",
+                    alertOn: true,
+                    alertState: "successful"
+                });
+                resetAlert();
             })
             .catch(err => {
                 console.log("Something went wrong while updating the about content...", err);
             })
     };
 
+    function resetAlert() {
+        setTimeout(() => {
+            setAlert({
+                alertItem: "About content",
+                alertType: "none",
+                alertOn: false,
+                alertState: "none"
+            })
+        }, 3000);
+    };
+
     return (
         <AboutContext.Provider
             value={{
                 ...about,
+                ...alert,
                 addAbout,
                 updateAbout
             }}
