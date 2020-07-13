@@ -3,13 +3,9 @@ import { Link } from "react-router-dom";
 import "./pages.css";
 import CartRow from "../components/CartRow";
 import CartSubtotal from "../components/CartSubtotal";
-import ItemContext, { ItemConsumer } from "../utils/ItemContext";
-import Alert from "../components/Alert";
+import { ItemConsumer } from "../utils/ItemContext";
 
 function Cart() {
-
-    const { alertOn, alertItem, alertType, alertState } = useContext(ItemContext);
-
     return (
         <div className="main-container cart-container">
             <Link to="/shop" className="uk-flex uk-flex-middle">
@@ -46,12 +42,6 @@ function Cart() {
                     <CartSubtotal />
                 </tbody>
             </table>
-            <Alert
-                alertOn={alertOn}
-                alertItem={alertItem}
-                alertType={alertType}
-                alertState={alertState}
-            />
         </div>
     )
 }

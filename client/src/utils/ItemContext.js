@@ -102,7 +102,9 @@ class ItemProvider extends Component {
         }, () => {
             this.addTotals();
         });
-        this.setAlert(true, "delete", "successful");
+        setTimeout(() => {
+            this.setAlert(true, "delete", "successful");
+        }, 500);
         this.resetAlert(3000);
     };
 

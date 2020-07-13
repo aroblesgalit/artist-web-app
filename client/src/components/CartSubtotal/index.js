@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./cartSubtotal.css";
-import { ItemConsumer } from "../../utils/ItemContext";
+import ItemContext, { ItemConsumer } from "../../utils/ItemContext";
 import PayPalButton from "../PayPalButton";
+import Alert from "../Alert";
 
 function CartSubtotal({ history }) {
+
+    const { alertOn, alertItem, alertType, alertState } = useContext(ItemContext);
+
     return (
         <ItemConsumer>
             {
@@ -12,7 +16,14 @@ function CartSubtotal({ history }) {
                     if (value.cart.length > 0) {
                         return (
                             <tr>
-                                <td></td>
+                                <td className="uk-flex uk-flex-top">
+                                    <Alert
+                                        alertOn={alertOn}
+                                        alertItem={alertItem}
+                                        alertType={alertType}
+                                        alertState={alertState}
+                                    />
+                                </td>
                                 <td></td>
                                 <td className="subtotal-info">
                                     <div className="uk-flex uk-flex-right uk-margin-bottom">
@@ -31,11 +42,11 @@ function CartSubtotal({ history }) {
                                         // <button className="primary-btn">paypal checkout</button>
                                     }
                                     <PayPalButton
-                                        total={value.cartTotal} 
-                                        clearCart={value.clearCart} 
+                                        total={value.cartTotal}
+                                        clearCart={value.clearCart}
                                         history={history}
-                                        updateDataItems={value.updateDataItems} 
-                                    />                                    
+                                        updateDataItems={value.updateDataItems}
+                                    />
                                 </td>
                             </tr>
                         )
