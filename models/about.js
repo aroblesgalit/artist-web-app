@@ -18,7 +18,7 @@ const aboutSchema = new Schema({
     phone: {
         type: Number,
         trim: true,
-        match: [/\d{10}/],
+        match: [/^\d{10}$/],
         default: 5555555555
     },
     about: {
