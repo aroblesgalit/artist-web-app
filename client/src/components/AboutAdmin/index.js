@@ -259,15 +259,15 @@ function AboutAdmin(props) {
                                 }
                             }
                         </AboutConsumer>
-                        <Alert
-                            alertOn={alertOn}
-                            alertItem={alertItem}
-                            alertType={alertType}
-                            alertState={alertState}
-                        />
                     </div>
                 </div>
             </form>
+            <Alert
+                alertOn={alertOn}
+                alertItem={alertItem}
+                alertType={alertType}
+                alertState={alertState}
+            />
         </div>
     )
 }

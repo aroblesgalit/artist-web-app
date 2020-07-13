@@ -14,7 +14,7 @@ function ViewPortfolio() {
             <Link to="/admin" className="uk-flex uk-flex-middle">
                 <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to admin</span>
             </Link>
-            <h1>view/edit item</h1>
+            <h1>view/edit video</h1>
             <VideoViewForm />
             <Alert
                 alertOn={alertOn}

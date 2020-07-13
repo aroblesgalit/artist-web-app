@@ -19,6 +19,8 @@ function ArtProvider(props) {
         alertState: "none" // successful, fail, none
     });
 
+    let alertTimeout;
+
     useEffect(() => {
         getAllArts();
     }, [])
@@ -51,38 +53,28 @@ function ArtProvider(props) {
 
     function deleteArt(e, id, page) {
         e.preventDefault();
-        resetAlert();
+        clearAlert();
 
         API.deleteArt(id)
             .then(res => {
                 // console.log("Art deleted...", res);
                 getAllArts();
-                setAlert({
-                    ...alert,
-                    alertType: "delete",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "delete", "successful");
+                resetAlert(3000);
                 if (page === "portfolio-view") {
                     window.location.replace("/admin");
                 }
             })
             .catch(err => {
                 console.log("Something went wrong while deleting an art piece...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "delete",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "delete", "fail");
+                resetAlert(3000);
             })
     };
 
     function updateArt(e, id, item) {
         e.preventDefault();
-        resetAlert();
+        clearAlert();
 
         API.updateArt(id, {
             name: item.name,
@@ -92,29 +84,19 @@ function ArtProvider(props) {
             .then(res => {
                 // console.log("Art piece has been updated...", res.data);
                 getAllArts();
-                setAlert({
-                    ...alert,
-                    alertType: "update",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "update", "successful");
+                resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while updating an art piece...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "update",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "update", "fail");
+                resetAlert(3000);
             })
     };
 
     function addArt(e, item) {
         e.preventDefault();
-        resetAlert();
+        clearAlert();
 
         API.addArt({
             name: item.name,
@@ -124,36 +106,39 @@ function ArtProvider(props) {
             .then(res => {
                 // console.log("Art added to portfolio...", res.data);
                 getAllArts();
-                setAlert({
-                    ...alert,
-                    alertType: "add",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "add", "successful");
+                resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while adding art to portfolio...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "add",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "add", "fail");
+                resetAlert(3000);
             })
     };
 
-    function resetAlert() {
-        setTimeout(() => {
+    function setAlertState(alertOn, alertType, alertState) {
+        setAlert({
+            ...alert,
+            alertType: alertType,
+            alertOn: alertOn,
+            alertState: alertState
+        });
+    };
+
+    function clearAlert() {
+        clearTimeout(alertTimeout);
+    };
+
+    function resetAlert(delay) {
+        alertTimeout = setTimeout(() => {
             setAlert({
-                alertItem: "art",
+                ...alert,
                 alertType: "none",
                 alertOn: false,
                 alertState: "none"
             })
-        }, 3000);
-    }
+        }, delay);
+    };
 
     return (
         <ArtContext.Provider

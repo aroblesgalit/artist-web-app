@@ -14,7 +14,7 @@ function AddVideos() {
             <Link to="/admin" className="uk-flex uk-flex-middle">
                 <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to admin</span>
             </Link>
-            <h1>add new item</h1>
+            <h1>add new video</h1>
             <VideoAddForm />
             <Alert
                 alertOn={alertOn}
