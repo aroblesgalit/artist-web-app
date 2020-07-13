@@ -5,7 +5,7 @@ const app = express();
 const session = require("express-session");
 const passport = require("./config/passport");
 // const path = require("path");
-require("dotenv").config();
+// require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware

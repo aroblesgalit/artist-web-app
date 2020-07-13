@@ -1,0 +1,17 @@
+.footer {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.footer a {
+    margin-left: 0.4rem;
+}
+
+
+
+/* Medium devices (landscape tablets, 768px and below) */
+@media only screen and (max-width: 768px) {
+    .footer.large-screen {
+        display: none;
+    }
+}
