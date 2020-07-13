@@ -21,7 +21,6 @@ function PortfolioViewForm() {
             {
                 value => {
                     const { _id } = value.viewArt;
-                    console.log("logging viewArt id", _id, viewArt)
                     return (
                         <form className="uk-grid uk-width-4-5@l" uk-grid="true">
                             <div className="uk-width-1-2@m">
@@ -87,7 +86,6 @@ function PortfolioViewForm() {
                                     <button
                                         className="primary-btn"
                                         onClick={(e) => {
-                                            console.log(item);
                                             value.updateArt(e, _id, {
                                                 name: item.name,
                                                 img: item.img,

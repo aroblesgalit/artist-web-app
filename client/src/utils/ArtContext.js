@@ -48,7 +48,6 @@ function ArtProvider(props) {
     // Set the viewArt state to the art item of given id
     function handleView(id) {
         const art = getArtById(id);
-        console.log("Art for view: ", art);
         setPortfolio({
             ...portfolio,
             viewArt: art
