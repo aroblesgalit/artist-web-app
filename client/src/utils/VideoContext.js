@@ -49,7 +49,6 @@ function VideoProvider(props) {
 
     function deleteVideo(e, id, page) {
         e.preventDefault();
-        resetAlert();
 
         API.deleteVideo(id)
             .then(res => {
@@ -80,7 +79,6 @@ function VideoProvider(props) {
 
     function updateVideo(e, id, item) {
         e.preventDefault();
-        resetAlert();
 
         API.updateVideo(id, item)
             .then(res => {
@@ -108,7 +106,6 @@ function VideoProvider(props) {
 
     function addVideo(e, item) {
         e.preventDefault();
-        resetAlert();
 
         API.addVideo(item)
             .then(res => {

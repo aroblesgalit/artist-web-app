@@ -86,6 +86,7 @@ class ItemProvider extends Component {
     };
 
     removeItem = (id) => {
+        this.resetAlert(0);
         let tempItems = [...this.state.items];
         let tempCart = [...this.state.cart];
         tempCart = tempCart.filter(item => item._id !== id);
@@ -100,7 +101,9 @@ class ItemProvider extends Component {
             }
         }, () => {
             this.addTotals();
-        })
+        });
+        this.setAlert(true, "delete", "successful");
+        this.resetAlert(3000);
     };
 
     updateItemCount = (id, val) => {
@@ -224,8 +227,8 @@ class ItemProvider extends Component {
                     alertType: "none",
                     alertState: "none"
                 }
-            }, delay);
-        })
+            });
+        }, delay)
     };
 
 
