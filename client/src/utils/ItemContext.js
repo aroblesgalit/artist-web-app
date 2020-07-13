@@ -13,7 +13,11 @@ class ItemProvider extends Component {
         cartSubtotal: 0,
         cartShipping: 4,
         cartTotal: 0,
-        cartCount: 0
+        cartCount: 0,
+        alertOn: false,
+        alertItem: "item",
+        alertType: "none", // add, update, delete, none
+        alertState: "none" // successful, fail, none
     };
 
     componentDidMount() {
@@ -71,7 +75,7 @@ class ItemProvider extends Component {
         this.state.cart.map(item => (subtotal += item.cartTotal));
         const total = subtotal + this.state.cartShipping;
         let subCartCount = 0;
-        this.state.cart.map(item => (subCartCount += item.cartCount)); 
+        this.state.cart.map(item => (subCartCount += item.cartCount));
         this.setState(() => {
             return {
                 cartSubtotal: subtotal,
@@ -185,11 +189,14 @@ class ItemProvider extends Component {
     // Delete an item from shop
     deleteItem = (e, id, page) => {
         e.preventDefault();
+        this.resetAlert(0);
 
         API.deleteItem(id)
             .then(res => {
                 console.log("Item deleted...", res);
                 this.getAllItems();
+                this.setAlert(true, "delete", "successful");
+                this.resetAlert(3000);
                 if (page === "shop-view") {
                     window.location.replace("/admin");
                 }
@@ -197,6 +204,28 @@ class ItemProvider extends Component {
             .catch(err => {
                 console.log("Something went wrong while deleting an item...", err);
             })
+    };
+
+    setAlert = (alertOn, alertType, alertState) => {
+        this.setState(() => {
+            return {
+                alertOn: alertOn,
+                alertType: alertType,
+                alertState: alertState
+            }
+        });
+    };
+
+    resetAlert = (delay) => {
+        setTimeout(() => {
+            this.setState(() => {
+                return {
+                    alertOn: false,
+                    alertType: "none",
+                    alertState: "none"
+                }
+            }, delay);
+        })
     };
 
 
