@@ -20,21 +20,25 @@ class ItemProvider extends Component {
         alertState: "none" // successful, fail, none
     };
 
+    // Variable for timeout for alert reset
     alertTimeout;
 
     componentDidMount() {
         this.getAllItems();
     };
 
+    // Fetch all the shop items from the database
     getAllItems = () => {
         API.getAllItems()
             .then(res => {
                 this.setState(() => {
                     res.data.forEach(item => {
+                        // Take all the items and declare and define variables for cartCount, inCart, cartTotal
                         item.cartCount = 0;
                         item.inCart = false;
                         item.cartTotal = 0;
                     });
+                    // Set the state of items to data returned
                     return { items: res.data }
                 })
             })
@@ -43,11 +47,13 @@ class ItemProvider extends Component {
             })
     };
 
+    // Get the item from the array based on id
     getItem = (arr, id) => {
         const item = arr.find(item => item._id === id);
         return item;
     };
 
+    // Set detailItem to the item based on id
     handleDetail = (id) => {
         const item = this.getItem(this.state.items, id);
         this.setState(() => {
@@ -55,6 +61,9 @@ class ItemProvider extends Component {
         })
     };
 
+    // Update item's inCart, cartCount, and cartTotal based on the given id
+    // Then add this item into the cart
+    // Add the totals
     addToCart = (id) => {
         let tempItems = [...this.state.items];
         const item = this.getItem(tempItems, id);
@@ -68,10 +77,10 @@ class ItemProvider extends Component {
             };
         }, () => {
             this.addTotals();
-            console.log("Item added to cart...", this.state.cart);
         })
     };
 
+    // Add the cart totals and update cartSubtotal, cartTotal, and cartCount
     addTotals = () => {
         let subtotal = 0;
         this.state.cart.map(item => (subtotal += item.cartTotal));
@@ -87,6 +96,9 @@ class ItemProvider extends Component {
         })
     };
 
+    // Remove an item from the cart with the give id
+    // Reset item's inCart, cartCount, and cartTotal
+    // Then update items and cart and add the totals
     removeItem = (id) => {
         this.clearAlert();
         let tempItems = [...this.state.items];
@@ -108,6 +120,8 @@ class ItemProvider extends Component {
         this.resetAlert(3000);
     };
 
+    // Update the item's cartCount and cartTotal based on the id and the passed value
+    // Then add totals
     updateItemCount = (id, val) => {
         let tempCart = [...this.state.cart];
         const item = this.getItem(tempCart, id);
@@ -122,6 +136,8 @@ class ItemProvider extends Component {
         })
     };
 
+    // Clear the cart and fetched items from the database
+    // Then add the totals
     clearCart = () => {
         this.setState(() => {
             return {
@@ -133,6 +149,7 @@ class ItemProvider extends Component {
         })
     };
 
+    // Update the items' (from cart) countInStock and sold values when paypal checkout is successful
     updateDataItems = () => {
         this.state.cart.forEach(item => {
             API.updateSoldItem({
@@ -162,7 +179,6 @@ class ItemProvider extends Component {
             countInStock: item.countInStock
         })
             .then(res => {
-                // console.log("Item added to shop...", res.data);
                 this.getAllItems();
                 this.setAlert(true, "add", "successful");
                 this.resetAlert(3000);
@@ -188,8 +204,7 @@ class ItemProvider extends Component {
             info: item.info,
             countInStock: item.countInStock
         })
-            .then(res => {
-                // console.log("Item has been updated...", res.data);
+            .then(()=> {
                 this.getAllItems();
                 this.setAlert(true, "update", "successful");
                 this.resetAlert(3000);
@@ -207,8 +222,7 @@ class ItemProvider extends Component {
         this.clearAlert();
 
         API.deleteItem(id)
-            .then(res => {
-                // console.log("Item deleted...", res);
+            .then(() => {
                 this.getAllItems();
                 this.setAlert(true, "delete", "successful");
                 this.resetAlert(3000);
@@ -223,6 +237,7 @@ class ItemProvider extends Component {
             })
     };
 
+    // Update alert state
     setAlert = (alertOn, alertType, alertState) => {
         this.setState(() => {
             return {
@@ -233,10 +248,12 @@ class ItemProvider extends Component {
         });
     };
 
+    // Clear the resetAlert timeout
     clearAlert = () => {
         clearTimeout(this.alertTimeout);
     };
 
+    // Reset alert state
     resetAlert = (delay) => {
         this.alertTimeout = setTimeout(() => {
             this.setState(() => {

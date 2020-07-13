@@ -18,6 +18,7 @@ function AboutProvider(props) {
         alertState: "none" // successful, fail, none
     });
 
+    // Variable for timeout for alert reset
     let alertTimeout;
 
     useEffect(() => {
