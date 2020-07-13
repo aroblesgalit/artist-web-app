@@ -19,6 +19,7 @@ import AddVideos from "./pages/AddVideos";
 import ViewVideos from "./pages/ViewVideos";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import Footer from "./components/Footer";
 import { ItemProvider } from "./utils/ItemContext";
 import { UserProvider } from "./utils/UserContext";
 import { ArtProvider } from "./utils/ArtContext";
@@ -102,6 +103,7 @@ function App() {
                     <ProtectedRoute component={ViewVideos} />
                   </Route>
                 </Switch>
+                <Footer screenSize="small-screen" />
               </Router>
             </VideoProvider>
           </AboutProvider>

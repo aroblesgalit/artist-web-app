@@ -7,11 +7,20 @@
     margin-left: 0.4rem;
 }
 
+.footer.small-screen {
+    display: none;
+}
+
 
 
 /* Medium devices (landscape tablets, 768px and below) */
 @media only screen and (max-width: 768px) {
     .footer.large-screen {
         display: none;
+    }
+
+    .footer.small-screen {
+        display: block;
+        text-align: center;
     }
 }
