@@ -219,4 +219,9 @@ h1 {
     /* .uk-first-column {
         padding: 0;
     } */
+    .shop-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
 }
