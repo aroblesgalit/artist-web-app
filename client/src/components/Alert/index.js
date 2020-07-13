@@ -9,7 +9,7 @@ function Alert(props) {
             {
                 alertOn ? (
                     <p
-                        className={`uk-text-${alertState === "successful" ? "success" : "danger"} uk-text-light`}
+                        className={`uk-text-${alertState === "successful" ? "success" : "danger"} uk-text-light uk-text-small`}
                     >
                         {`${alertItem} ${alertType} ${alertState}`}
                     </p>

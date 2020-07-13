@@ -71,14 +71,28 @@ function AboutProvider(props) {
 
     function addAbout(e, data) {
         e.preventDefault();
+        resetAlert();
 
         API.addAbout(data)
             .then(res => {
                 console.log("About content added...", res.data);
                 getAbout();
+                setAlert({
+                    ...alert,
+                    alertType: "add",
+                    alertOn: true,
+                    alertState: "successful"
+                });
+                resetAlert();
             })
             .catch(err => {
                 console.log("Something went wrong while adding about content...", err);
+                setAlert({
+                    ...alert,
+                    alertType: "add",
+                    alertOn: true,
+                    alertState: "fail"
+                });
             })
     };
 
@@ -100,6 +114,13 @@ function AboutProvider(props) {
             })
             .catch(err => {
                 console.log("Something went wrong while updating the about content...", err);
+                setAlert({
+                    ...alert,
+                    alertType: "update",
+                    alertOn: true,
+                    alertState: "fail"
+                });
+                resetAlert();
             })
     };
 

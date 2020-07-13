@@ -259,7 +259,7 @@ function AboutAdmin(props) {
                                 }
                             }
                         </AboutConsumer>
-                        <Alert 
+                        <Alert
                             alertOn={alertOn}
                             alertItem={alertItem}
                             alertType={alertType}
