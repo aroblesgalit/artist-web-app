@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext } from "react";
 import "./aboutAdmin.css";
 import uuid from "react-uuid";
 import AboutContext, { AboutConsumer } from "../../utils/AboutContext";
+import Alert from "../Alert";
 
 function AboutAdmin(props) {
 
@@ -258,11 +259,12 @@ function AboutAdmin(props) {
                                 }
                             }
                         </AboutConsumer>
-                        {
-                            alertOn ? (
-                                <p className={`uk-text-success`}>{`${alertItem} ${alertType} ${alertState}`}</p>
-                            ) : ""
-                        }
+                        <Alert 
+                            alertOn={alertOn}
+                            alertItem={alertItem}
+                            alertType={alertType}
+                            alertState={alertState}
+                        />
                     </div>
                 </div>
             </form>
