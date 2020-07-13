@@ -16,7 +16,7 @@ function Cart() {
                 <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to shop</span>
             </Link>
             <h1>shopping cart</h1>
-            <table className="cart-table uk-table uk-table-divider uk-table-middle uk-width-4-5@l">
+            <table className="cart-table uk-table uk-table-responsive uk-table-divider uk-table-middle uk-width-4-5@l">
                 <thead>
                     <tr>
                         <th>item</th>

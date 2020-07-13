@@ -7,7 +7,7 @@ function CartRow(props) {
     const { id, name, size, img, countInStock, cartTotal, cartCount } = props;
 
     return (
-        <tr className="cart-row">
+        <tr className="cart-row uk-text-center uk-text-left@m">
             <td className="uk-flex uk-flex-middle">
                 <ItemConsumer>
                     {
@@ -21,7 +21,6 @@ function CartRow(props) {
                             )
                         }
                     }
-
                 </ItemConsumer>
                 <img src={img} alt={name} />
                 <span className="uk-flex uk-flex-column">
