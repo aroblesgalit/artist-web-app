@@ -5,6 +5,7 @@ const app = express();
 const session = require("express-session");
 const passport = require("./config/passport");
 const path = require("path");
+require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware
@@ -24,9 +25,9 @@ app.use(passport.session());
 app.use(routes);
 
 // Serving static files
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
+// app.get("/*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "/client/build/index.html"));
+// });
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/johndoe", {
