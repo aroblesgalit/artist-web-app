@@ -26,6 +26,7 @@ function ArtProvider(props) {
         getAllArts();
     }, [])
 
+    // Fetch all the art items from the database and set arts state to data returned
     function getAllArts() {
         API.getAllArts()
             .then(res => {
@@ -39,10 +40,12 @@ function ArtProvider(props) {
             })
     }
 
+    // Get an art item by given id
     function getArtById(id) {
         return portfolio.arts.find(art => art._id === id);
     }
 
+    // Set the viewArt state to the art item of given id
     function handleView(id) {
         const art = getArtById(id);
         console.log("Art for view: ", art);
@@ -52,13 +55,13 @@ function ArtProvider(props) {
         })
     };
 
+    // Delete art item from database and then fetch all arts again
     function deleteArt(e, id, page) {
         e.preventDefault();
         clearAlert();
 
         API.deleteArt(id)
-            .then(res => {
-                // console.log("Art deleted...", res);
+            .then(() => {
                 getAllArts();
                 setAlertState(true, "delete", "successful");
                 resetAlert(3000);
@@ -73,6 +76,7 @@ function ArtProvider(props) {
             })
     };
 
+    // Update art item in the database and then fetch all arts again
     function updateArt(e, id, item) {
         e.preventDefault();
         clearAlert();
@@ -82,8 +86,7 @@ function ArtProvider(props) {
             img: item.img,
             medium: item.medium
         })
-            .then(res => {
-                // console.log("Art piece has been updated...", res.data);
+            .then(() => {
                 getAllArts();
                 setAlertState(true, "update", "successful");
                 resetAlert(3000);
@@ -95,6 +98,7 @@ function ArtProvider(props) {
             })
     };
 
+    // Add art item to the database and then fetch all arts again
     function addArt(e, item) {
         e.preventDefault();
         clearAlert();
@@ -104,8 +108,7 @@ function ArtProvider(props) {
             img: item.img,
             medium: item.medium
         })
-            .then(res => {
-                // console.log("Art added to portfolio...", res.data);
+            .then(() => {
                 getAllArts();
                 setAlertState(true, "add", "successful");
                 resetAlert(3000);
@@ -117,6 +120,7 @@ function ArtProvider(props) {
             })
     };
 
+    // Update the alert state
     function setAlertState(alertOn, alertType, alertState) {
         setAlert({
             ...alert,
@@ -126,10 +130,12 @@ function ArtProvider(props) {
         });
     };
 
+    // Clear the resetAlert timeout
     function clearAlert() {
         clearTimeout(alertTimeout);
     };
 
+    // Reset the alert state
     function resetAlert(delay) {
         alertTimeout = setTimeout(() => {
             setAlert({
