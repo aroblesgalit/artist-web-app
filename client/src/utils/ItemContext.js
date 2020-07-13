@@ -20,6 +20,8 @@ class ItemProvider extends Component {
         alertState: "none" // successful, fail, none
     };
 
+    alertTimeout;
+
     componentDidMount() {
         this.getAllItems();
     };
@@ -86,7 +88,7 @@ class ItemProvider extends Component {
     };
 
     removeItem = (id) => {
-        this.resetAlert(0);
+        this.clearAlert();
         let tempItems = [...this.state.items];
         let tempCart = [...this.state.cart];
         tempCart = tempCart.filter(item => item._id !== id);
@@ -221,8 +223,12 @@ class ItemProvider extends Component {
         });
     };
 
+    clearAlert = () => {
+        clearTimeout(this.alertTimeout);
+    };
+
     resetAlert = (delay) => {
-        setTimeout(() => {
+        this.alertTimeout = setTimeout(() => {
             this.setState(() => {
                 return {
                     alertOn: false,

@@ -1,4 +1,5 @@
 import React from "react";
+import "./alert.css";
 
 function Alert(props) {
 
@@ -8,12 +9,13 @@ function Alert(props) {
         <React.Fragment>
             {
                 alertOn ? (
-                    <p
-                        className={`uk-text-${alertState === "successful" ? "success" : "danger"} uk-text-light uk-text-small uk-flex uk-flex-middle`}
-                    >
-                    <span uk-icon={`${alertState === "successful" ? "check" : "ban"}`}  className="uk-margin-small-right" />
-                        {`${alertItem} ${alertType} ${alertState}`}
-                    </p>
+                    <div className={`alert uk-alert-${alertState === "successful" ? "success" : "danger"}`} uk-alert="true">
+                        <p className="uk-margin-remove-top uk-margin-remove-bottom uk-margin-right uk-text-small uk-flex uk-flex-middle">
+                            <span uk-icon={`${alertState === "successful" ? "check" : "ban"}`} className="uk-margin-small-right" />
+                            {`${alertItem} ${alertType} ${alertState}`}
+                        </p>
+                        <span className="alert-close uk-alert-close" uk-close="true" />
+                    </div>
                 ) : ""
             }
         </React.Fragment>

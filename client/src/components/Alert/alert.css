@@ -1,0 +1,8 @@
+.alert-close {
+    cursor: pointer;
+}
+
+.alert {
+    position: fixed;
+    bottom: 1.5rem;
+}
