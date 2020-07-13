@@ -18,6 +18,8 @@ function AboutProvider(props) {
         alertState: "none" // successful, fail, none
     });
 
+    let alertTimeout;
+
     useEffect(() => {
         getAbout();
     }, [])
@@ -71,68 +73,62 @@ function AboutProvider(props) {
 
     function addAbout(e, data) {
         e.preventDefault();
-        resetAlert();
+        clearAlert();
 
         API.addAbout(data)
             .then(() => {
                 // console.log("About content added...", res.data);
                 getAbout();
-                setAlert({
-                    ...alert,
-                    alertType: "add",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "add", "successful");
+                resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while adding about content...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "add",
-                    alertOn: true,
-                    alertState: "fail"
-                });
+                setAlertState(true, "add", "fail");
+                resetAlert(3000);
             })
     };
 
     function updateAbout(e, id, data) {
         e.preventDefault();
-        resetAlert();
+        clearAlert();
 
         API.updateAbout(id, data)
             .then(() => {
                 // console.log("The about content has been updated...", res.data);
                 getAbout();
-                setAlert({
-                    ...alert,
-                    alertType: "update",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "update", "successful");
+                resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while updating the about content...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "update",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "update", "fail");
+                resetAlert(3000);
             })
     };
 
-    function resetAlert() {
-        setTimeout(() => {
+    function setAlertState(alertOn, alertType, alertState) {
+        setAlert({
+            ...alert,
+            alertType: alertType,
+            alertOn: alertOn,
+            alertState: alertState
+        });
+    };
+
+    function clearAlert() {
+        clearTimeout(alertTimeout);
+    };
+
+    function resetAlert(delay) {
+        alertTimeout = setTimeout(() => {
             setAlert({
-                alertItem: "about content",
+                ...alert,
                 alertType: "none",
                 alertOn: false,
                 alertState: "none"
             })
-        }, 3000);
+        }, delay);
     };
 
     return (
