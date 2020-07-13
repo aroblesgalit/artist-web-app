@@ -1,11 +1,10 @@
 import React, { useRef, useState, useContext } from "react";
 import "./portfolioViewForm.css";
 import ArtContext, { ArtConsumer } from "../../utils/ArtContext";
-import Alert from "../Alert";
 
 function PortfolioViewForm() {
 
-    const { viewArt, alertOn, alertItem, alertType, alertState } = useContext(ArtContext);
+    const { viewArt } = useContext(ArtContext);
 
     const nameRef = useRef();
     const imgRef = useRef();
@@ -98,12 +97,6 @@ function PortfolioViewForm() {
                                     >
                                         <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
                                     </button>
-                                    <Alert
-                                        alertOn={alertOn}
-                                        alertItem={alertItem}
-                                        alertType={alertType}
-                                        alertState={alertState}
-                                    />
                                 </div>
                             </div>
                         </form>

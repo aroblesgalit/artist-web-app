@@ -1,12 +1,9 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./portfolioAddForm.css";
-import ArtContext, { ArtConsumer } from "../../utils/ArtContext";
-import Alert from "../Alert";
+import { ArtConsumer } from "../../utils/ArtContext";
 
 function PortfolioAddForm() {
-
-    const { alertOn, alertItem, alertType, alertState } = useContext(ArtContext);
 
     const nameRef = useRef();
     const imgRef = useRef();
@@ -107,12 +104,6 @@ function PortfolioAddForm() {
                                     >
                                         <span uk-icon="plus" className="uk-margin-small-right" />add
                                     </button>
-                                    <Alert
-                                        alertOn={alertOn}
-                                        alertItem={alertItem}
-                                        alertType={alertType}
-                                        alertState={alertState}
-                                    />
                                 </div>
                             </div>
                         </form>
