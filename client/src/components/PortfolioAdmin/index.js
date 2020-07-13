@@ -1,12 +1,14 @@
 import React from "react";
 import AdminTable from "../AdminTable";
 import AdminTableRow from "../AdminTableRow";
-import { ArtConsumer } from "../../utils/ArtContext";
+import ArtContext, { ArtConsumer } from "../../utils/ArtContext";
+import Alert from "../components/Alert";
 
 function PortfolioAdmin(props) {
 
     const { activeTab } = props;
     const tableHeads = ["image", "name", "medium", "actions"];
+    const { alertOn, alertItem, alertType, alertState } = useContext(ArtContext);
 
     return (
         <div className={`portfolio-content ${activeTab === "portfolio" ? "show" : "hide"}`}>
@@ -27,6 +29,12 @@ function PortfolioAdmin(props) {
                     }
                 </ArtConsumer>
             </AdminTable>
+            <Alert
+                alertOn={alertOn}
+                alertItem={alertItem}
+                alertType={alertType}
+                alertState={alertState}
+            />
         </div>
     )
 }
