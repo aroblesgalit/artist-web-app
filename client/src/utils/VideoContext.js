@@ -25,6 +25,7 @@ function VideoProvider(props) {
         getAllVideos();
     }, []);
 
+    // Fetch all the videos from the database and then set items state to the data returned
     function getAllVideos() {
         API.getAllVideos()
             .then(res => {
@@ -38,10 +39,12 @@ function VideoProvider(props) {
             })
     };
 
+    // Get a video by given id from the items state
     function getVideoById(id) {
         return videos.items.find(item => item._id === id);
     };
 
+    // Set viewVideo state to the video of given id
     function handleView(id) {
         const video = getVideoById(id);
         setVideos({
@@ -50,13 +53,13 @@ function VideoProvider(props) {
         })
     };
 
+    // Delete video from database and then fetch all videos again
     function deleteVideo(e, id, page) {
         e.preventDefault();
         clearAlert();
 
         API.deleteVideo(id)
-            .then(res => {
-                // console.log("Video deleted...", res);
+            .then(() => {
                 getAllVideos();
                 setAlertState(true, "delete", "successful");
                 resetAlert(3000);
@@ -71,13 +74,13 @@ function VideoProvider(props) {
             })
     };
 
+    // Update video in database and then fetch all videos again
     function updateVideo(e, id, item) {
         e.preventDefault();
         clearAlert();
 
         API.updateVideo(id, item)
-            .then(res => {
-                // console.log("Video has been updated...", res.data);
+            .then(() => {
                 getAllVideos();
                 setAlertState(true, "update", "successful");
                 resetAlert(3000);
@@ -89,13 +92,13 @@ function VideoProvider(props) {
             })
     };
 
+    // Add video to the database and fetch all videos again
     function addVideo(e, item) {
         e.preventDefault();
         clearAlert();
 
         API.addVideo(item)
-            .then(res => {
-                // console.log("Video added...", res.data);
+            .then(() => {
                 getAllVideos();
                 setAlertState(true, "add", "successful");
                 resetAlert(3000);
@@ -107,6 +110,7 @@ function VideoProvider(props) {
             })
     };
 
+    // Update alert state
     function setAlertState(alertOn, alertType, alertState) {
         setAlert({
             ...alert,
@@ -116,10 +120,12 @@ function VideoProvider(props) {
         });
     };
 
+    // Clear the resetAlert timeout
     function clearAlert() {
         clearTimeout(alertTimeout);
     };
 
+    // Reset the alert state
     function resetAlert(delay) {
         alertTimeout = setTimeout(() => {
             setAlert({
