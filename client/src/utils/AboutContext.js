@@ -12,7 +12,7 @@ function AboutProvider(props) {
     });
 
     const [alert, setAlert] = useState({
-        alertItem: "About content",
+        alertItem: "about content",
         alertType: "none", // add, update
         alertOn: false,
         alertState: "none" // successful, fail, none
@@ -74,8 +74,8 @@ function AboutProvider(props) {
         resetAlert();
 
         API.addAbout(data)
-            .then(res => {
-                console.log("About content added...", res.data);
+            .then(() => {
+                // console.log("About content added...", res.data);
                 getAbout();
                 setAlert({
                     ...alert,
@@ -101,8 +101,8 @@ function AboutProvider(props) {
         resetAlert();
 
         API.updateAbout(id, data)
-            .then(res => {
-                console.log("The about content has been updated...", res.data);
+            .then(() => {
+                // console.log("The about content has been updated...", res.data);
                 getAbout();
                 setAlert({
                     ...alert,
@@ -127,7 +127,7 @@ function AboutProvider(props) {
     function resetAlert() {
         setTimeout(() => {
             setAlert({
-                alertItem: "About content",
+                alertItem: "about content",
                 alertType: "none",
                 alertOn: false,
                 alertState: "none"
