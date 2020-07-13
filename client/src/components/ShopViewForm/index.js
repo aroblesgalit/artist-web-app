@@ -1,11 +1,10 @@
 import React, { useRef, useState, useContext } from "react";
 import "./shopViewForm.css";
 import ItemContext, { ItemConsumer } from "../../utils/ItemContext";
-import Alert from "../Alert";
 
 function ShopViewForm() {
 
-    const { detailItem, alertOn, alertItem, alertType, alertState } = useContext(ItemContext);
+    const { detailItem } = useContext(ItemContext);
 
     const nameRef = useRef();
     const infoRef = useRef();
@@ -116,7 +115,7 @@ function ShopViewForm() {
                                             type="number"
                                             placeholder="20"
                                             required={true}
-                                            min="0"
+                                            min={0}
                                             ref={countInStockRef}
                                             value={item.countInStock}
                                             onChange={() => setItem({
@@ -185,12 +184,6 @@ function ShopViewForm() {
                                     >
                                         <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
                                     </button>
-                                    <Alert 
-                                        alertOn={alertOn}
-                                        alertItem={alertItem}
-                                        alertType={alertType}
-                                        alertState={alertState}
-                                    />
                                 </div>
                             </div>
                         </form>

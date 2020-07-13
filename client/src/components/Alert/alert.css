@@ -1,8 +1,13 @@
-.alert-close {
-    cursor: pointer;
-}
-
 .alert {
     position: fixed;
     bottom: 1.5rem;
+}
+
+.alert p {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.alert-close {
+    cursor: pointer;
 }

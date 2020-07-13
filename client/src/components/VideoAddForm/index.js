@@ -1,12 +1,9 @@
 import React, { useRef, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./videoAddForm.css";
-import VideoContext, { VideoConsumer } from "../../utils/VideoContext";
-import Alert from "../Alert";
+import { VideoConsumer } from "../../utils/VideoContext";
 
 function VideoAddForm() {
-
-    const { alertOn, alertItem, alertType, alertState } = useContext(VideoContext);
 
     const titleRef = useRef();
     const urlRef = useRef();
@@ -81,12 +78,6 @@ function VideoAddForm() {
                                     >
                                         <span uk-icon="plus" className="uk-margin-small-right" />add
                                     </button>
-                                    <Alert
-                                        alertOn={alertOn}
-                                        alertItem={alertItem}
-                                        alertType={alertType}
-                                        alertState={alertState}
-                                    />
                                 </div>
                             </div>
                         </form>

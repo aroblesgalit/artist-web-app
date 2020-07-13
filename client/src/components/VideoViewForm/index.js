@@ -1,11 +1,10 @@
 import React, { useRef, useState, useContext } from "react";
 import "./videoViewForm.css";
 import VideoContext, { VideoConsumer } from "../../utils/VideoContext";
-import Alert from "../Alert";
 
 function VideoViewForm() {
 
-    const { viewVideo, alertOn, alertItem, alertType, alertState } = useContext(VideoContext);
+    const { viewVideo } = useContext(VideoContext);
 
     const titleRef = useRef();
     const urlRef = useRef();
@@ -74,12 +73,6 @@ function VideoViewForm() {
                                     >
                                         <span uk-icon="file-edit" className="uk-margin-small-right" />save changes
                                     </button>
-                                    <Alert
-                                        alertOn={alertOn}
-                                        alertItem={alertItem}
-                                        alertType={alertType}
-                                        alertState={alertState}
-                                    />
                                 </div>
                             </div>
                         </form>

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./pages.css";
 import CartRow from "../components/CartRow";
 import CartSubtotal from "../components/CartSubtotal";
 import ItemContext, { ItemConsumer } from "../utils/ItemContext";
-import Alert from "../Alert";
+import Alert from "../components/Alert";
 
 function Cart() {
 

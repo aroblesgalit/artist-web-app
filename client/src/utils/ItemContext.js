@@ -104,9 +104,7 @@ class ItemProvider extends Component {
         }, () => {
             this.addTotals();
         });
-        setTimeout(() => {
-            this.setAlert(true, "delete", "successful");
-        }, 500);
+        this.setAlert(true, "delete", "successful");
         this.resetAlert(3000);
     };
 
@@ -152,6 +150,7 @@ class ItemProvider extends Component {
     // Add an item to shop
     addItem = (e, item) => {
         e.preventDefault();
+        this.clearAlert();
 
         API.addItem({
             name: item.name,
@@ -163,17 +162,22 @@ class ItemProvider extends Component {
             countInStock: item.countInStock
         })
             .then(res => {
-                console.log("Item added to shop...", res.data);
+                // console.log("Item added to shop...", res.data);
                 this.getAllItems();
+                this.setAlert(true, "add", "successful");
+                this.resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while adding item to shop...", err);
+                this.setAlert(true, "add", "fail");
+                this.resetAlert(3000);
             })
     };
 
     // Update an item from shop
     updateItem = (e, id, item) => {
         e.preventDefault();
+        this.clearAlert();
 
         API.updateItem(id, {
             name: item.name,
@@ -185,22 +189,26 @@ class ItemProvider extends Component {
             countInStock: item.countInStock
         })
             .then(res => {
-                console.log("Item has been updated...", res.data);
+                // console.log("Item has been updated...", res.data);
                 this.getAllItems();
+                this.setAlert(true, "update", "successful");
+                this.resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while updating an item...", err);
+                this.setAlert(true, "update", "fail");
+                this.resetAlert(3000);
             })
     };
 
     // Delete an item from shop
     deleteItem = (e, id, page) => {
         e.preventDefault();
-        this.resetAlert(0);
+        this.clearAlert();
 
         API.deleteItem(id)
             .then(res => {
-                console.log("Item deleted...", res);
+                // console.log("Item deleted...", res);
                 this.getAllItems();
                 this.setAlert(true, "delete", "successful");
                 this.resetAlert(3000);
@@ -210,6 +218,8 @@ class ItemProvider extends Component {
             })
             .catch(err => {
                 console.log("Something went wrong while deleting an item...", err);
+                this.setAlert(true, "delete", "fail");
+                this.resetAlert(3000);
             })
     };
 

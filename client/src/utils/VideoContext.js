@@ -18,6 +18,8 @@ function VideoProvider(props) {
         alertState: "none" // successful, fail, none
     });
 
+    let alertTimeout;
+
     useEffect(() => {
         getAllVideos();
     }, []);
@@ -49,98 +51,84 @@ function VideoProvider(props) {
 
     function deleteVideo(e, id, page) {
         e.preventDefault();
+        clearAlert();
 
         API.deleteVideo(id)
             .then(res => {
                 // console.log("Video deleted...", res);
                 getAllVideos();
-                setAlert({
-                    ...alert,
-                    alertType: "delete",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "delete", "successful");
+                resetAlert(3000);
                 if (page === "videos-view") {
                     window.location.replace("/admin");
                 }
             })
             .catch(err => {
                 console.log("Something went wrong while deleting the video...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "delete",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "delete", "fail");
+                resetAlert(3000);
             })
     };
 
     function updateVideo(e, id, item) {
         e.preventDefault();
+        clearAlert();
 
         API.updateVideo(id, item)
             .then(res => {
                 // console.log("Video has been updated...", res.data);
                 getAllVideos();
-                setAlert({
-                    ...alert,
-                    alertType: "update",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "update", "successful");
+                resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while updating the video...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "update",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "update", "fail");
+                resetAlert(3000);
             })
     };
 
     function addVideo(e, item) {
         e.preventDefault();
+        clearAlert();
 
         API.addVideo(item)
             .then(res => {
                 // console.log("Video added...", res.data);
                 getAllVideos();
-                setAlert({
-                    ...alert,
-                    alertType: "add",
-                    alertOn: true,
-                    alertState: "successful"
-                });
-                resetAlert();
+                setAlertState(true, "add", "successful");
+                resetAlert(3000);
             })
             .catch(err => {
                 console.log("Something went wrong while adding video...", err);
-                setAlert({
-                    ...alert,
-                    alertType: "add",
-                    alertOn: true,
-                    alertState: "fail"
-                });
-                resetAlert();
+                setAlertState(true, "add", "fail");
+                resetAlert(3000);
             })
     };
 
-    function resetAlert() {
-        setTimeout(() => {
+    function setAlertState(alertOn, alertType, alertState) {
+        setAlert({
+            ...alert,
+            alertType: alertType,
+            alertOn: alertOn,
+            alertState: alertState
+        });
+    };
+
+    function clearAlert() {
+        clearTimeout(alertTimeout);
+    };
+
+    function resetAlert(delay) {
+        alertTimeout = setTimeout(() => {
             setAlert({
-                alertItem: "video",
+                ...alert,
                 alertType: "none",
                 alertOn: false,
                 alertState: "none"
             })
-        }, 3000);
-    }
+        }, delay);
+    };
 
     return (
         <VideoContext.Provider
