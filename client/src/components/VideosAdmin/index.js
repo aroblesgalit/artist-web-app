@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import AdminTable from "../AdminTable";
 import AdminTableRow from "../AdminTableRow";
 import VideoContext, { VideoConsumer } from "../../utils/VideoContext";
-import Alert from "../components/Alert";
+import Alert from "../Alert";
 
 function VideosAdmin(props) {
 
     const { activeTab } = props;
     const tableHeads = ["video", "title", "actions"]
     const { alertOn, alertItem, alertType, alertState } = useContext(VideoContext);
-
 
     return (
         <div className={`videos-content ${activeTab === "videos" ? "show" : "hide"}`}>

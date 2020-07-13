@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import AdminTable from "../AdminTable";
 import AdminTableRow from "../AdminTableRow";
 import ArtContext, { ArtConsumer } from "../../utils/ArtContext";
-import Alert from "../components/Alert";
+import Alert from "../Alert";
 
 function PortfolioAdmin(props) {
 
