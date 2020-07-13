@@ -9,11 +9,13 @@ import AboutAdmin from "../components/AboutAdmin";
 import AddButton from "../components/AddButton";
 import { UserConsumer } from "../utils/UserContext";
 import ArtContext from "../utils/ArtContext";
+import VideoContext from "../utils/VideoContext";
 import Alert from "../components/Alert";
 
 function Admin() {
 
     const { alertOn: artAlertOn, alertItem: artAlertItem, alertType: artAlertType, alertState: artAlertState } = useContext(ArtContext);
+    const { alertOn: videoAlertOn, alertItem: videoAlertItem, alertType: videoAlertType, alertState: videoAlertState } = useContext(VideoContext);
 
     return (
         <div className="main-container">
@@ -40,6 +42,12 @@ function Admin() {
                                     alertItem={artAlertItem}
                                     alertType={artAlertType}
                                     alertState={artAlertState}
+                                />
+                                <Alert
+                                    alertOn={videoAlertOn}
+                                    alertItem={videoAlertItem}
+                                    alertType={videoAlertType}
+                                    alertState={videoAlertState}
                                 />
                             </React.Fragment>
                         )
