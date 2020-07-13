@@ -25,6 +25,8 @@ function AboutProvider(props) {
         getAbout();
     }, [])
 
+    // Fetch about content from database and set content state to data returned
+    // If no content in database then set content state to placeholder values
     function getAbout() {
         API.getAbout()
             .then(res => {
@@ -72,13 +74,13 @@ function AboutProvider(props) {
             })
     };
 
+    // Add about content to the database and then fetch about content from the database
     function addAbout(e, data) {
         e.preventDefault();
         clearAlert();
 
         API.addAbout(data)
             .then(() => {
-                // console.log("About content added...", res.data);
                 getAbout();
                 setAlertState(true, "add", "successful");
                 resetAlert(3000);
@@ -90,13 +92,13 @@ function AboutProvider(props) {
             })
     };
 
+    // Update about content in the database and then fetch about content again
     function updateAbout(e, id, data) {
         e.preventDefault();
         clearAlert();
 
         API.updateAbout(id, data)
             .then(() => {
-                // console.log("The about content has been updated...", res.data);
                 getAbout();
                 setAlertState(true, "update", "successful");
                 resetAlert(3000);
@@ -108,6 +110,7 @@ function AboutProvider(props) {
             })
     };
 
+    // Update alert state
     function setAlertState(alertOn, alertType, alertState) {
         setAlert({
             ...alert,
@@ -117,10 +120,12 @@ function AboutProvider(props) {
         });
     };
 
+    // Clear the resetAlert timeout
     function clearAlert() {
         clearTimeout(alertTimeout);
     };
 
+    // Reset the alert state
     function resetAlert(delay) {
         alertTimeout = setTimeout(() => {
             setAlert({
