@@ -4,6 +4,15 @@
 This was a web application for an artist to upload his/her videos and artwork as well as sell his/her art. Visitors can view the artist's portfolio and videos and also purchase his/her artwork through paypal checkout.
 
 
+## Demos
+### Visitors can visit the the site and check out the about, portfolio, videos, and shop pages
+![Public Pages and Shop](./client/src/images/public-pages-and-shop.gif)
+### The artist will start off with a blank canvas and will set up his/her password
+![Blank Canvas and Create Account](./client/src/images/blank-canvas.gif)
+### He can then go to the **about** tab and update his/her information, contacts, and images and see the changes live
+![About - Admin Page](./client/src/images/update-about.gif)
+
+
 ## User Stories
 
 ```
@@ -36,10 +45,6 @@ THEN I am taken into a detail page and I'm able to add the item to the cart from
 WHEN I click on the *go to cart* link or the *cart icon*
 THEN I am taken to the **shopping cart** page where I'm able to update my cart items and go through the paypal checkout
 ```
-
-
-## Demos
-![Public Pages and Shop](./client/src/images/public-pages-and-shop.gif)
 
 
 ## Deployed Application
