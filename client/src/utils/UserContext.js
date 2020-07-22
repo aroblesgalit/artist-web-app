@@ -72,7 +72,7 @@ function UserProvider(props) {
                     }).then(res => {
                         console.log("Your account is now ready...", res);
                         // checkLoginStatus();
-                        window.location.assign("/admin");
+                        window.location.replace("/admin");
                     }).catch(err => {
                         console.log("Failed signup...", err);
                     })
