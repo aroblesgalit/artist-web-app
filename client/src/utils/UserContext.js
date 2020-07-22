@@ -6,11 +6,9 @@ const UserContext = React.createContext();
 // Provider
 function UserProvider(props) {
 
-    const [user, setUser] = useState({
-        userExists: true,
-        isLoggedIn: false,
-        activeTab: "portfolio"
-    });
+    const [userExists, setUserExists] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [activeTab, setActiveTab] = useState("portfolio");
 
     useEffect(() => {
         findUser();
@@ -18,27 +16,16 @@ function UserProvider(props) {
     }, [])
 
     function handleTabChange(tab) {
-        setUser({
-            ...user,
-            activeTab: tab
-        })
+        setActiveTab(tab);
     };
 
     // Check if user exists
     async function findUser() {
         const user = await API.findUser();
         if (user.data) {
-            // console.log("logging user.data...", user.data);
-            setUser({
-                ...user,
-                userExists: true
-            })
+            setUserExists(true);
         } else {
-            // console.log("user.data is null...", user.data);
-            setUser({
-                ...user,
-                userExists: false
-            })
+            setUserExists(false);
         }
     };
 
@@ -46,16 +33,10 @@ function UserProvider(props) {
     function checkLoginStatus() {
         API.getUserData()
             .then(() => {
-                setUser({
-                    ...user,
-                    isLoggedIn: true
-                })
+                setIsLoggedIn(true);
             })
             .catch(() => {
-                setUser({
-                    ...user,
-                    isLoggedIn: false
-                })
+                setIsLoggedIn(false);
             })
     };
 
@@ -71,8 +52,8 @@ function UserProvider(props) {
                         password: password
                     }).then(res => {
                         console.log("Your account is now ready...", res);
-                        // checkLoginStatus();
-                        window.location.replace("/admin");
+                        findUser();
+                        checkLoginStatus();
                     }).catch(err => {
                         console.log("Failed signup...", err);
                     })
@@ -96,13 +77,10 @@ function UserProvider(props) {
             password: password
         }).then(res => {
             console.log("Logged in successfully...", res);
-            window.location.assign("/admin");
-            // checkLoginStatus();
-            // findUser();
+            checkLoginStatus();
         }).catch(err => {
             console.log("Something went wrong while loggin in...", err);
             checkLoginStatus();
-            findUser();
         })
     };
 
@@ -110,10 +88,7 @@ function UserProvider(props) {
     function handleLogout() {
         API.logoutUser()
             .then(() => {
-                setUser({
-                    ...user,
-                    isLoggedIn: false
-                })
+                checkLoginStatus();
             })
             .catch(err => {
                 console.log("Something went wrong while logging out...", err);
@@ -123,7 +98,9 @@ function UserProvider(props) {
     return (
         <UserContext.Provider
             value={{
-                ...user,
+                userExists,
+                isLoggedIn,
+                activeTab,
                 handleLogout,
                 handleSignup,
                 handleLogin,
