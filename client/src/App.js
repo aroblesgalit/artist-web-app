@@ -62,39 +62,21 @@ function App() {
                   </Route>
                   <Route path="/admin-login">
                     <PublicRoute component={Login} />
-                    {
-                      // isLoggedIn ? <Redirect to="/admin" /> : <Login />
-                    }
                   </Route>
                   <Route exact path="/admin">
                     <ProtectedRoute component={Admin} />
-                    {
-                      // isLoggedIn ? <Admin /> : <Redirect to="/admin-login" />
-                    }
                   </Route>
                   <Route path="/admin/shop-add">
                     <ProtectedRoute component={AddShop} />
-                    {
-                      // isLoggedIn ? <AddShop /> : <Redirect to="/admin" />
-                    }
                   </Route>
                   <Route path="/admin/shop-view">
                     <ProtectedRoute component={ViewShop} />
-                    {
-                      // isLoggedIn ? <ViewShop /> : <Redirect to="/admin" />
-                    }
                   </Route>
                   <Route path="/admin/portfolio-view">
                     <ProtectedRoute component={ViewPortfolio} />
-                    {
-                      // isLoggedIn ? <ViewPortfolio /> : <Redirect to="/admin" />
-                    }
                   </Route>
                   <Route path="/admin/portfolio-add">
                     <ProtectedRoute component={AddPortfolio} />
-                    {
-                      // isLoggedIn ? <AddPortfolio /> : <Redirect to="/admin" />
-                    }
                   </Route>
                   <Route path="/admin/videos-add">
                     <ProtectedRoute component={AddVideos} />
