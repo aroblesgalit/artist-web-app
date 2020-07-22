@@ -28,8 +28,8 @@ THEN I am presented with a sidebar for navigation and a large image of the artis
 ## Wireframes
 ![Home](./client/src/images/Home.png)   
 ![Shop](./client/src/images/Shop.png)  
-![Shop-ProductDetails](./client/src/images/Shop-ProductDetails.png)  
-![Shop – Cart](./client/src/images/Shop–Cart.png)
+![Shop - Product Details](./client/src/images/Shop-ProductDetails.png)  
+![Shop – Cart](./client/src/images/Shop-Cart.png)
 ![Admin - Login](./client/src/images/Admin-Login.png)
 ![Admin - Manager - Shop](./client/src/images/Admin-Manager-Shop.png)
 ![Admin - Shop - View-Edit](./client/src/images/Admin-Shop-View-Edit.png)
