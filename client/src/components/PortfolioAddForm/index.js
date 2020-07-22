@@ -101,6 +101,7 @@ function PortfolioAddForm() {
                                             });
                                             clearInput();
                                         }}
+                                        type="submit"
                                     >
                                         <span uk-icon="plus" className="uk-margin-small-right" />add
                                     </button>

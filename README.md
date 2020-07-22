@@ -4,13 +4,28 @@
 This was a web application for an artist to upload his/her videos and artwork as well as sell his/her art. Visitors can view the artist's portfolio and videos and also purchase his/her artwork through paypal checkout.
 
 
-## Demos
-### Visitors can visit the the site and check out the about, portfolio, videos, and shop pages
+## Deployed Application / Live Demo
+[Artist Web App](https://artist-web-app.herokuapp.com/) 
+
+
+## Demos / GIFs
+Visitors can visit the the site and check out the about, portfolio, and videos pages as well as purchase some of the artist's artworks  
 ![Public Pages and Shop](./client/src/images/public-pages-and-shop.gif)
-### The artist will start off with a blank canvas and will set up his/her password
+
+The artist will start off with a blank canvas and will set up his/her password  
 ![Blank Canvas and Create Account](./client/src/images/blank-canvas.gif)
-### He can then go to the **about** tab and update his/her information, contacts, and images and see the changes live
+
+After setting up the password, the artist can then go to the **about** tab and update his/her information, contacts, and images and see the changes live  
 ![About - Admin Page](./client/src/images/update-about.gif)
+
+The artist can add items to his/her portfolio/videos/shop by clicking on the *plus* button and then filling out the form. The new item will then appear on the table once it has been added. 
+![Add an Item](./client/src/images/add-item.gif)
+
+The artist can delete an item from portfolio/videos/shop by hovering over the row and clicking on the *x* button.
+![Delete an Item](./client/src/images/delete-item.gif)
+
+The artist can update an item from portfolio/videos/shop by hovering over the row and clicking on the *edit* button.
+![Update an Item](./client/src/images/update-item.gif)
 
 
 ## User Stories
@@ -44,11 +59,28 @@ WHEN I click on the image on the card
 THEN I am taken into a detail page and I'm able to add the item to the cart from there as well
 WHEN I click on the *go to cart* link or the *cart icon*
 THEN I am taken to the **shopping cart** page where I'm able to update my cart items and go through the paypal checkout
+
+GIVEN the application as the artist/owner
+WHEN I browse through each page
+THEN I am presented with a blank canvas with some placeholders in the home and about pages
+WHEN I go to the */admin* route path
+THEN I am presented with a form to create my password which then takes me to the admin page
+WHEN I click on the **about** tab
+THEN I can fill out a form to update my information with my name, contact info, images, and social media links and see a live update
+WHEN I click on the *add* button on the other tabs
+THEN I am presented with a from to fill out and submit
+WHEN I go back to the admin pages
+THEN I can see the item I just added
+WHEN I hover a row
+THEN I see my action buttons for *updating* and *deleting* the item
+WHEN I click on the *delete* button
+THEN I see that item removed from the table as well as the visitor's pages
+WHEN I click on the *update* button
+THEN I am taken back to a form with the fields auto-filled with the correct information of the item
+WHEN I change some info on this form and click on the *save changes* button
+THEN I can see the change in the admin table as well as the visitor's page
 ```
-
-
-## Deployed Application
-[Artist Web App](https://artist-web-app.herokuapp.com/)   
+  
 
 ## Wireframes
 ![Home](./client/src/images/Home.png)   
