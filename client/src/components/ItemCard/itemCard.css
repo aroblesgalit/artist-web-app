@@ -31,6 +31,16 @@
     cursor: pointer;
 }
 
+.image-tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.747);
+    z-index: 3;
+}
+
 .item-img-container img {
     object-fit: cover;
     min-height: 100%;
@@ -49,6 +59,14 @@
 .item-price {
     font-weight: 500;
     font-size: 1.2rem;
+}
+
+.item-sold-out {
+    background-color: rgb(245, 59, 59);
+    padding: 0.25rem 0.75rem;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
 }
 
 .cart-btn {
