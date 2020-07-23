@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./pages.css";
 import ItemContext from "../utils/ItemContext";
@@ -9,17 +9,7 @@ function ItemDetail() {
 
     const { getItem, items, addToCart } = useContext(ItemContext);
 
-    const [detailItem, setDetailItem] = useState({});
-
-    useEffect(() => {
-        handleDetail(id);
-    }, [])
-
-    // Set detailItem to the item based on id
-    function handleDetail(id) {
-        const item = getItem(items, id);
-        setDetailItem(item);
-    };
+    const detailItem = getItem(items, id);
 
     return (
         <div className="main-container item-detail-container">
