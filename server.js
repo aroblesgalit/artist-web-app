@@ -2,11 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const cors = require("cors");
 const session = require("express-session");
 const passport = require("./config/passport");
 const path = require("path");
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
+
+app.use(cors());
 
 // Define middleware
 app.use(express.urlencoded({ extended: true }));

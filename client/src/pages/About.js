@@ -20,7 +20,7 @@ function About() {
                             <div className="uk-margin-large uk-flex uk-flex-column uk-width-1-2@l">
                                 <h4>connect with me</h4>
                                 <EmailAddress email={email} />
-                                <PhoneNum phone={phone} />
+                                <PhoneNum phone={phone ? phone : ""} />
                                 {
                                     socialMedias ? (
                                         socialMedias.map(social => {
