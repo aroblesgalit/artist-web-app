@@ -1,19 +1,12 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
 import SocialMediaIcon from "../SocialMediaIcon";
 import Footer from "../Footer";
 import { UserConsumer } from "../../utils/UserContext";
-import AboutContext, { AboutConsumer } from "../../utils/AboutContext";
+import { AboutConsumer } from "../../utils/AboutContext";
 
 function Header() {
-
-    const { content } = useContext(AboutContext);
-
-    useEffect(() => {
-        document.title = content.name || "portfolio";
-    }, []);
-
     return (
         <div>
             <div className="header-container">

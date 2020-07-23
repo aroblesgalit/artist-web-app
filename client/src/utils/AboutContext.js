@@ -35,8 +35,10 @@ function AboutProvider(props) {
                         ...about,
                         content: res.data[0],
                         contentExists: true
-                    })
+                    });
+                    document.title = res.data[0].name;
                 } else {
+                    document.title = "john doe";
                     setAbout({
                         ...about,
                         content: {
