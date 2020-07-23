@@ -88,6 +88,16 @@ h1 {
     margin-bottom: 4px;
 }
 
+.item-sold-out {
+    background-color: rgb(245, 59, 59);
+    text-align: center;
+    padding: 0.25rem 0.75rem;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+    max-width: 7rem;
+}
+
 .primary-btn {
     /* max-width: 160px; */
     padding: 0.6rem 1.2rem;

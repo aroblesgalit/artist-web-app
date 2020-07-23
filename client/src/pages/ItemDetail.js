@@ -8,7 +8,7 @@ function ItemDetail() {
         <ItemConsumer>
             {
                 value => {
-                    const { _id, img, name, print, size, price, info, inCart } = value.detailItem;
+                    const { _id, img, name, print, size, price, info, inCart, soldOut } = value.detailItem;
                     return (
                         <div className="main-container item-detail-container">
                             <Link to="/shop" className="uk-flex uk-flex-middle">
@@ -21,14 +21,17 @@ function ItemDetail() {
                                     <span className="item-print">{print}</span>
                                     <span className="item-size">{size}</span>
                                     <span className="item-price">${price}</span>
+                                    {soldOut ? <span className="item-sold-out">sold out</span> : ""}
                                     <p className="item-info"><b>Info:</b> {info}</p>
                                     <button
                                         className="primary-btn"
                                         onClick={() => value.addToCart(_id)}
-                                        disabled={inCart}
+                                        disabled={inCart || soldOut}
                                     >
                                         {
-                                            inCart ? "in cart" : "add to cart"
+                                            soldOut ? "out of stock" : (
+                                                inCart ? "in cart" : "add to cart"
+                                            )
                                         }
                                     </button>
                                     <Link to="/cart" className="uk-flex uk-flex-middle uk-margin-top">
