@@ -18,12 +18,8 @@ function ItemCard(props) {
                                 <React.Fragment>
                                     <Link to={`/shop/${_id}`}>
                                         <div className="item-img-container uk-card-media-top uk-position-relative">
-                                            <img
-                                                src={img}
-                                                alt={name}
-                                                onClick={() => value.handleDetail(_id)}
-                                            />
-                                            {soldOut ? <div className="image-tint" onClick={() => value.handleDetail(_id)}></div> : ""}
+                                            <img src={img} alt={name} />
+                                            {soldOut ? <div className="image-tint"></div> : ""}
                                         </div>
                                     </Link>
                                     <div className="uk-card-body uk-padding-small uk-position-relative">

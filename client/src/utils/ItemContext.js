@@ -8,7 +8,6 @@ class ItemProvider extends Component {
 
     state = {
         items: [],
-        detailItem: {},
         cart: [],
         cartSubtotal: 0,
         cartShipping: 4,
@@ -52,14 +51,6 @@ class ItemProvider extends Component {
     getItem = (arr, id) => {
         const item = arr.find(item => item._id === id);
         return item;
-    };
-
-    // Set detailItem to the item based on id
-    handleDetail = (id) => {
-        const item = this.getItem(this.state.items, id);
-        this.setState(() => {
-            return { detailItem: item }
-        })
     };
 
     // Update item's inCart, cartCount, and cartTotal based on the given id
@@ -282,7 +273,8 @@ class ItemProvider extends Component {
                     updateDataItems: this.updateDataItems,
                     addItem: this.addItem,
                     updateItem: this.updateItem,
-                    deleteItem: this.deleteItem
+                    deleteItem: this.deleteItem,
+                    getItem: this.getItem
                 }}
             >
                 {this.props.children}

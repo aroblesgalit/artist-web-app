@@ -1,51 +1,62 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useContext, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import "./pages.css";
-import { ItemConsumer } from "../utils/ItemContext";
+import ItemContext from "../utils/ItemContext";
 
 function ItemDetail() {
+
+    const { id } = useParams();
+
+    const { getItem, items, addToCart } = useContext(ItemContext);
+
+    const [detailItem, setDetailItem] = useState({});
+
+    useEffect(() => {
+        handleDetail(id);
+    }, [])
+
+    // Set detailItem to the item based on id
+    function handleDetail(id) {
+        const item = getItem(items, id);
+        setDetailItem(item);
+    };
+
     return (
-        <ItemConsumer>
+        <div className="main-container item-detail-container">
+            <Link to="/shop" className="uk-flex uk-flex-middle">
+                <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to shop</span>
+            </Link>
             {
-                value => {
-                    const { _id, img, name, print, size, price, info, inCart, soldOut } = value.detailItem;
-                    return (
-                        <div className="main-container item-detail-container">
-                            <Link to="/shop" className="uk-flex uk-flex-middle">
-                                <span uk-icon="icon: arrow-left" /><span className="text-link uk-margin-small-left" >back to shop</span>
+                detailItem ? (
+                    <div className="item-detail" uk-grid="true">
+                        <img src={detailItem.img} alt={detailItem.name} />
+                        <div className="item-detail-text uk-flex uk-flex-column">
+                            <h2 className="item-name">{detailItem.name}</h2>
+                            <span className="item-print">{detailItem.print}</span>
+                            <span className="item-size">{detailItem.size}</span>
+                            <span className="item-price">${detailItem.price}</span>
+                            {detailItem.soldOut ? <span className="item-sold-out">sold out</span> : ""}
+                            <p className="item-info"><b>Info:</b> {detailItem.info}</p>
+                            <button
+                                className="primary-btn"
+                                onClick={() => addToCart(detailItem._id)}
+                                disabled={detailItem.inCart || detailItem.soldOut}
+                            >
+                                {
+                                    detailItem.soldOut ? "out of stock" : (
+                                        detailItem.inCart ? "in cart" : "add to cart"
+                                    )
+                                }
+                            </button>
+                            <Link to="/cart" className="uk-flex uk-flex-middle uk-margin-top">
+                                <span className="text-link uk-margin-small-right" >go to cart</span><span uk-icon="icon: arrow-right" />
                             </Link>
-                            <div className="item-detail" uk-grid="true">
-                                <img src={img} alt={name} />
-                                <div className="item-detail-text uk-flex uk-flex-column">
-                                    <h2 className="item-name">{name}</h2>
-                                    <span className="item-print">{print}</span>
-                                    <span className="item-size">{size}</span>
-                                    <span className="item-price">${price}</span>
-                                    {soldOut ? <span className="item-sold-out">sold out</span> : ""}
-                                    <p className="item-info"><b>Info:</b> {info}</p>
-                                    <button
-                                        className="primary-btn"
-                                        onClick={() => value.addToCart(_id)}
-                                        disabled={inCart || soldOut}
-                                    >
-                                        {
-                                            soldOut ? "out of stock" : (
-                                                inCart ? "in cart" : "add to cart"
-                                            )
-                                        }
-                                    </button>
-                                    <Link to="/cart" className="uk-flex uk-flex-middle uk-margin-top">
-                                        <span className="text-link uk-margin-small-right" >go to cart</span><span uk-icon="icon: arrow-right" />
-                                    </Link>
-                                </div>
-                            </div>
                         </div>
-                    )
-                }
+                    </div>
+                ) : <p className="uk-text-small uk-text-mute">Loading details...</p>
             }
 
-        </ItemConsumer>
-
+        </div>
     )
 }
 
