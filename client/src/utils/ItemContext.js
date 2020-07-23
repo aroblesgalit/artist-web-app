@@ -34,6 +34,7 @@ class ItemProvider extends Component {
                 this.setState(() => {
                     res.data.forEach(item => {
                         // Take all the items and declare and define variables for cartCount, inCart, cartTotal
+                        item.soldOut = item.countInStock === 0 ? true : false;
                         item.cartCount = 0;
                         item.inCart = false;
                         item.cartTotal = 0;
@@ -77,6 +78,7 @@ class ItemProvider extends Component {
             };
         }, () => {
             this.addTotals();
+            console.log("Item added to cart, printing this.state.items: ", this.state.items);
         })
     };
 
